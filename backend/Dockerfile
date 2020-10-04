@@ -16,6 +16,7 @@ WORKDIR /var/www/html
 COPY src/ /var/www/html/
 
 RUN composer install
+RUN php artisan vendor:publish --tag="config"
 
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 
