@@ -1,7 +1,6 @@
 <?php
 
 use Doctrine\ORM\Mapping AS ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -19,12 +18,32 @@ class JobPosition {
     /**
      * @ORM\Column(type="string")
      */
-    private $position;
+    protected $position;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $employer;
+    protected $employer;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $ext_link;
+
+    public function getPosition() {
+        return $this->position;
+    }
+
+    public function getEmployer() {
+        return $this->employer;
+    }
+
+    public function getExtLink() {
+        return $this->ext_link;
+    }
+
+    public function getId() {
+        return $this->id;
+    }
 
 }
