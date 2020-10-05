@@ -16,3 +16,9 @@ services:
       - '/home/maya/Udvikling/Docker/laravel-doctrine-migrations-2.2/backend/src:/var/www/html/'
       - /var/www/html/vendor/
     read_only: false
+  database:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: wM09y6Rre
+      MYSQL_DATABASE: laravel

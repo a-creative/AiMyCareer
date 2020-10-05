@@ -24,7 +24,7 @@ return [
         | the migrations on disk haven't actually been run in the database.
         |
         */
-        'table'     => 'migrations',
+        'table'     => 'doctrine_migrations',
         /*
         |--------------------------------------------------------------------------
         | Migration Directory
@@ -34,7 +34,7 @@ return [
         | manager. Use different directories for each entity manager.
         |
         */
-        'directory' => database_path('migrations'),
+        'directory' => database_path('doctrine_migrations'),
         /*
         |--------------------------------------------------------------------------
         | Migration Organize Directory
