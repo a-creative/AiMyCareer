@@ -7,6 +7,8 @@ services:
       - "5001:80"
     volumes:
       - "/home/maya/Udvikling/Docker/laravel-doctrine-migrations-2.2/frontend/src/app:/usr/local/apache2/htdocs/app"
+    depends_on:
+      - backend
   backend:
     build:
       context: ./backend
@@ -16,9 +18,24 @@ services:
       - '/home/maya/Udvikling/Docker/laravel-doctrine-migrations-2.2/backend/src:/var/www/html/'
       - /var/www/html/vendor/
     read_only: false
+    depends_on:
+      - database
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 5003:80
+    depends_on:
+      - database
+    environment:
+      PMA_HOST: database
+      PMA_USER: root
+      PMA_PASSWORD: wM09y6Rre
   database:
     image: mariadb
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: wM09y6Rre
       MYSQL_DATABASE: laravel
+    volumes:
+      - "/home/maya/Udvikling/Docker/laravel-doctrine-migrations-2.2/database/data:/var/lib/mysql"
