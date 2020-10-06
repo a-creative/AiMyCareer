@@ -1,6 +1,9 @@
 <?php
 
+namespace App\Entities;
+
 use Doctrine\ORM\Mapping AS ORM;
+use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 
 /**
  * @ORM\Entity
@@ -45,5 +48,6 @@ class JobPosition {
     public function getId() {
         return $this->id;
     }
+
 
 }

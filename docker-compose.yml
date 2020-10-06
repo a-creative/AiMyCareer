@@ -2,11 +2,14 @@ version: "3.8"
 
 services:
   frontend:
-    image: httpd:2.4.46-alpine
+    stdin_open: true
+    build:
+        context: ./frontend
     ports:
-      - "5001:80"
+      - "5001:3000"
     volumes:
-      - "/home/maya/Udvikling/Docker/laravel-doctrine-migrations-2.2/frontend/src/app:/usr/local/apache2/htdocs/app"
+      - "/app/node_modules"
+      - "/home/maya/Udvikling/Docker/laravel-doctrine-migrations-2.2/frontend/src:/app"
     depends_on:
       - backend
   backend:
@@ -16,7 +19,6 @@ services:
       - "5002:80"
     volumes:
       - '/home/maya/Udvikling/Docker/laravel-doctrine-migrations-2.2/backend/src:/var/www/html/'
-      - /var/www/html/vendor/
     read_only: false
     depends_on:
       - database
