@@ -1,4 +1,5 @@
 import React from 'react';
+import {Helmet} from "react-helmet";
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -6,6 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <div className="App">
+      <Helmet>
+          <title>CV Composer</title>
+      </Helmet>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

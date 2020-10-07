@@ -22,7 +22,7 @@ services:
     depends_on:
       - database
   phpmyadmin:
-    image: phpmyadmin
+    image: phpmyadmin:5.0.2-apache
     restart: always
     ports:
       - 5003:80
@@ -33,7 +33,7 @@ services:
       PMA_USER: root
       PMA_PASSWORD: wM09y6Rre
   database:
-    image: mariadb
+    image: mariadb:10.5.5-focal
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: wM09y6Rre
