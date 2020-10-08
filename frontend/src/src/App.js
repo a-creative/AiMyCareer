@@ -1,42 +1,29 @@
 import React from 'react';
-import {Helmet} from "react-helmet";
-
-import Positions from './positions/Positions';
-import Postings from './postings/Postings';
-
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Helmet } from "react-helmet";
+import { Positions,Postings } from './views/all'
+import { Container, Row, Col, Nav, Navbar } from './components/react-bootstrap'
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 function App() {
+  const { t } = useTranslation();
+
   return (
     <Router>
       <div className="App">
         <Helmet>
-            <title>CV Composer</title>
+            <title>{t('CV Composer')}</title>
         </Helmet>
         <Container>
           <Row className="mb-2">
             <Col>
               <Navbar bg="light" expand="lg">
-                <Navbar.Brand as={Link} to="/">React-Bootstrap</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/">{t('CV Composer')}</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="mr-auto">
-                    <Nav.Link as={Link} to="/">Home</Nav.Link>
-                    <Nav.Link as={Link} to="/postings">Postings</Nav.Link>
-                    <Nav.Link as={Link} to="/positions">Positions</Nav.Link>
+                    <Nav.Link as={Link} to="/postings">{t('Postings')}</Nav.Link>
+                    <Nav.Link as={Link} to="/positions">{t('Positions')}</Nav.Link>
                   </Nav>
                 </Navbar.Collapse>
               </Navbar>
@@ -60,6 +47,7 @@ function App() {
         </Container>
       </div>
     </Router>
+    
   );
 }
 

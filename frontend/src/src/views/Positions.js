@@ -4,4 +4,4 @@ class Positions extends Component {
     return <div>POSITIONS</div>;
   }
 }
-export default Positions;
+export { Positions };

@@ -4,4 +4,4 @@ class Postings extends Component {
     return <div>POSTINGS</div>;
   }
 }
-export default Postings;
+export { Postings };
