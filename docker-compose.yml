@@ -9,7 +9,7 @@ services:
       - "5001:3000"
     volumes:
       - "/app/node_modules"
-      - ./frontend/src:/app"
+      - ./frontend/src:/app
     depends_on:
       - backend
   backend:
@@ -19,7 +19,7 @@ services:
     ports:
       - "5002:80"
     volumes:
-      - './backend/src:/var/www/html/'
+      - ./backend/src:/var/www/html
     read_only: false
     depends_on:
       - database
