@@ -10,7 +10,7 @@ Another motivation is the Covid-19 that now in 2020 is targetting the world. I f
 
 ## Getting Started
 
-The file \docker-compose.yml is the easy key to get you started if you know about Docker compose. Otherwise read on.
+The file \docker-compose.yml is the easy key to get you started if you know about Docker Compose. Otherwise read on.
 
 The following instructions will only get you started with trying out the web app in your own private space. I will later add information on how to deploy it to your own public host. But as it is it should be completely usable for a single user.
 
@@ -18,6 +18,7 @@ The following instructions will only get you started with trying out the web app
 
 The simple things you need to install are:
 
+- Git to download the source code to build the web app from.
 - Docker and Docker Compose to get a virtual host running with the web app.
 - A major web browser like Google Chrome, Mozilla Firefox og Microsoft Edge. These are simply used to access the web app on the virtual host.
 
@@ -36,12 +37,12 @@ Next you need to create a folder somewhere on your hard drive where you want the
 ```
 cd [the absolute path to the folder you created]
 ```
-You this command to download the web app to the folder. Do not forget the punctuation mark at the end of the line:
+Next use this command to download the web app to the folder. Do not forget the punctuation mark at the end of the line:
 ```
-git clone https://github.com/a-creative/cv-composer.git .
+git clone https://github.com/a-creative/job-finder.git .
 
 ```
-Next you use this command to start up the virtual host:
+Next use this command to start up the virtual host:
 ```
 docker-compose up
 ```
