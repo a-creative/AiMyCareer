@@ -4,20 +4,22 @@ services:
     stdin_open: true
     build:
         context: ./frontend
+    image: job-finder-frontend
     ports:
       - "5001:3000"
     volumes:
       - "/app/node_modules"
-      - "/home/maya/Udvikling/Docker/laravel-doctrine-migrations-2.2/frontend/src:/app"
+      - ./frontend/src:/app"
     depends_on:
       - backend
   backend:
     build:
       context: ./backend
+    image: job-finder-backend
     ports:
       - "5002:80"
     volumes:
-      - '/home/maya/Udvikling/Docker/laravel-doctrine-migrations-2.2/backend/src:/var/www/html/'
+      - './backend/src:/var/www/html/'
     read_only: false
     depends_on:
       - database
@@ -39,4 +41,4 @@ services:
       MYSQL_ROOT_PASSWORD: wM09y6Rre
       MYSQL_DATABASE: laravel
     volumes:
-      - "/home/maya/Udvikling/Docker/laravel-doctrine-migrations-2.2/database/data:/var/lib/mysql"
+      - ./database/data:/var/lib/mysql

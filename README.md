@@ -42,9 +42,10 @@ Next use this command to download the web app to the folder. Do not forget the p
 git clone https://github.com/a-creative/job-finder.git .
 
 ```
-Next use this command to start up the virtual host:
+Next use these two commands to start up the virtual host and initialize the database:
 ```
-docker-compose up
+docker-compose up -d
+docker-compose exec backend php artisan doctrine:migrations:migrate 
 ```
 Finally you open up your favorite web browser and go to the addres:
 ```

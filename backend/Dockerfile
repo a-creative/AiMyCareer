@@ -19,12 +19,11 @@ RUN composer install
 
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf; \
-    sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf; \
-    chown -R www-data:www-data storage; \
-    chown -R www-data:www-data bootstrap/cache; \
-    chmod -R 775 storage; \
-    chmod -R 775 bootstrap/cache;
-
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf;
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf;
+RUN chown -R www-data:www-data storage;
+RUN chown -R www-data:www-data bootstrap/cache;
+RUN chmod -R 775 storage;
+RUN chmod -R 775 bootstrap/cache;
+RUN mv .env.development .env;
 EXPOSE 80
-
