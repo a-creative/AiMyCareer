@@ -15,8 +15,6 @@ WORKDIR /var/www/html
 
 COPY src/ /var/www/html/
 
-RUN composer install
-
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf;
@@ -25,5 +23,8 @@ RUN chown -R www-data:www-data storage;
 RUN chown -R www-data:www-data bootstrap/cache;
 RUN chmod -R 775 storage;
 RUN chmod -R 775 bootstrap/cache;
+RUN chmod +x dev-run.sh
+RUN chmod +x wait-for-it.sh
 RUN mv .env.development .env;
-EXPOSE 80
+EXPOSE 80  
+ENTRYPOINT ["/var/www/html/dev-run.sh"]
