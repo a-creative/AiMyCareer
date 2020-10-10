@@ -33,7 +33,7 @@ https://docs.docker.com/get-docker/
 Follow these instructions to install Docker Compose:  
 https://docs.docker.com/compose/install/
 
-Next you need to create a folder somewhere on your hard drive where you want the web app to reside. A suggestion would be to create a folder called "jobfinder" in your user folder. Then use this command in a terminal/command line to enter the new folder:   
+Next you need to create a folder somewhere on your hard drive where you want the web app to reside. A suggestion would be to create a folder called "jobfinder" in your user folder. Then use this command in a terminal/command line to enter the new folder. For command line ake sure that you have admin priviliges on Windows:   
 ```
 cd [the absolute path to the folder you created]
 ```
