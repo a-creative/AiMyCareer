@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { withTranslation } from 'react-i18next';
 import PageHeader from '../components/PageHeader.js';
-import { Row, Col, Table } from 'react-bootstrap'
-import { useSelector, useDispatch } from 'react-redux';
+import { RoEw, Col, Table } from 'react-bootstrap'
+import { useSelector } from 'react-redux';
 
 function PostingsList(){
 
