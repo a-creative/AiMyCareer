@@ -3,21 +3,11 @@ import { Helmet } from 'react-helmet';
 import { withTranslation } from 'react-i18next';
 import PageHeader from '../components/PageHeader.js';
 import { Row, Col, Table } from 'react-bootstrap'
+import { useSelector, useDispatch } from 'react-redux';
 
 function PostingsList(){
 
-  const [postings] = useState([
-    {
-      id : 1,
-      position : 'Web udvikler',
-      employer : 'Datagraf AS'
-    },
-    {
-      id : 2,
-      position : 'Programmør',
-      employer : 'Webbureauet Infoserv'
-    }
-  ]);
+  const postings = useSelector( state => state.postings_reducer );
 
   return <Row>
     <Col>
