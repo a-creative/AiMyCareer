@@ -15,7 +15,7 @@ const initial_state: PostingState = {
     ],
   }
 
-  const reducer = (
+  const posting_reducer = (
     state: PostingState = initial_state,
     action: PostingAction
   ) : PostingState => {
@@ -24,5 +24,4 @@ const initial_state: PostingState = {
 
     return state;
   }
-
-  export default reducer;
+  export default posting_reducer;

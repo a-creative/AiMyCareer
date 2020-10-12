@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 import PageHeader from '../components/PageHeader';
@@ -7,9 +7,10 @@ import { useSelector } from 'react-redux';
 
 function PostingsList(){
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const postings : readonly IPosting[] = useSelector( ( state : PostingState ) => state.postings );
+  if (typeof postings == 'undefined') alert('FAIL');
 
   return <Row>
     <Col>
@@ -35,7 +36,7 @@ function PostingsList(){
 
 function Postings(){
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return <Row>
   <Helmet>

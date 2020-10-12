@@ -5,15 +5,12 @@ import * as serviceWorker from './serviceWorker';
 import './i18n';
 import { createStore, Store } from 'redux';
 import { Provider } from 'react-redux';
-import {combineReducers} from 'redux';
 
-import reducer from "./store/reducer"
+import root_reducer from './store/reducers/index'
 
 const store: Store<PostingState, PostingAction> & {
   dispatch: DispatchType
-} = createStore( reducer )
-
-
+} = createStore( root_reducer )
 
  // loading component for suspense fallback
  const Loader = () => (

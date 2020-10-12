@@ -17,4 +17,20 @@ Release 0.0.1
 
     Minor:
         - Fav icon
-        - Title needs to append the route
+        X Title needs to append the route
+
+
+- Backlog
+    - Seeding
+    - Fav icon
+    - Tech list in README
+    - Problem with Windows 10 not running okay
+    - Problem with slow container build when vendor folder is not included in image
+
+- Tech explore
+    - destructuring
+
+
+
+- Typescript is now used
+- Fixed some translations
