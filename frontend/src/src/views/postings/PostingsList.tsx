@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Row, Col, Table } from 'react-bootstrap'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { RootState } from "../../reducers";
+import { RootState } from "../../store/reducers";
 import PostingListItem from './PostingsListItem'
+import { setPostings } from '../../store/actions'
 
 function PostingsList(){
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const fetchPostings = async () => {
+      var base_url = document.location.protocol + "//" + document.location.hostname + ":5002";
+      const response = await fetch( base_url + '/api/job_postings');
+      const resData = await response.json();
+
+      let postings : readonly IPosting[] = resData.posting.postings;
+
+      var loadedPostings : IPosting[] = [...postings];
+      
+      dispatch(setPostings( loadedPostings ));
+    }
+    fetchPostings()
+  }, [ dispatch ])
 
     const { t } = useTranslation();
   

@@ -5,7 +5,8 @@ import * as serviceWorker from './serviceWorker';
 import './i18n';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import root_reducer from './reducers'
+import root_reducer from './store/reducers'
+import { noHooks } from './hooks';
 
 const store = createStore( root_reducer );
 
