@@ -4,12 +4,12 @@ const initial_state: PostingState = {
     postings: [
       {
         id: 1,
-        position: "Senior Frontend Udvikler med fokus på detaljen	",
+        job_title: "Senior Frontend Udvikler med fokus på detaljen	",
         employer: "Norlys"
       },
       {
         id: 2,
-        position: "IT-Supporter",
+        job_title: "IT-Supporter",
         employer: "Itadel",
       },
     ],

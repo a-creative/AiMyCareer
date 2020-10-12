@@ -2,37 +2,8 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 import PageHeader from '../components/PageHeader';
-import { Row, Col, Table } from 'react-bootstrap'
-import { useSelector } from 'react-redux';
-import { RootState } from "../reducers";
-
-function PostingsList(){
-
-  const { t } = useTranslation();
-
-  const postings : readonly IPosting[] = useSelector( ( state : RootState ) => state.posting.postings );
-
-  return <Row>
-    <Col>
-      <Table>
-        <thead>
-          <tr>
-            <th>{t('Job title')}</th>
-            <th>{t('Employer')}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {postings.map(posting => (
-            <tr key={posting.id}>
-                <td>{posting.position}</td>
-                <td>{posting.employer}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    </Col>
-  </Row>
-}
+import { Row, Col } from 'react-bootstrap'
+import PostingsList from './postings/PostingsList';
 
 function Postings(){
 

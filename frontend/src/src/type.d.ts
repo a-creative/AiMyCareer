@@ -1,6 +1,6 @@
 interface IPosting {
     id: number,
-    position: string,
+    job_title: string,
     employer: string,
 }
 
