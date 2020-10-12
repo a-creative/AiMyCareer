@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from "react-helmet";
-import { Postings } from './views/all'
+import { Postings } from './views'
 import { Container, Row, Col, Nav, Navbar } from './components/react-bootstrap'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';

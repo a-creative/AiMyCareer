@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import PageHeader from '../components/PageHeader';
 import { Row, Col, Table } from 'react-bootstrap'
 import { useSelector } from 'react-redux';
-import { RootState } from "../store/reducers/index";
+import { RootState } from "../reducers";
 
 function PostingsList(){
 
