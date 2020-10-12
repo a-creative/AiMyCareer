@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping AS ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="job_positions")
+ * @ORM\Table(name="job_postings")
  */
-class JobPosition {
+class JobPosting {
 
     /**
      * @ORM\Id
@@ -20,7 +20,7 @@ class JobPosition {
     /**
      * @ORM\Column(type="string")
      */
-    protected $position;
+    protected $job_title;
 
     /**
      * @ORM\Column(type="string")
@@ -32,8 +32,8 @@ class JobPosition {
      */
     protected $ext_link;
 
-    public function getPosition() {
-        return $this->position;
+    public function getJobTitle() {
+        return $this->job_title;
     }
 
     public function getEmployer() {
