@@ -5,28 +5,14 @@ import * as serviceWorker from './serviceWorker';
 import './i18n';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-
 import root_reducer from './store/reducers/index'
 
-//const store: Store<PostingState, PostingAction> & {
-//  dispatch: DispatchType
-//} = createStore( root_reducer )
 const store = createStore( root_reducer );
-
- // loading component for suspense fallback
- const Loader = () => (
-  <div className="App">
-    <div>Loading...</div>
-  </div>
-);
-
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Suspense fallback={<Loader />}>
         <App />
-      </Suspense>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
