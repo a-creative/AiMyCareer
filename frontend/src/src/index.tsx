@@ -3,36 +3,17 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import './i18n';
-import { createStore } from 'redux';
+import { createStore, Store } from 'redux';
 import { Provider } from 'react-redux';
 import {combineReducers} from 'redux';
 
+import reducer from "./store/reducer"
 
-const default_postings = [
-    {
-        id : 1,
-        position: 'Webudvikler',
-        employer: 'Datagraf AS'
-    },
-    {
-        id : 2,
-        position: 'Programmør',
-        employer: 'Temponizer Aps'
-    }
-];
+const store: Store<PostingState, PostingAction> & {
+  dispatch: DispatchType
+} = createStore( reducer )
 
-const postings_reducer = (state = default_postings, action) => {
-  switch(action.type){
-      default: 
-          return state
-  }
-}
 
-const root_reducer = combineReducers({
-  postings_reducer
-})
-
-const store = createStore( root_reducer );
 
  // loading component for suspense fallback
  const Loader = () => (

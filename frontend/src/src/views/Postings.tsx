@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { withTranslation } from 'react-i18next';
-import PageHeader from '../components/PageHeader.js';
+import { useTranslation } from 'react-i18next';
+import PageHeader from '../components/PageHeader';
 import { Row, Col, Table } from 'react-bootstrap'
 import { useSelector } from 'react-redux';
 
 function PostingsList(){
 
-  const postings = useSelector( state => state.postings_reducer );
+  const { t, i18n } = useTranslation();
+
+  const postings : readonly IPosting[] = useSelector( ( state : PostingState ) => state.postings );
 
   return <Row>
     <Col>
       <Table>
         <thead>
           <tr>
-            <th>Position</th>
-            <th>Employer</th>
+            <th>{t('Job title')}</th>
+            <th>{t('Employer')}</th>
           </tr>
         </thead>
         <tbody>
@@ -31,13 +33,16 @@ function PostingsList(){
   </Row>
 }
 
-function Postings({t}){
+function Postings(){
+
+  const { t, i18n } = useTranslation();
+
   return <Row>
   <Helmet>
     <title>{t('Postings')} - {t('Job Finder')}</title>
   </Helmet>
   <Col>
-    <PageHeader title="Postings" />
+    <PageHeader title={t('Postings')} />
     <Row>
       <Col>
         <PostingsList />
@@ -47,4 +52,4 @@ function Postings({t}){
 </Row>;
 }
 
-export default withTranslation()(Postings);
+export default Postings;
