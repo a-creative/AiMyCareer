@@ -1,4 +1,4 @@
-# Job finder
+# Job Finder
 
 A web application that helps you in creating the documents you need to get a job: A well targetted resume and application. It involves the job postings you have interest in, your previous job experiences and the testimonials and skills related to these. That is the base idea.
 
