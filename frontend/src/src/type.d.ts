@@ -14,3 +14,10 @@ type PostingAction = {
 }
 
 type DispatchType = (args: PostingAction) => PostingAction
+
+declare namespace JSX {
+    interface IntrinsicElements {
+        fieldset, div, title,tr,td: any;
+
+    }
+}

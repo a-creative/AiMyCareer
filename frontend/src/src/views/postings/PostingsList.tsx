@@ -34,8 +34,9 @@ function PostingsList(){
         <Table>
           <thead>
             <tr>
-              <th>{t('Job title')}</th>
               <th>{t('Employer')}</th>
+              <th>{t('Job title')}</th>
+              <th>{t('Functions')}</th>
             </tr>
           </thead>
           <tbody>

@@ -1,6 +1,20 @@
 {
-    "Postings" : "Opslag",
+    "Job postings" : "Jobopslag",
+    "Create job posting" : "Opret jobopslag",
     "Experience" : "Erfaring",
     "Job title" : "Stillingsbeskrivelse",
-    "Employer" : "Arbejdsgiver"
+    "Employer" : "Arbejdsgiver",
+    "Name" : "Navn",
+    "Postal code" : "Postnummer",
+    "City" : "By",
+    "Work location" : "Arbejdssted",
+    "Posting date" : "Opslagsdato",
+    "Application deadline" : "Ansøgningsfrist",
+    "Contact information" : "Kontaktinformation",
+    "Details" : "Detaljer",
+    "Raw text content" : "Råt textindhold",
+    "Save" : "Gem"
+
+
+    
 }

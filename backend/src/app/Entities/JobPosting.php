@@ -65,6 +65,11 @@ class JobPosting
     /**
      * @ORM\Column(type="string",length=150, nullable=true)
      */
+    protected $location_city;
+
+    /**
+     * @ORM\Column(type="string",length=150, nullable=true)
+     */
     protected $contact_name;
 
     /**
@@ -296,6 +301,26 @@ class JobPosting
     public function setContent_raw($content_raw)
     {
         $this->content_raw = $content_raw;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of location_city
+     */ 
+    public function getLocation_city()
+    {
+        return $this->location_city;
+    }
+
+    /**
+     * Set the value of location_city
+     *
+     * @return  self
+     */ 
+    public function setLocation_city($location_city)
+    {
+        $this->location_city = $location_city;
 
         return $this;
     }

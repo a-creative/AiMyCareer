@@ -1,9 +1,10 @@
 import React from 'react';
 import { Helmet } from "react-helmet";
-import { Postings } from './views'
+import { Postings, PostingsCreate } from './views'
 import { Container, Row, Col, Nav, Navbar } from './components/react-bootstrap'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
+import './App.css';
 
 function App() {
   const { t } = useTranslation();
@@ -15,7 +16,7 @@ function App() {
             <title>{t('Job Finder')}</title>
         </Helmet>
         <Container>
-          <Row className="mb-2">
+          <Row className="mb-4">
             <Col>
               <Navbar bg="light" expand="lg">
                 <Navbar.Brand as={Link} to="/">{t('Job Finder')}</Navbar.Brand>
@@ -31,10 +32,16 @@ function App() {
           <Row>
             <Col>
             <Switch>
-              <Route path="/">
-                <Postings />
+              <Route path="/postings/create">
+                <PostingsCreate />
+              </Route>
+              <Route path="/postings/edit/:id">
+                <PostingsCreate />
               </Route>
               <Route path="/postings">
+                <Postings />
+              </Route>
+              <Route path="/">
                 <Postings />
               </Route>
             </Switch>
