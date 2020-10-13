@@ -80,7 +80,7 @@ function PostingsCreate(){
     </fieldset>
     <fieldset>
       <Form.Label as="legend">
-        Contact info
+        {t('Contact information')}
       </Form.Label>
       <Form.Row>
         <Col>
