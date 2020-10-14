@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import root_reducer from './store/reducers'
 import { noHooks } from './hooks';
 
-const store = createStore( root_reducer );
+const store = createStore( root_reducer, (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__() );
 
 ReactDOM.render(
   <React.StrictMode>

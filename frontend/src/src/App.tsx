@@ -35,9 +35,7 @@ function App() {
               <Route path="/postings/create">
                 <PostingsCreate />
               </Route>
-              <Route path="/postings/edit/:id">
-                <PostingsCreate />
-              </Route>
+              <Route path="/postings/edit/:id" render={(props : any) => <PostingsCreate {...props} />} />
               <Route path="/postings">
                 <Postings />
               </Route>

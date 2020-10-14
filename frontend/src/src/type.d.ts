@@ -1,4 +1,5 @@
 interface IPosting {
+    key: number,
     id: number,
     job_title: string,
     employer: string,
@@ -17,7 +18,7 @@ type DispatchType = (args: PostingAction) => PostingAction
 
 declare namespace JSX {
     interface IntrinsicElements {
-        fieldset, div, title,tr,td: any;
+        fieldset, div, title,tr,td,th,thead,tbody: any;
 
     }
 }
