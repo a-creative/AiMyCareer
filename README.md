@@ -113,11 +113,9 @@ Then also feel free to contact me about that - if you like what you have seen on
 
 I would love to meet over a cup of coffee and talk about a possible professional future together. 
 
-Kind regards
+❤️
 
 Maya Kathrine Andersen
-&nbsp;  
-❤️
 &nbsp;  
 &nbsp;  
 ![Profile image](./README/profile_250.jpg)
