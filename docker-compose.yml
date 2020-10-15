@@ -1,0 +1,44 @@
+version: "3"
+services:
+  frontend:
+    stdin_open: true
+    build:
+        context: ./frontend
+    image: job-finder-frontend
+    ports:
+      - "5001:3000"
+    volumes:
+      - "/app/node_modules"
+      - ./frontend/src:/app
+    depends_on:
+      - backend
+  backend:
+    build:
+      context: ./backend
+    image: job-finder-backend
+    ports:
+      - "5002:80"
+    volumes:
+      - ./backend/src:/var/www/html
+    read_only: false
+    depends_on:
+      - database
+  phpmyadmin:
+    image: phpmyadmin:5.0.2-apache
+    restart: always
+    ports:
+      - 5003:80
+    depends_on:
+      - database
+    environment:
+      PMA_HOST: database
+      PMA_USER: root
+      PMA_PASSWORD: wM09y6Rre
+  database:
+    image: mariadb:10.5.5-focal
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: wM09y6Rre
+      MYSQL_DATABASE: laravel
+    volumes:
+      - ./database/data:/var/lib/mysql
