@@ -27,7 +27,7 @@ The development process will be agile to some extent and as such features from t
 
 ## Feature plan
 
-- Applicant login
+- [ ] Applicant login
 - Admin: Job postings
 - Admin: Job experiences
     - Gained skills
@@ -90,3 +90,11 @@ http://localhost/:5001
 ```
 At this point in time you should be up and running with the web app Job Finder in your browser.  
 [<div style="text-align: right">⇧ Back</div>](#job-finder)
+
+# Questions, suggestions?
+
+Feel free to contact me on [Facebook](https://www.facebook.com/maya.kathrine.andersen) or [email](mailto:m.andersen.post@gmail.com).
+
+# I am currently a job seeker...
+
+...so please also feel free to contact me about that - if you like what you have seen on this page. I am available for a full time position in the area of Aarhus, Denmark.
