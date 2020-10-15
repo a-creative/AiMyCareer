@@ -40,6 +40,7 @@ The development process will be agile to some extent and as such features from t
     - Content managing
         - Analysis: Helps finding the right words and the rights skills for the application and the resume.
     - PDF export  
+
 [<div style="text-align: right">⇧ Back</div>](#job-finder)
 
 # How to test this?
@@ -55,7 +56,8 @@ The simple things you need to install are:
 
 - Git: To download the source code to build the web app from.
 - Docker and Docker Compose: To get a virtual host up an running with the web app.
-- A major web browser like Google Chrome, Mozilla Firefox og Microsoft Edge: These are simply used to access the web app on the virtual host.
+- A major web browser like Google Chrome, Mozilla Firefox og Microsoft Edge: These are simply used to access the web app on the virtual host.  
+
 [<div style="text-align: right">⇧ Back</div>](#job-finder)
 
 ## Install and run
