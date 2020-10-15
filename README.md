@@ -7,6 +7,8 @@
 * [How to test this?](#how-to-test-this)  
     * [Prerequisites](#prerequisites)  
     * [Install and run](#install-and-run)
+* [Any questions or suggestions?](#any-questions-or-suggestions)  
+* [You're looking for a nice co-worker like me?](#youre-looking-for-a-nice-co-worker-like-me)  
 
 # Why this?
 
@@ -14,16 +16,19 @@ I have experienced job seeking to sometimes be a pain to do the right way. I hav
 
 Another motivation is the COVID-19 that now in 2020 is targeting the world. The world is standing still. The job opportunities are few. I didn't want to stand still. So I made this project a studying project also. The goal is to also challenge myself in areas that are needed at the job market in the future. Finally I need to show it to the world, so the world knows for sure that I am becoming a stronger developer every day while many others are standing still. Therefore this Github repository where you can see all my new skills in play.
 [<div style="text-align: right">⇧ Back</div>](#job-finder)
+&nbsp;  
 
 # What is this?
 
 A web application that helps a job seeker create some of the important documents one need to get a job: A well targeted resume and job application.  
 [<div style="text-align: right">⇧ Back</div>](#job-finder)
+&nbsp;  
 
 # How do we do this?
 
 The development process will be agile to some extent and as such features from the backlog will be public to test in an amount that does not immediately make a full application, but gives one a quick peak into what is done. Bugs will exist, but the plan is to at least release something that is not just an error message. 
 [<div style="text-align: right">⇧ Back</div>](#job-finder)
+&nbsp;  
 
 ## Feature plan
 
@@ -42,6 +47,7 @@ The development process will be agile to some extent and as such features from t
     - [ ] PDF export  
 
 [<div style="text-align: right">⇧ Back</div>](#job-finder)
+&nbsp;  
 
 # How to test this?
 
@@ -49,6 +55,7 @@ The file \docker-compose.yml is the easy key to get you started, if you know abo
 
 The following instructions will only get you started with trying out the web app in your own private space. I will later add information on how to deploy it to your own public host. But as it is it should be completely usable for a single user.  
 [<div style="text-align: right">⇧ Back</div>](#job-finder)
+&nbsp;  
 
 ## Prerequisites
 
@@ -59,6 +66,8 @@ The simple things you need to install are:
 - A major web browser like Google Chrome, Mozilla Firefox og Microsoft Edge: These are simply used to access the web app on the virtual host.  
 
 [<div style="text-align: right">⇧ Back</div>](#job-finder)
+&nbsp;  
+
 
 ## Install and run
 
@@ -90,10 +99,13 @@ http://localhost/:5001
 ```
 At this point in time you should be up and running with the web app Job Finder in your browser.  
 [<div style="text-align: right">⇧ Back</div>](#job-finder)
+&nbsp;  
 
-# Questions, suggestions?
+# Any questions or suggestions?
 
 Feel free to contact me on [Facebook](https://www.facebook.com/maya.kathrine.andersen) or [email](mailto:m.andersen.post@gmail.com).
+[<div style="text-align: right">⇧ Back</div>](#job-finder)
+&nbsp;  
 
 # You're looking for a nice co-worker like me?
 
@@ -101,11 +113,12 @@ Then also feel free to contact me about that - if you like what you have seen on
 
 I would love to meet over a cup of coffee and talk about a possible professional future together. 
 
-❤️
-
 Kind regards
 
 Maya Kathrine Andersen
 &nbsp;  
+❤️
+&nbsp;  
 &nbsp;  
 ![Profile image](./README/profile_250.jpg)
+[<div style="text-align: right">⇧ Back</div>](#job-finder)
