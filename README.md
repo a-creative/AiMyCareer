@@ -28,18 +28,18 @@ The development process will be agile to some extent and as such features from t
 ## Feature plan
 
 - [ ] Applicant login
-- Admin: Job postings
-- Admin: Job experiences
-    - Gained skills
-    - Achieved results
-- Admin: Skills
-- Admin: Resumes and applications
-    - Styling
-    - Content types
-    - Templating
-    - Content managing
-        - Analysis: Helps finding the right words and the rights skills for the application and the resume.
-    - PDF export  
+- [ ] Admin: Job postings
+- [ ] Admin: Job experiences
+    - [ ] Gained skills
+    - [ ] Achieved results
+- [ ] Admin: Skills
+- [ ] Admin: Resumes and applications
+    - [ ] Styling
+    - [ ] Content types
+    - [ ] Templating
+    - [ ] Content managing
+        - [ ] Analysis: Helps finding the right words and the rights skills for the application and the resume.
+    - [ ] PDF export  
 
 [<div style="text-align: right">⇧ Back</div>](#job-finder)
 
