@@ -95,6 +95,17 @@ At this point in time you should be up and running with the web app Job Finder i
 
 Feel free to contact me on [Facebook](https://www.facebook.com/maya.kathrine.andersen) or [email](mailto:m.andersen.post@gmail.com).
 
-# I am currently a job seeker...
+# You're looking for a nice co-worker like me?
 
-...so please also feel free to contact me about that - if you like what you have seen on this page. I am available for a full time position in the area of Aarhus, Denmark.
+Then also feel free to contact me about that - if you like what you have seen on this page. I am available for a full time position in the area of Aarhus, Denmark.
+
+I would love to meet over a cup of coffee and talk about a possible professional future together. 
+
+❤️
+
+Kind regards
+
+Maya Kathrine Andersen
+&nbsp;  
+&nbsp;  
+![Profile image](./README/profile_250.jpg)
