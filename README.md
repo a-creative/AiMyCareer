@@ -8,7 +8,7 @@
     * [Prerequisites](#prerequisites)  
     * [Install and run](#install-and-run)
 * [Any questions or suggestions?](#any-questions-or-suggestions)  
-* [You're looking for a nice co-worker like me?](#youre-looking-for-a-nice-co-worker-like-me)  
+* [You're looking for a nice colleague like me?](#youre-looking-for-a-nice-colleague-like-me)  
 
 # Why this?
 
@@ -113,7 +113,12 @@ Then also feel free to contact me about that. Especially if you like what you ha
 
 I would love to meet over a cup of coffee and talk about a possible professional future together. 
 
+I will update my employment status every two weeks.  
+Next update: November 1st, 2020
+
 ❤️
+
+Maya Kathrine Andersen
 &nbsp;  
 &nbsp;  
 ![Profile image](./README/profile_250.jpg)
