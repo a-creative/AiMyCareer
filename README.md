@@ -26,7 +26,7 @@ A web application that helps a job seeker create some of the important documents
 
 # How do we do this?
 
-The development process will be agile to some extent and as such features from the backlog will be public to test in an amount that does not immediately make a full application, but gives one a quick peak into what is done. Bugs will exist, but the plan is to at least release something that is not just an error message. 
+The development process will be agile to some extent and as such features from the backlog will be public to test in an amount that does not immediately make a full application, but gives one a quick peak into what is done. Bugs will exist, but the plan is to at least release something that is not just showing a big fat error message. 
 [<div style="text-align: right">⇧ Back</div>](#job-finder)
 &nbsp;  
 
@@ -63,7 +63,7 @@ The simple things you need to install are:
 
 - Git: To download the source code to build the web app from.
 - Docker and Docker Compose: To get a virtual host up an running with the web app.
-- A major web browser like Google Chrome, Mozilla Firefox og Microsoft Edge: These are simply used to access the web app on the virtual host.  
+- A major web browser like Google Chrome, Mozilla Firefox or Microsoft Edge: These are simply used to access the web app on the virtual host.  
 
 [<div style="text-align: right">⇧ Back</div>](#job-finder)
 &nbsp;  
@@ -84,7 +84,7 @@ Next you need to create a folder somewhere on your hard drive where you want the
 ```
 cd [the absolute path to the folder you created]
 ```
-Next use this command to download the web app to the folder. Do not forget the punctuation mark at the end of the line:
+Next use this command to download the web app to the folder. Do not forget to include the punctuation mark at the end of the line:
 ```
 git clone https://github.com/a-creative/Job-Finder.git .
 ```
@@ -95,7 +95,7 @@ docker-compose exec backend php artisan doctrine:migrations:migrate
 ```
 Finally you open up your favorite web browser and go to the address:
 ```
-http://localhost/:5001
+http://localhost:5001
 ```
 At this point in time you should be up and running with the web app Job Finder in your browser.  
 [<div style="text-align: right">⇧ Back</div>](#job-finder)
@@ -107,9 +107,9 @@ Feel free to contact me on [Facebook](https://www.facebook.com/maya.kathrine.and
 [<div style="text-align: right">⇧ Back</div>](#job-finder)
 &nbsp;  
 
-# You're looking for a nice co-worker like me?
+# You're looking for a nice colleague like me?
 
-Then also feel free to contact me about that - if you like what you have seen on this page. I am available for a full time position in the area of Aarhus, Denmark.
+Then also feel free to contact me about that. Especially if you like what you have seen on this page. I am available for a full time position in the area of Aarhus, Denmark.
 
 I would love to meet over a cup of coffee and talk about a possible professional future together. 
 
