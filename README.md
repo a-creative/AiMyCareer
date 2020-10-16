@@ -12,7 +12,7 @@
 
 # Why this?
 
-I have experienced job searching as sometimes a pain to get through. I have also met many other people that felt the same way. Wouldn't it be nice to always sit back with satisfaction, after having posted a resume and an application to a potential employer? So I asked myself: Can I make this easier? Then I wrote down all the different things I did manually to get from A to B. I concluded that, with my skills as a programmer and as job seeker, I can.
+I have experienced job searching as sometimes a pain to get through. I have also met many other people that felt the same way. Wouldn't it be nice to always sit back with satisfaction, after having posted a resume and an application to a potential employer? So I asked myself: Could I make this easier? Then I wrote down all the different things I did manually to get from A to B. I concluded that, with my skills as a programmer and as job seeker, I could.
 
 Another motivation is the COVID-19 that now in 2020 is targeting the world. The world is standing still. The job opportunities are few. I didn't want to stand still. So I also made this a study project. I need to challenge myself in areas that are needed at the job market now and in the future. Finally I need to show it to the world, so the world knows for sure that I am becoming a stronger developer every day while many others are standing still. Therefore this Github repository where you can see all my new skills in play.
 [<div style="text-align: right">⇧ Back</div>](#job-finder)
