@@ -103,7 +103,7 @@ At this point in time you should be up and running with the web app Job Finder i
 
 # Any questions or suggestions?
 
-Feel free to contact me on [Facebook](https://www.facebook.com/maya.kathrine.andersen) or [email](mailto:m.andersen.post@gmail.com).
+Feel free to contact me on [Facebook](https://www.facebook.com/maya.kathrine.andersen) or [e-mail](mailto:m.andersen.post@gmail.com).
 [<div style="text-align: right">⇧ Back</div>](#job-finder)
 &nbsp;  
 
