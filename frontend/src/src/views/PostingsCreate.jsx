@@ -20,8 +20,8 @@ class PostingsCreate extends React.Component {
       ...{ page_title_t }
     }
 
-    this.state.deadline_date = formatToLocalDate(posting.deadline_date);
-    this.state.posting_date = formatToLocalDate(posting.posting_date);
+    this.state.deadline_date = '2020-10-01';// formatToLocalDate(posting.deadline_date.date);
+    this.state.posted_date = '2020-10-01';//formatToLocalDate(posting.posted_date.date);
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -77,9 +77,9 @@ class PostingsCreate extends React.Component {
       </Form.Row>
       <Form.Row>
         <Col>
-          <Form.Group controlId="posting_date">
+          <Form.Group controlId="posted_date">
             <Form.Label>{t('Posting date')}</Form.Label>
-            <Form.Control type="date" value={this.state.posting_date || ''} onChange={this.handleChange}></Form.Control>
+            <Form.Control type="date" value={this.state.posted_date || ''} onChange={this.handleChange}></Form.Control>
           </Form.Group>
         </Col>
         <Col>
@@ -174,7 +174,7 @@ function selectPosting( root_reducer, posting_id ) {
 
   let postings = root_reducer.posting.postings;
   let posting = postings.filter( function( posting ) { return posting.id === posting_id })[0];
-  
+
   return {
     posting: posting
   }

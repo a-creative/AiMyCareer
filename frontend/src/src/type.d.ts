@@ -4,7 +4,7 @@ interface IPosting {
     job_title: string,
     employer: string,
     ext_link : string,
-    posting_date : Date,
+    posted_date : Date,
     deadline_date: Date,
     location_postal_code : string,
     location_city: string,
@@ -15,6 +15,8 @@ interface IPosting {
 }
 
 type PostingState = {
+    loading : boolean,
+    error: string,
     postings: IPosting[]
 }
 

@@ -1,35 +1,40 @@
-//import * as action_types from "./action_types"
+
+import {LOAD_POSTINGS_ERROR, LOAD_POSTINGS_LOADING, LOAD_POSTINGS_SUCCESS} from "../actions.js";
 
 const initial_state: PostingState = {
-    postings: [
-      {
-        "id" : 1,
-        "key" : 1,
-        "job_title" : "Job title 1",
-        "employer" : "Employer 1",
-        "ext_link" : "https://link",
-        "posting_date" : new Date(2020,10,17),
-        "deadline_date" : new Date(2020, 10, 31),
-        "location_postal_code" : "1234",
-        "location_city" : "City name",
-        "contact_name" : "Name of contact",
-        "contact_job_title" :"Title of contact",
-        "contact_details" : "mailbox@tld.comm",
-        "content_raw": "the raw text"
-      }
-    ],
+    loading : false,
+    error : '',
+    postings: [],
   }
 
   const posting_reducer = ( state: PostingState = initial_state, action: any ) : PostingState => {
 
-    if ( action.type === 'SET_POSTINGS' ) {
-      const new_state: PostingState = { postings : [] };
+    switch (action.type) {
+      case LOAD_POSTINGS_LOADING: {
+          return {
+              ...state,
+              loading: true,
+              error:''
+          };
+      }
+      case LOAD_POSTINGS_SUCCESS: {
 
-      return Object.assign(new_state,state, {
-        postings: action.postings
-      })
-    }
-
-    return state;
+          return {
+              ...state,
+              postings: action.data.posting.postings,
+              loading: false
+          }
+      }
+      case LOAD_POSTINGS_ERROR: {
+          return {
+              ...state,
+              loading: false,
+              error: action.error
+          };
+      }
+      default: {
+          return state;
+      }
+  }
   }
   export default posting_reducer;

@@ -1,5 +1,0 @@
-const noHooks = {
-
-}
-
-export { noHooks };
