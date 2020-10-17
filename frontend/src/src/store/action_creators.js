@@ -1,8 +1,7 @@
 import Api from "./api.js"
-export const LOAD_POSTINGS_LOADING = 'REDUX_THUNK_LOAD_POSTINGS_LOADING';
-export const LOAD_POSTINGS_SUCCESS = 'REDUX_THUNK_LOAD_POSTINGS_SUCCESS';
-export const LOAD_POSTINGS_ERROR = 'REDUX_THUNK_LOAD_POSTINGS_ERROR';
-export const loadPostings = () => dispatch => {
+import { LOAD_POSTINGS_LOADING, LOAD_POSTINGS_SUCCESS, LOAD_POSTINGS_ERROR } from "./action_types"
+
+export const fetchPostings = () => dispatch => {
    dispatch({ type: LOAD_POSTINGS_LOADING });
    Api.getPostings()
        .then(response => response.json())

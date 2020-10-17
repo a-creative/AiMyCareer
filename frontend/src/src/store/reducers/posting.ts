@@ -1,5 +1,5 @@
 
-import {LOAD_POSTINGS_ERROR, LOAD_POSTINGS_LOADING, LOAD_POSTINGS_SUCCESS} from "../actions.js";
+import {LOAD_POSTINGS_ERROR, LOAD_POSTINGS_LOADING, LOAD_POSTINGS_SUCCESS} from "../action_types";
 
 const initial_state: PostingState = {
     loading : false,

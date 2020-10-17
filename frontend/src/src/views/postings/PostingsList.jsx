@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col, Table } from 'react-bootstrap'
 import PostingListItem from './PostingsListItem'
 import { connect } from 'react-redux'
-import {loadPostings} from "../../store/actions";
+import { fetchPostings } from "../../store/action_creators";
 import { withTranslation } from 'react-i18next';
 
 
@@ -10,7 +10,7 @@ import { withTranslation } from 'react-i18next';
 class PostingsList extends React.Component {
 
   componentDidMount() {
-    this.props.loadPostings();
+    this.props.fetchPostings();
   }
 
   render() {
@@ -54,7 +54,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  loadPostings
+  fetchPostings
 };
 
 export default connect(
