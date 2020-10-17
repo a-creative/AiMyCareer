@@ -156,9 +156,18 @@ class PostingsCreate extends React.Component {
 }
 
 function mapStateToProps(root_reducer, ownProps) {
-  return {
-    obj: selectPosting(root_reducer, +ownProps.match.params.id )
-  };
+
+  if ( typeof ownProps.match === 'undefined' ) {
+    return {
+      obj: {
+        posting : {}
+      }
+    }
+  } else {
+    return {
+      obj: selectPosting(root_reducer, +ownProps.match.params.id )
+    };
+  }  
 }
 
 function selectPosting( root_reducer, posting_id ) {
