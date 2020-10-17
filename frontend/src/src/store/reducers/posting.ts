@@ -5,15 +5,18 @@ const initial_state: PostingState = {
       {
         "id" : 1,
         "key" : 1,
+        "job_title" : "Job title 1",
         "employer" : "Employer 1",
-        "job_title" : "Job title 1"
-      },
-      {
-        "id" : 2,
-        "key" : 2,
-        "employer" : "Employer 2",
-        "job_title" : "Job title 2"
-      }  
+        "ext_link" : "https://link",
+        "posting_date" : new Date(2020,10,17),
+        "deadline_date" : new Date(2020, 10, 31),
+        "location_postal_code" : "1234",
+        "location_city" : "City name",
+        "contact_name" : "Name of contact",
+        "contact_job_title" :"Title of contact",
+        "contact_details" : "mailbox@tld.comm",
+        "content_raw": "the raw text"
+      }
     ],
   }
 

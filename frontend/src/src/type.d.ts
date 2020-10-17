@@ -3,6 +3,15 @@ interface IPosting {
     id: number,
     job_title: string,
     employer: string,
+    ext_link : string,
+    posting_date : Date,
+    deadline_date: Date,
+    location_postal_code : string,
+    location_city: string,
+    contact_name: string,
+    contact_job_title: string,
+    contact_details: string,
+    content_raw : string
 }
 
 type PostingState = {
