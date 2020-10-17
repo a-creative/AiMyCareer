@@ -4,7 +4,7 @@ import { withTranslation } from 'react-i18next';
 import PageHeader from '../components/PageHeader';
 import { Row, Col, Form, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { formatToLocalDate } from '../helpers';
+import { formatNormalizedDate } from '../helpers';
 
 class PostingsCreate extends React.Component {
 
@@ -20,8 +20,8 @@ class PostingsCreate extends React.Component {
       ...{ page_title_t }
     }
 
-    this.state.deadline_date = '2020-10-01';// formatToLocalDate(posting.deadline_date.date);
-    this.state.posted_date = '2020-10-01';//formatToLocalDate(posting.posted_date.date);
+    this.state.deadline_date = formatNormalizedDate(posting.deadline_date, 'YYYY-MM-DD');
+    this.state.posted_date = formatNormalizedDate(posting.posted_date, 'YYYY-MM-DD');
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
