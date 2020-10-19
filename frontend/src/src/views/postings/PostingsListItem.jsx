@@ -4,15 +4,15 @@ import { useTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
 
 
-function PostingsListItem( props : IPosting ) {
+function PostingsListItem( props ) {
 
   const { t } = useTranslation();
 
-  function handleClickDelete( e : any ) {
+  function handleClickDelete( e ) {
     e.preventDefault();
     if (window.confirm( t('Do you really want to delete this job posting?'))) {
 
-      let posting_id: number = props.id;
+      let posting_id = props.id;
       alert('Delete not yet implemented');
 
     }
@@ -20,10 +20,10 @@ function PostingsListItem( props : IPosting ) {
     return false;
   }
 
-  function handleClickArchive( e : any ) {
+  function handleClickArchive( e ) {
     e.preventDefault();
 
-    let posting_id: number = props.id;
+    let posting_id = props.id;
     alert('Archive not yet implemented');
 
     return false;
