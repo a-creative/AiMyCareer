@@ -32,9 +32,7 @@ function App() {
           <Row>
             <Col>
             <Switch>
-              <Route path="/postings/create">
-                <PostingsCreate />
-              </Route>
+              <Route path="/postings/create" render={(props : any) => <PostingsCreate {...props} />} />
               <Route path="/postings/edit/:id" render={(props : any) => <PostingsCreate {...props} />} />
               <Route path="/postings">
                 <Postings />

@@ -8,14 +8,35 @@ function PostingsListItem( props : IPosting ) {
 
   const { t } = useTranslation();
 
+  function handleClickDelete( e : any ) {
+    e.preventDefault();
+    if (window.confirm( t('Do you really want to delete this job posting?'))) {
+
+      let posting_id: number = props.id;
+      alert('Delete not yet implemented');
+
+    }
+
+    return false;
+  }
+
+  function handleClickArchive( e : any ) {
+    e.preventDefault();
+
+    let posting_id: number = props.id;
+    alert('Archive not yet implemented');
+
+    return false;
+  }
+
   return <tr key="{props.id}">
     <td>{props.employer}</td>
     <td>{props.job_title}</td>
     <td>
       <ButtonGroup aria-label="{t('Functions')}">
         <Button as={Link} to={`/postings/edit/${props.id}`} size="sm">{t('Edit')}</Button>
-        <Button as={Link} to={`/postings/archieve/${props.id}`} size="sm">{t('Archieve')}</Button>
-        <Button as={Link}  to={`/postings/delete/${props.id}`}  size="sm">{t('Delete')}?</Button>
+        <Button onClick={handleClickArchive} size="sm">{t('Archive')}</Button>
+        <Button onClick={handleClickDelete} size="sm">{t('Delete')}?</Button>
       </ButtonGroup>
     </td>
   </tr>;

@@ -110,7 +110,7 @@ class JobPosting
     /**
      * Get the value of created_time.
      */
-    public function getCreated_time()
+    public function getCreatedTime()
     {
         return $this->created_time;
     }
@@ -122,7 +122,7 @@ class JobPosting
      *
      * @return self
      */
-    public function setCreated_time($created_time)
+    public function setCreatedTime($created_time)
     {
         $this->created_time = $created_time;
 
@@ -132,7 +132,7 @@ class JobPosting
     /**
      * Get the value of updated_time.
      */
-    public function getUpdated_time()
+    public function getUpdatedTime()
     {
         return $this->updated_time;
     }
@@ -144,7 +144,7 @@ class JobPosting
      *
      * @return self
      */
-    public function setUpdated_time($updated_time)
+    public function setUpdatedTime($updated_time)
     {
         $this->updated_time = $updated_time;
 
@@ -154,7 +154,7 @@ class JobPosting
     /**
      * Get the value of posted_date.
      */
-    public function getPosted_date()
+    public function getPostedDate()
     {
         return $this->posted_date;
     }
@@ -166,7 +166,7 @@ class JobPosting
      *
      * @return self
      */
-    public function setPosted_date($posted_date)
+    public function setPostedDate($posted_date)
     {
         $this->posted_date = $posted_date;
 
@@ -176,7 +176,7 @@ class JobPosting
     /**
      * Get the value of deadline_date.
      */
-    public function getDeadline_date()
+    public function getDeadlineDate()
     {
         return $this->deadline_date;
     }
@@ -188,7 +188,7 @@ class JobPosting
      *
      * @return self
      */
-    public function setDeadline_date($deadline_date)
+    public function setDeadlineDate($deadline_date)
     {
         $this->deadline_date = $deadline_date;
 
@@ -198,7 +198,7 @@ class JobPosting
     /**
      * Get the value of location_postal_code.
      */
-    public function getLocation_postal_code()
+    public function getLocationPostalCode()
     {
         return $this->location_postal_code;
     }
@@ -210,7 +210,7 @@ class JobPosting
      *
      * @return self
      */
-    public function setLocation_postal_code($location_postal_code)
+    public function setLocationPostalCode($location_postal_code)
     {
         $this->location_postal_code = $location_postal_code;
 
@@ -220,7 +220,7 @@ class JobPosting
     /**
      * Get the value of contact_name.
      */
-    public function getContact_name()
+    public function getContactName()
     {
         return $this->contact_name;
     }
@@ -232,7 +232,7 @@ class JobPosting
      *
      * @return self
      */
-    public function setContact_name($contact_name)
+    public function setContactName($contact_name)
     {
         $this->contact_name = $contact_name;
 
@@ -242,7 +242,7 @@ class JobPosting
     /**
      * Get the value of contact_job_title.
      */
-    public function getContact_job_title()
+    public function getContactJobTitle()
     {
         return $this->contact_job_title;
     }
@@ -254,7 +254,7 @@ class JobPosting
      *
      * @return self
      */
-    public function setContact_job_title($contact_job_title)
+    public function setContactJobTitle($contact_job_title)
     {
         $this->contact_job_title = $contact_job_title;
 
@@ -264,7 +264,7 @@ class JobPosting
     /**
      * Get the value of contact_details.
      */
-    public function getContact_details()
+    public function getContactDetails()
     {
         return $this->contact_details;
     }
@@ -276,7 +276,7 @@ class JobPosting
      *
      * @return self
      */
-    public function setContact_details($contact_details)
+    public function setContactDetails($contact_details)
     {
         $this->contact_details = $contact_details;
 
@@ -286,7 +286,7 @@ class JobPosting
     /**
      * Get the value of content_raw.
      */
-    public function getContent_raw()
+    public function getContentRaw()
     {
         return $this->content_raw;
     }
@@ -298,7 +298,7 @@ class JobPosting
      *
      * @return self
      */
-    public function setContent_raw($content_raw)
+    public function setContentRaw($content_raw)
     {
         $this->content_raw = $content_raw;
 
@@ -308,7 +308,7 @@ class JobPosting
     /**
      * Get the value of location_city
      */ 
-    public function getLocation_city()
+    public function getLocationCity()
     {
         return $this->location_city;
     }
@@ -318,9 +318,45 @@ class JobPosting
      *
      * @return  self
      */ 
-    public function setLocation_city($location_city)
+    public function setLocationCity($location_city)
     {
         $this->location_city = $location_city;
+
+        return $this;
+    }
+
+    /**
+     * Set the value of job_title
+     *
+     * @return  self
+     */ 
+    public function setJobTitle($job_title)
+    {
+        $this->job_title = $job_title;
+
+        return $this;
+    }
+
+    /**
+     * Set the value of employer
+     *
+     * @return  self
+     */ 
+    public function setEmployer($employer)
+    {
+        $this->employer = $employer;
+
+        return $this;
+    }
+
+    /**
+     * Set the value of ext_link
+     *
+     * @return  self
+     */ 
+    public function setExtLink($ext_link)
+    {
+        $this->ext_link = $ext_link;
 
         return $this;
     }

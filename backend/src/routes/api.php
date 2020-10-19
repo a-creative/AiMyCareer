@@ -19,3 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/job_postings', [ JobPostingController::class, 'index'] );
+Route::post('/job_postings', [ JobPostingController::class, 'insert'] );
+Route::put('/job_postings/{id}', [ JobPostingController::class, 'update'] );
+Route::delete('/job_postings/{id}', [ JobPostingController::class, 'delete'] );
+
