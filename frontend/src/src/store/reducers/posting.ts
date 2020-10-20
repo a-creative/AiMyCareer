@@ -8,6 +8,9 @@ import {
   UPDATE_POSTING_UPDATING,
   UPDATE_POSTING_SUCCESS,
   UPDATE_POSTING_ERROR,
+  DELETE_POSTING_DELETING,
+  DELETE_POSTING_SUCCESS,
+  DELETE_POSTING_ERROR,
 } from "store/action_types";
 
 const initial_state: PostingState = {
@@ -93,6 +96,36 @@ const posting_reducer = (
 
     }
     case UPDATE_POSTING_ERROR: {
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
+    }
+    case DELETE_POSTING_DELETING: {
+      return {
+        ...state,
+        loading: true,
+        error: "",
+      };
+    }
+    case DELETE_POSTING_SUCCESS: {
+
+      return {
+        ...state,
+        postings: state.postings.filter((posting) => {
+           if ( posting.id !== action.data) {
+             return true
+           }
+
+           return false
+         }),
+        loading: false,
+        error: "",
+      };
+
+    }
+    case DELETE_POSTING_ERROR: {
       return {
         ...state,
         loading: false,
