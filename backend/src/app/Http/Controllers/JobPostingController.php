@@ -85,6 +85,6 @@ class JobPostingController extends Controller
         $job_posting = EntityManager::find( JobPosting::class, $id );
         EntityManager::remove( $job_posting );
         EntityManager::flush();
-        return true;
+        return $id;
     }
 }
