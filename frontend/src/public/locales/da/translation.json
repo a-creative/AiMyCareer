@@ -18,7 +18,13 @@
     "Edit" : "Rediger",
     "Archive" : "Arkiver",
     "Delete" : "Slet",
-    "Do you really want to delete this job posting?" : "Ønsker du  virkeligt at slette dette jobopslag"
+    "Do you really want to delete this job posting?" : "Ønsker du  virkeligt at slette dette jobopslag",
+    "Username" : "Brugernavn",
+    "Password" : "Adgangskode",
+    "Login" : "Login",
+    "Forgot password?" : "Glemt adgangskode?",
+    "Remember password" : "Husk adgangskode",
+    "Functions" : "Funktioner"
 
 
     

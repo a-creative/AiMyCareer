@@ -1,3 +1,11 @@
 div.row + div.row {
     margin-top: 5px;
 }
+
+
+#nav-login + div {
+    width:300px;
+    left:auto;
+    right:0;
+    padding:20px;
+}
