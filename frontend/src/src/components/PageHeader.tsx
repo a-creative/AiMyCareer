@@ -1,5 +1,5 @@
 import React from 'react';
-//import { Row, Col } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 
 interface PageHeaderProps {
     title : string
@@ -9,7 +9,7 @@ interface PageHeaderProps {
 function PageHeader( props : PageHeaderProps) {
     const { title } = props;
  
-    return <h1>{title}</h1>;
+    return <Row><Col><h1>{title}</h1></Col></Row>;
 }
 
 export default PageHeader;

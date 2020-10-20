@@ -16,7 +16,7 @@ function Postings(){
   </Helmet>
   <Col>
     <PageHeader title={t('Job postings')} />
-    <Row className="mb-2">
+    <Row className="mb-3">
       <Col >
         <Button as={Link} to="/postings/create">{t('Opret')}</Button>
       </Col>

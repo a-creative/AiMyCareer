@@ -29,7 +29,7 @@ type DispatchType = (args: PostingAction) => PostingAction
 
 declare namespace JSX {
     interface IntrinsicElements {
-        fieldset, div, title,tr,td,th,thead,tbody: any;
+        fieldset, div, title,tr,td,th,thead,tbody, h1,h2,h3: any;
 
     }
 }

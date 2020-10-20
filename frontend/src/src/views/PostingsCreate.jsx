@@ -7,7 +7,6 @@ import { connect } from 'react-redux'
 import { formatNormalizedDate } from 'helpers';
 import { insertPosting, updatePosting } from "store/action_creators";
 
-
 class PostingsCreate extends React.Component {
 
   constructor(props) {
