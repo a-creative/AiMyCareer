@@ -11,7 +11,7 @@ import {
   DELETE_POSTING_DELETING,
   DELETE_POSTING_SUCCESS,
   DELETE_POSTING_ERROR,
-} from "store/action_types";
+} from "store/actionTypes";
 
 const initial_state: PostingState = {
   loading: false,
@@ -19,7 +19,7 @@ const initial_state: PostingState = {
   postings: [],
 };
 
-const posting_reducer = (
+const postingReducer = (
   state: PostingState = initial_state,
   action: any
 ): PostingState => {
@@ -137,4 +137,4 @@ const posting_reducer = (
     }
   }
 };
-export default posting_reducer;
+export default postingReducer;

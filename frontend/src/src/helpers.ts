@@ -1,12 +1,12 @@
 import moment from 'moment-timezone'
 
-export const formatNormalizedDate = function( input_date : any, output_format: string ) {
+export const formatNormalizedDate = function( inputDate : any, outputFormat: string ) {
 
-    if ( !input_date ) {
+    if ( !inputDate ) {
         return null;
     } else {
-        var date:any = moment.tz( input_date.date, input_date.timezone);
-        return date.format( output_format );
+        var date:any = moment.tz( inputDate.date, inputDate.timezone);
+        return date.format( outputFormat );
     }
     
 }

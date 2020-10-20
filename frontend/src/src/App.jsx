@@ -5,7 +5,7 @@ import { Container, Row, Col, Nav, Navbar } from 'components/react-bootstrap'
 import Spinner from 'components/Spinner'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { withTranslation } from 'react-i18next';
-import { fetchPostings } from "store/action_creators";
+import { fetchPostings } from "store/actionCreators";
 import { connect } from 'react-redux'
 import 'App.css';
 

@@ -22,68 +22,68 @@ class JobPostingController extends Controller
         ];
     }
 
-    private static function assignFromRequest( Request $request, JobPosting $job_posting, bool $is_insert = false ) : JobPosting {
+    private static function assignFromRequest( Request $request, JobPosting $jobPosting, bool $isInsert = false ) : JobPosting {
 
         // Update user controlled
-        $job_posting->setJobTitle( $request->job_title );
-        $job_posting->setEmployer( $request->input('employer' ) );
-        $job_posting->setExtLink( $request->input('ext_link' ) );
+        $jobPosting->setJobTitle( $request->jobTitle );
+        $jobPosting->setEmployer( $request->input('employer' ) );
+        $jobPosting->setExtLink( $request->input('extLink' ) );
 
-        if ( $request->has('posted_date')) {
-            $job_posting->setPostedDate( new \DateTime($request->input('posted_date')));
+        if ( $request->has('postedDate')) {
+            $jobPosting->setPostedDate( new \DateTime($request->input('postedDate')));
         } else {
-            $job_posting->setPostedDate( null );
+            $jobPosting->setPostedDate( null );
         }
 
-        if ( $request->has('deadline_date')) {
-            $job_posting->setDeadlineDate( new \DateTime($request->input('deadline_date')));
+        if ( $request->has('deadlineDate')) {
+            $jobPosting->setDeadlineDate( new \DateTime($request->input('deadlineDate')));
         } else {
-            $job_posting->setDeadlineDate( null );
+            $jobPosting->setDeadlineDate( null );
         }
 
-        $job_posting->setLocationCity( $request->input('location_city' ) );
-        $job_posting->setLocationPostalCode( $request->input('location_postal_code' ) );
-        $job_posting->setContactName( $request->input('contact_name' ) );
-        $job_posting->setContactJobTitle( $request->input('contact_job_title' ) );
-        $job_posting->setContactDetails( $request->input('contact_details' ) );
-        $job_posting->setContentRaw( $request->input('content_raw' ) );
+        $jobPosting->setLocationCity( $request->input('locationCity' ) );
+        $jobPosting->setLocationPostalCode( $request->input('locationPostalCode' ) );
+        $jobPosting->setContactName( $request->input('contactName' ) );
+        $jobPosting->setContactJobTitle( $request->input('contactJobTitle' ) );
+        $jobPosting->setContactDetails( $request->input('contactDetails' ) );
+        $jobPosting->setContentRaw( $request->input('contentRaw' ) );
 
         $now = new \DateTime();
 
         // Update system controlled
-        if ( $is_insert ) {
-            $job_posting->setCreatedTime( $now );
+        if ( $isInsert ) {
+            $jobPosting->setCreatedTime( $now );
         }
-        $job_posting->setUpdatedTime( $now );
+        $jobPosting->setUpdatedTime( $now );
 
-        return $job_posting;
+        return $jobPosting;
     }
 
     public function insert(Request $request ) {
-        $job_posting = new JobPosting();
-        $job_posting = static::assignFromRequest( $request, $job_posting, true );
-        EntityManager::persist( $job_posting);
+        $jobPosting = new JobPosting();
+        $jobPosting = static::assignFromRequest( $request, $jobPosting, true );
+        EntityManager::persist( $jobPosting);
         EntityManager::flush();
 
         return response()->json([
-            "posting" => $job_posting->toArray()
+            "posting" => $jobPosting->toArray()
         ]);
     }
 
     public function update(Request $request, int $id) {
-        $job_posting = EntityManager::find( JobPosting::class, $id );
-        $job_posting = static::assignFromRequest( $request, $job_posting );
-        EntityManager::persist( $job_posting );
+        $jobPosting = EntityManager::find( JobPosting::class, $id );
+        $jobPosting = static::assignFromRequest( $request, $jobPosting );
+        EntityManager::persist( $jobPosting );
         EntityManager::flush();
 
         return response()->json([
-            "posting" => $job_posting->toArray()
+            "posting" => $jobPosting->toArray()
         ]);
     }
 
     public function delete(Request $request, int $id) {
-        $job_posting = EntityManager::find( JobPosting::class, $id );
-        EntityManager::remove( $job_posting );
+        $jobPosting = EntityManager::find( JobPosting::class, $id );
+        EntityManager::remove( $jobPosting );
         EntityManager::flush();
         return $id;
     }

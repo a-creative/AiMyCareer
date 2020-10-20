@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col, Table } from 'react-bootstrap'
 import PostingListItem from './PostingsListItem.jsx'
 import { connect } from 'react-redux'
-import { fetchPostings } from "store/action_creators";
+import { fetchPostings } from "store/actionCreators";
 import { withTranslation } from 'react-i18next';
 
 class PostingsList extends React.Component {
@@ -29,7 +29,7 @@ class PostingsList extends React.Component {
                   key={posting.id}
                   id={posting.id}
                   employer={posting.employer}
-                  job_title={posting.job_title}
+                  jobTitle={posting.jobTitle}
                 />
               ))}
             </tbody>

@@ -3,7 +3,7 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 import { withTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux'
-import { deletePosting } from "store/action_creators";
+import { deletePosting } from "store/actionCreators";
 
 class PostingsListItem extends React.Component {
 
@@ -42,7 +42,7 @@ class PostingsListItem extends React.Component {
 
     return <tr key={this.props.key}>
     <td>{this.props.employer}</td>
-    <td>{this.props.job_title}</td>
+    <td>{this.props.jobTitle}</td>
     <td>
       <ButtonGroup aria-label={t('Functions')}>
         <Button as={Link} to={`/postings/edit/${this.props.id}`} size="sm">{t('Edit')}</Button>
@@ -57,15 +57,15 @@ class PostingsListItem extends React.Component {
 }
 
 
-function selectPosting( root_reducer, posting_id ) {
+function selectPosting( rootReducer, postingId ) {
 
-  let postings = root_reducer.posting.postings;
-  let posting = postings.filter( function( posting ) { return posting.id === posting_id })[0];
+  let postings = rootReducer.posting.postings;
+  let posting = postings.filter( function( posting ) { return posting.id === postingId })[0];
   return posting;
 }
 
-function mapStateToProps(root_reducer, ownProps) {
-  let r = { ...selectPosting(root_reducer, +ownProps.id ) };
+function mapStateToProps(rootReducer, ownProps) {
+  let r = { ...selectPosting(rootReducer, +ownProps.id ) };
   return r;
 }
 

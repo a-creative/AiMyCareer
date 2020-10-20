@@ -24,9 +24,9 @@ class JobPosting implements Arrayable
     protected $id;
 
     /**
-     * @ORM\Column(type="string",length=150, nullable=true)
+     * @ORM\Column(name="job_title", type="string",length=150, nullable=true)
      */
-    protected $job_title;
+    protected $jobTitle;
 
     /**
      * @ORM\Column(type="string",length=150, nullable=true)
@@ -34,63 +34,63 @@ class JobPosting implements Arrayable
     protected $employer;
 
     /**
-     * @ORM\Column(type="string", length=500, nullable=true)
+     * @ORM\Column(name="ext_link", type="string", length=500, nullable=true)
      */
-    protected $ext_link;
+    protected $extLink;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(name="created_time", type="datetime", nullable=true)
      */
-    protected $created_time;
+    protected $createdTime;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(name="updated_time", type="datetime", nullable=true)
      */
-    protected $updated_time;
+    protected $updatedTime;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(name="posted_date", type="date", nullable=true)
      */
-    protected $posted_date;
+    protected $postedDate;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(name="deadline_date", type="date", nullable=true)
      */
-    protected $deadline_date;
+    protected $deadlineDate;
 
     /**
-     * @ORM\Column(type="string",length=10, nullable=true)
+     * @ORM\Column(name="location_postal_code", type="string",length=10, nullable=true)
      */
-    protected $location_postal_code;
+    protected $locationPostalCode;
 
     /**
-     * @ORM\Column(type="string",length=150, nullable=true)
+     * @ORM\Column(name="location_city", type="string",length=150, nullable=true)
      */
-    protected $location_city;
+    protected $locationCity;
 
     /**
-     * @ORM\Column(type="string",length=150, nullable=true)
+     * @ORM\Column(name="contact_name", type="string",length=150, nullable=true)
      */
-    protected $contact_name;
+    protected $contactName;
 
     /**
-     * @ORM\Column(type="string",length=150, nullable=true)
+     * @ORM\Column(name="contact_job_title", type="string",length=150, nullable=true)
      */
-    protected $contact_job_title;
+    protected $contactJobTitle;
 
     /**
-     * @ORM\Column(type="string",length=500, nullable=true)
+     * @ORM\Column(name="contact_details", type="string",length=500, nullable=true)
      */
-    protected $contact_details;
+    protected $contactDetails;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(name="content_raw", type="text", nullable=true)
      */
-    protected $content_raw;
+    protected $contentRaw;
 
     public function getJobTitle()
     {
-        return $this->job_title;
+        return $this->jobTitle;
     }
 
     public function getEmployer()
@@ -100,7 +100,7 @@ class JobPosting implements Arrayable
 
     public function getExtLink()
     {
-        return $this->ext_link;
+        return $this->extLink;
     }
 
     public function getId()
@@ -109,133 +109,133 @@ class JobPosting implements Arrayable
     }
 
     /**
-     * Get the value of created_time.
+     * Get the value of createdTime.
      */
     public function getCreatedTime()
     {
-        return $this->created_time;
+        return $this->createdTime;
     }
 
     /**
-     * Set the value of created_time.
+     * Set the value of createdTime.
      *
-     * @param mixed $created_time
+     * @param mixed $createdTime
      *
      * @return self
      */
-    public function setCreatedTime($created_time)
+    public function setCreatedTime($createdTime)
     {
-        $this->created_time = $created_time;
+        $this->createdTime = $createdTime;
 
         return $this;
     }
 
     /**
-     * Get the value of updated_time.
+     * Get the value of updatedTime.
      */
     public function getUpdatedTime()
     {
-        return $this->updated_time;
+        return $this->updatedTime;
     }
 
     /**
-     * Set the value of updated_time.
+     * Set the value of updatedTime.
      *
-     * @param mixed $updated_time
+     * @param mixed $updatedTime
      *
      * @return self
      */
-    public function setUpdatedTime($updated_time)
+    public function setUpdatedTime($updatedTime)
     {
-        $this->updated_time = $updated_time;
+        $this->updatedTime = $updatedTime;
 
         return $this;
     }
 
     /**
-     * Get the value of posted_date.
+     * Get the value of postedDate.
      */
     public function getPostedDate()
     {
-        return $this->posted_date;
+        return $this->postedDate;
     }
 
     /**
-     * Set the value of posted_date.
+     * Set the value of postedDate.
      *
-     * @param mixed $posted_date
+     * @param mixed $postedDate
      *
      * @return self
      */
-    public function setPostedDate($posted_date)
+    public function setPostedDate($postedDate)
     {
-        $this->posted_date = $posted_date;
+        $this->postedDate = $postedDate;
 
         return $this;
     }
 
     /**
-     * Get the value of deadline_date.
+     * Get the value of deadlineDate.
      */
     public function getDeadlineDate()
     {
-        return $this->deadline_date;
+        return $this->deadlineDate;
     }
 
     /**
-     * Set the value of deadline_date.
+     * Set the value of deadlineDate.
      *
-     * @param mixed $deadline_date
+     * @param mixed $deadlineDate
      *
      * @return self
      */
-    public function setDeadlineDate($deadline_date)
+    public function setDeadlineDate($deadlineDate)
     {
-        $this->deadline_date = $deadline_date;
+        $this->deadlineDate = $deadlineDate;
 
         return $this;
     }
 
     /**
-     * Get the value of location_postal_code.
+     * Get the value of locationPostalCode.
      */
     public function getLocationPostalCode()
     {
-        return $this->location_postal_code;
+        return $this->locationPostalCode;
     }
 
     /**
-     * Set the value of location_postal_code.
+     * Set the value of locationPostalCode.
      *
-     * @param mixed $location_postal_code
+     * @param mixed $locationPostalCode
      *
      * @return self
      */
-    public function setLocationPostalCode($location_postal_code)
+    public function setLocationPostalCode($locationPostalCode)
     {
-        $this->location_postal_code = $location_postal_code;
+        $this->locationPostalCode = $locationPostalCode;
 
         return $this;
     }
 
     /**
-     * Get the value of contact_name.
+     * Get the value of contactName.
      */
     public function getContactName()
     {
-        return $this->contact_name;
+        return $this->contactName;
     }
 
     /**
-     * Set the value of contact_name.
+     * Set the value of contactName.
      *
-     * @param mixed $contact_name
+     * @param mixed $contactName
      *
      * @return self
      */
-    public function setContactName($contact_name)
+    public function setContactName($contactName)
     {
-        $this->contact_name = $contact_name;
+        $this->contactName = $contactName;
 
         return $this;
     }
@@ -263,77 +263,77 @@ class JobPosting implements Arrayable
     }
 
     /**
-     * Get the value of contact_details.
+     * Get the value of contactDetails.
      */
     public function getContactDetails()
     {
-        return $this->contact_details;
+        return $this->contactDetails;
     }
 
     /**
-     * Set the value of contact_details.
+     * Set the value of contactDetails.
      *
-     * @param mixed $contact_details
+     * @param mixed $contactDetails
      *
      * @return self
      */
-    public function setContactDetails($contact_details)
+    public function setContactDetails($contactDetails)
     {
-        $this->contact_details = $contact_details;
+        $this->contactDetails = $contactDetails;
 
         return $this;
     }
 
     /**
-     * Get the value of content_raw.
+     * Get the value of contentRaw.
      */
     public function getContentRaw()
     {
-        return $this->content_raw;
+        return $this->contentRaw;
     }
 
     /**
-     * Set the value of content_raw.
+     * Set the value of contentRaw.
      *
-     * @param mixed $content_raw
+     * @param mixed $contentRaw
      *
      * @return self
      */
-    public function setContentRaw($content_raw)
+    public function setContentRaw($contentRaw)
     {
-        $this->content_raw = $content_raw;
+        $this->contentRaw = $contentRaw;
 
         return $this;
     }
 
     /**
-     * Get the value of location_city
+     * Get the value of locationCity
      */ 
     public function getLocationCity()
     {
-        return $this->location_city;
+        return $this->locationCity;
     }
 
     /**
-     * Set the value of location_city
+     * Set the value of locationCity
      *
      * @return  self
      */ 
-    public function setLocationCity($location_city)
+    public function setLocationCity($locationCity)
     {
-        $this->location_city = $location_city;
+        $this->locationCity = $locationCity;
 
         return $this;
     }
 
     /**
-     * Set the value of job_title
+     * Set the value of jobTitle
      *
      * @return  self
      */ 
-    public function setJobTitle($job_title)
+    public function setJobTitle($jobTitle)
     {
-        $this->job_title = $job_title;
+        $this->jobTitle = $jobTitle;
 
         return $this;
     }
@@ -351,13 +351,13 @@ class JobPosting implements Arrayable
     }
 
     /**
-     * Set the value of ext_link
+     * Set the value of extLink
      *
      * @return  self
      */ 
-    public function setExtLink($ext_link)
+    public function setExtLink($extLink)
     {
-        $this->ext_link = $ext_link;
+        $this->extLink = $extLink;
 
         return $this;
     }
@@ -366,8 +366,8 @@ class JobPosting implements Arrayable
 
         $output = [];
 
-        foreach ( get_class_vars(get_class($this)) as $prop_name => $prop_default_value ) {
-            $output[ $prop_name ] = $this->{$prop_name};
+        foreach ( get_class_vars(get_class($this)) as $propName => $propDefaultValue ) {
+            $output[ $propName ] = $this->{$propName};
         }
 
         return $output;

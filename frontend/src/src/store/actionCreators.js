@@ -12,7 +12,7 @@ import {
     DELETE_POSTING_DELETING,
     DELETE_POSTING_SUCCESS,
     DELETE_POSTING_ERROR,
-} from "./action_types"
+} from "./actionTypes"
 
 export const fetchPostings = () => dispatch => {
    dispatch({ type: LOAD_POSTINGS_LOADING });

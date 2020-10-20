@@ -1,16 +1,16 @@
 const API_BASE_ADDRESS = 'http://localhost:5002/api';
 export default class Api {
 
-    static put( uri, form_data ) {
-        form_data.append('_method','PUT');
-        return this.post( uri, form_data );
+    static put( uri, formData ) {
+        formData.append('_method','PUT');
+        return this.post( uri, formData );
 
     }
 
-    static post(uri, form_data ) {
+    static post(uri, formData ) {
         return fetch(uri, {
             method: 'post',
-            body: form_data
+            body: formData
         });
     }
 
@@ -26,46 +26,46 @@ export default class Api {
         });
     }
 
-    static appendFormData( form_data, key, value ) {
+    static appendFormData( formData, key, value ) {
         if ( value ) {
-            form_data.append(key, value);
+            formData.append(key, value);
         }
-        return form_data;
+        return formData;
     }
 
     static assignPostingToFormData( posting ) {
-        var form_data = new FormData();
+        var formData = new FormData();
     
-        form_data = this.appendFormData(form_data, 'job_title', posting.job_title);
-        form_data = this.appendFormData(form_data, 'employer', posting.employer);
-        form_data = this.appendFormData(form_data, 'ext_link', posting.ext_link);
-        form_data = this.appendFormData(form_data, 'posted_date', posting.posted_date);
-        form_data = this.appendFormData(form_data, 'deadline_date', posting.deadline_date);
-        form_data = this.appendFormData(form_data, 'location_city', posting.location_city);
-        form_data = this.appendFormData(form_data, 'location_postal_code', posting.location_postal_code);
-        form_data = this.appendFormData(form_data, 'contact_name', posting.contact_name);
-        form_data = this.appendFormData(form_data, 'contact_job_title', posting.contact_job_title);
-        form_data = this.appendFormData(form_data, 'contact_details', posting.contact_details);
-        form_data = this.appendFormData(form_data, 'content_raw', posting.content_raw);
+        formData = this.appendFormData(formData, 'jobTitle', posting.jobTitle);
+        formData = this.appendFormData(formData, 'employer', posting.employer);
+        formData = this.appendFormData(formData, 'extLink', posting.extLink);
+        formData = this.appendFormData(formData, 'postedDate', posting.postedDate);
+        formData = this.appendFormData(formData, 'deadlineDate', posting.deadlineDate);
+        formData = this.appendFormData(formData, 'locationCity', posting.locationCity);
+        formData = this.appendFormData(formData, 'locationPostalCode', posting.locationPostalCode);
+        formData = this.appendFormData(formData, 'contactName', posting.contactName);
+        formData = this.appendFormData(formData, 'contactJobTitle', posting.contactJobTitle);
+        formData = this.appendFormData(formData, 'contactDetails', posting.contactDetails);
+        formData = this.appendFormData(formData, 'contentRaw', posting.contentRaw);
         
-        return form_data;
+        return formData;
 
     }
 
     static getPostings() {
-        return this.get( API_BASE_ADDRESS + "/job_postings" )
+        return this.get( API_BASE_ADDRESS + "/job-postings" )
     }
 
     static insertPosting( posting ) {
-        return this.post( API_BASE_ADDRESS + "/job_postings", this.assignPostingToFormData( posting ) )
+        return this.post( API_BASE_ADDRESS + "/job-postings", this.assignPostingToFormData( posting ) )
     }
 
     static updatePosting( posting ) {
-        return this.put( API_BASE_ADDRESS + "/job_postings/" + posting.id, this.assignPostingToFormData( posting ) )
+        return this.put( API_BASE_ADDRESS + "/job-postings/" + posting.id, this.assignPostingToFormData( posting ) )
     }
 
     static deletePosting( posting ) {
-        return this.delete( API_BASE_ADDRESS + "/job_postings/" + posting.id );
+        return this.delete( API_BASE_ADDRESS + "/job-postings/" + posting.id );
     }
 
     
