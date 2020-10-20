@@ -40,7 +40,7 @@ class PostingsListItem extends React.Component {
 
     const { t } = this.props;
 
-    return <tr key={this.props.key}>
+    return <tr>
     <td>{this.props.employer}</td>
     <td>{this.props.jobTitle}</td>
     <td>

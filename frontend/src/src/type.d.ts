@@ -1,5 +1,4 @@
 interface IPosting {
-    key: number,
     id: number,
     jobTitle: string,
     employer: string,

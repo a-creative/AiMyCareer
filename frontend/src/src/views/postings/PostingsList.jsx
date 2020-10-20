@@ -26,7 +26,7 @@ class PostingsList extends React.Component {
             <tbody>
               {postings.map(posting => (
                 <PostingListItem 
-                  key={posting.id}
+                  key={posting.id.toString()}
                   id={posting.id}
                   employer={posting.employer}
                   jobTitle={posting.jobTitle}
