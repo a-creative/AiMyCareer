@@ -4,21 +4,12 @@ import PostingListItem from './PostingsListItem.jsx'
 import { connect } from 'react-redux'
 import { fetchPostings } from "store/action_creators";
 import { withTranslation } from 'react-i18next';
-import Spinner from 'components/Spinner';
 
 class PostingsList extends React.Component {
-
-  componentDidMount() {
-    if ( this.props.postings.length === 0 ) {
-      this.props.fetchPostings();
-    }
-  }
 
   render() {
 
     const { t } = this.props;
-
-    if(this.props.loading) return <Spinner />;
 
     let postings = Array.from(this.props.postings);
 

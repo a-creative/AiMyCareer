@@ -7,9 +7,17 @@ function Spinner( props ) {
 
     const { t } = useTranslation();
 
-    return <Row><Col><SpinnerBootstrap animation="border" role="status">
-    <span className="sr-only">{t('Loading...')}</span>
-  </SpinnerBootstrap></Col></Row>;
+    if (props.show) {
+
+      return <Row><Col><SpinnerBootstrap animation="border" role="status">
+      <span className="sr-only">{t('Loading...')}</span>
+    </SpinnerBootstrap></Col></Row>;
+
+    } else {
+
+      return <Row></Row>;
+      
+    }
 
 }
 
