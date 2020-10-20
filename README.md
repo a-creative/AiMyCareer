@@ -7,6 +7,7 @@
 * [How to test this?](#how-to-test-this)  
     * [Prerequisites](#prerequisites)  
     * [Install and run](#install-and-run)
+* [License](#license)
 * [Any questions or suggestions?](#any-questions-or-suggestions)  
 * [You're looking for a nice colleague like me?](#youre-looking-for-a-nice-colleague-like-me)  
 
@@ -98,6 +99,12 @@ Finally you open up your favorite web browser and go to the address:
 http://localhost:5001
 ```
 At this point in time you should be up and running with the web app Job Finder in your browser.  
+[<div style="text-align: right">⇧ Back</div>](#job-finder)
+&nbsp;  
+
+# License
+
+Job Finder is released with GPL license, because of it's nature as a study project. The name "Job Finder" is a code name and not subject to become a product name.
 [<div style="text-align: right">⇧ Back</div>](#job-finder)
 &nbsp;  
 
