@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
 import * as serviceWorker from './serviceWorker';
@@ -20,9 +20,11 @@ const store = createStore(rootReducer, enhancer);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Suspense fallback={<div>&nbsp;</div>}>
+      <Provider store={store}>
         <App />
-    </Provider>
+      </Provider>
+    </Suspense>
   </React.StrictMode>,
   document.getElementById('root')
 );
