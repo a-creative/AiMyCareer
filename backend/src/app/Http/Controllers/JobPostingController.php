@@ -66,7 +66,7 @@ class JobPostingController extends Controller
         EntityManager::flush();
 
         return response()->json([
-            "posting" => $request->all()
+            "posting" => $job_posting->toArray()
         ]);
     }
 
@@ -77,7 +77,7 @@ class JobPostingController extends Controller
         EntityManager::flush();
 
         return response()->json([
-            "posting" => $request->all(),
+            "posting" => $job_posting->toArray()
         ]);
     }
 

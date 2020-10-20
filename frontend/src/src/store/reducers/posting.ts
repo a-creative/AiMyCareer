@@ -84,7 +84,7 @@ const posting_reducer = (
       return {
         ...state,
         postings: state.postings.map((posting) => {
-           if ( posting.id === action.data.id) {
+           if ( posting.id === action.data.posting.id) {
              return action.data.posting
            }
 

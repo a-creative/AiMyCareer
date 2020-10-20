@@ -2,6 +2,8 @@ import React from 'react';
 import { Button, ButtonGroup } from 'react-bootstrap';
 import { withTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux'
+import { deletePosting } from "store/action_creators";
 
 class PostingsListItem extends React.Component {
 
@@ -20,9 +22,7 @@ class PostingsListItem extends React.Component {
 
     e.preventDefault();
     if (window.confirm( t('Do you really want to delete this job posting?'))) {
-
-      alert('Delete not yet implemented');
-
+      this.props.deletePosting( this.props );
     }
 
     return false;
@@ -40,7 +40,7 @@ class PostingsListItem extends React.Component {
 
     const { t } = this.props;
 
-    return <tr key="{this.props.id}">
+    return <tr key={this.props.key}>
     <td>{this.props.employer}</td>
     <td>{this.props.job_title}</td>
     <td>
@@ -56,4 +56,25 @@ class PostingsListItem extends React.Component {
   
 }
 
-export default withTranslation()(PostingsListItem);
+
+function selectPosting( root_reducer, posting_id ) {
+
+  let postings = root_reducer.posting.postings;
+  let posting = postings.filter( function( posting ) { return posting.id === posting_id })[0];
+  return posting;
+}
+
+function mapStateToProps(root_reducer, ownProps) {
+  let r = { ...selectPosting(root_reducer, +ownProps.id ) };
+  return r;
+}
+
+
+const mapDispatchToProps = {
+  deletePosting
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withTranslation()(PostingsListItem));

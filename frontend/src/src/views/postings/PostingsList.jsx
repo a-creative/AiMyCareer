@@ -10,7 +10,9 @@ import { withTranslation } from 'react-i18next';
 class PostingsList extends React.Component {
 
   componentDidMount() {
-    this.props.fetchPostings();
+    if ( this.props.postings.length === 0 ) {
+      this.props.fetchPostings();
+    }
   }
 
   render() {

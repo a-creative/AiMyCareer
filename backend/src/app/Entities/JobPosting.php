@@ -3,6 +3,7 @@
 namespace App\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
+use Illuminate\Contracts\Support\Arrayable;
 
 /**
  * @ORM\Entity
@@ -13,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  *      }
  * )
  */
-class JobPosting
+class JobPosting implements Arrayable
 {
     /**
      * @ORM\Id
@@ -359,5 +360,17 @@ class JobPosting
         $this->ext_link = $ext_link;
 
         return $this;
+    }
+
+    public function toArray() {
+
+        $output = [];
+
+        foreach ( get_class_vars(get_class($this)) as $prop_name => $prop_default_value ) {
+            $output[ $prop_name ] = $this->{$prop_name};
+        }
+
+        return $output;
+
     }
 }
