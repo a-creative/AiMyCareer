@@ -12,6 +12,12 @@ import {
     DELETE_POSTING_DELETING,
     DELETE_POSTING_SUCCESS,
     DELETE_POSTING_ERROR,
+    REGISTER_USER_REGISTERING,
+    REGISTER_USER_SUCCESS,
+    REGISTER_USER_ERROR,
+    AUTH_USER_AUTH,
+    AUTH_USER_SUCCESS,
+    AUTH_USER_ERROR,
 } from "./actionTypes"
 
 export const fetchPostings = () => dispatch => {
@@ -61,5 +67,32 @@ export const deletePosting = ( posting ) => dispatch => {
         .then(
             data => dispatch({ type: DELETE_POSTING_SUCCESS, data }),
             error => dispatch({ type: DELETE_POSTING_ERROR, error: error.message || 'Unexpected Error!!!' })
+        )
+}
+
+export const authUser = ( username, password) => dispatch => {
+        
+    dispatch({ type: AUTH_USER_AUTH });
+
+    Api.requestUser( username, password )
+        .then(response => response.json())
+        .then(
+            data => dispatch({ type: AUTH_USER_SUCCESS, data }),
+            error => dispatch({ type: AUTH_USER_ERROR, error: error.message || 'Unexpected Error!!!' })
+        )
+}
+
+export const registerUser = ( user, callback) => dispatch => {
+        
+    dispatch({ type: REGISTER_USER_REGISTERING });
+
+    Api.registerUser( user )
+        .then(response => response.json())
+        .then(
+            data => {
+                dispatch({ type: REGISTER_USER_SUCCESS, data })
+                callback();
+            },
+            error => dispatch({ type: REGISTER_USER_ERROR, error: error.message || 'Unexpected Error!!!' })
         )
 }

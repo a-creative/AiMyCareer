@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from "react-helmet";
-import { Postings, PostingsCreate } from 'views'
+import { Postings, PostingsCreate, Login, ForgotPassword, Register } from 'views'
 import { Container, Row, Col, Nav, Navbar, Form, Button,NavDropdown} from 'components/react-bootstrap'
 import Spinner from 'components/Spinner'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -36,48 +36,7 @@ class App extends React.Component {
                       <Nav.Link as={Link} to="/postings">{t('Job postings')}</Nav.Link>
                     </Nav>
                     <Nav>
-                      <Spinner show={this.props.loading} />&nbsp;
-                    </Nav>
-                    <Nav>
-                      <NavDropdown title={t('Login')} id="nav-login">
-                      <Form>
-                            <Row>
-                              <Col>
-                                <Form.Group>
-                                  <Form.Label>{t('Username')}</Form.Label>
-                                  <Form.Control type="text" name="username"></Form.Control>
-                                </Form.Group>
-                              </Col>
-                            </Row>
-                            <Row>
-                              <Col>
-                                <Form.Group>
-                                  <Form.Label htmlFor="password">{t('Password')}</Form.Label>
-                                  <Form.Control type="password" id="password" aria-describedby="passwordHelpBlock"></Form.Control>
-                                </Form.Group>
-                              </Col>
-                            </Row>
-                            <Row>
-                              <Col>
-                                  <Link to="/forgot-password">{t('Forgot password?')}</Link>
-                              </Col>
-                            </Row>
-                            <Row>
-                              <Col>
-                                    <Form.Check 
-                                      type="checkbox"
-                                      id="remember-password"
-                                      label={t("Remember password")}
-                                    />
-                              </Col>
-                            </Row>
-                            <Row>
-                              <Col>
-                                <Button variant="primary" type="submit">{t('Login')}</Button>
-                              </Col>
-                            </Row>
-                        </Form>
-                      </NavDropdown>
+                      <Spinner show={this.props.loading} />{' '}
                     </Nav>
                   </Navbar.Collapse>
                 </Navbar>
@@ -86,6 +45,9 @@ class App extends React.Component {
             <Row>
               <Col>
               <Switch>
+                <Route path="/login" component={Login} />
+                <Route path="/forgot-password" component={ForgotPassword} />
+                <Route path="/register" component={Register} />
                 <Route path="/postings/create" render={(props) => <PostingsCreate {...props} />} />
                 <Route path="/postings/edit/:id" render={(props) => <PostingsCreate {...props} />} />
                 <Route path="/postings">

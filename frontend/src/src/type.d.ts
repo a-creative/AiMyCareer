@@ -13,6 +13,19 @@ interface IPosting {
     contentRaw : string
 }
 
+interface IUser {
+    id : number,
+    username : string,
+    firstName : string,
+    lastName : string
+}
+
+type UserState = {
+    loading : boolean,
+    error: string,
+    currentUser: IUser
+}
+
 type PostingState = {
     loading : boolean,
     error: string,

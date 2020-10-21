@@ -65,8 +65,7 @@ function selectPosting( rootReducer, postingId ) {
 }
 
 function mapStateToProps(rootReducer, ownProps) {
-  let r = { ...selectPosting(rootReducer, +ownProps.id ) };
-  return r;
+  return { ...selectPosting(rootReducer, +ownProps.id ) };
 }
 
 

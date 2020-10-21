@@ -21,11 +21,16 @@
     "Do you really want to delete this job posting?" : "Ønsker du  virkeligt at slette dette jobopslag",
     "Username" : "Brugernavn",
     "Password" : "Adgangskode",
+    "Repeat password" : "Gentag adgangskode",
     "Login" : "Login",
-    "Forgot password?" : "Glemt adgangskode?",
+    "Forgot password" : "Glemt adgangskode",
     "Remember password" : "Husk adgangskode",
-    "Functions" : "Funktioner"
-
+    "Functions" : "Funktioner",
+    "Register" : "Registrer",
+    "Register new user" : "Registrer ny bruger",
+    "First name" : "Fornavn",
+    "Last name" : "Efternavn",
+    "Back" : "Tilbage"
 
     
 }

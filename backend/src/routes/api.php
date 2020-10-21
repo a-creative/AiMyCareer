@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobPostingController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,4 +23,6 @@ Route::get('/job-postings', [ JobPostingController::class, 'index'] );
 Route::post('/job-postings', [ JobPostingController::class, 'insert'] );
 Route::put('/job-postings/{id}', [ JobPostingController::class, 'update'] );
 Route::delete('/job-postings/{id}', [ JobPostingController::class, 'delete'] );
-
+Route::post('/users/auth', [ UserController::class, 'auth'] );
+Route::delete('/users/{id}', [ UserController::class, 'delete'] );
+Route::post('/users', [ UserController::class, 'register'] );

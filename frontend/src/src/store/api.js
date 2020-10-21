@@ -68,5 +68,22 @@ export default class Api {
         return this.delete( API_BASE_ADDRESS + "/job-postings/" + posting.id );
     }
 
+    static authUser( username, password ) {
+        var formData = new FormData();
+        formData.append('username', username);
+        formData.append('password', password )
+
+        return this.post( API_BASE_ADDRESS + "/users/auth", formData )
+    }
+
+    static registerUser( user ) {
+        var formData = new FormData();
+        for ( var attr in user ) {
+            formData.append(attr, user[attr]);
+        }
+
+        return this.post( API_BASE_ADDRESS + "/users", formData )
+    }
+
     
 }
