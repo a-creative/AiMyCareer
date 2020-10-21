@@ -92,7 +92,6 @@ git clone https://github.com/a-creative/Job-Finder.git .
 Next use these two commands to start up the virtual host and initialize the database:
 ```
 docker-compose up -d
-docker-compose exec backend php artisan doctrine:migrations:migrate 
 ```
 Finally you open up your favorite web browser and go to the address:
 ```
