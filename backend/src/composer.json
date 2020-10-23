@@ -16,7 +16,8 @@
         "laravel-doctrine/migrations": "2.2.*",
         "laravel-doctrine/orm": "1.7.*",
         "laravel/framework": "^8.0",
-        "laravel/tinker": "^2.0"
+        "laravel/tinker": "^2.0",
+        "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",
