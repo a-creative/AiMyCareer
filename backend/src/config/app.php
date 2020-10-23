@@ -177,7 +177,6 @@ return [
 
         LaravelDoctrine\ORM\DoctrineServiceProvider::class,
         LaravelDoctrine\Migrations\MigrationsServiceProvider::class,
-        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
     ],
 
