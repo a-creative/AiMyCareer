@@ -102,6 +102,7 @@ export default class Api {
         for ( var attr in user ) {
             formData.append(attr, user[attr]);
         }
+        formData.append('password_confirmation', user.passwordConfirmation );
 
         return this.post( API_BASE_ADDRESS + "/auth/register", false, formData )
     }

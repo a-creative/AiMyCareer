@@ -20,7 +20,7 @@ class Register extends React.Component {
                 lastName : '',
                 username : '',
                 password : '',
-                repeatPassword : ''
+                passwordConfirmation : ''
             }
 
             
@@ -83,8 +83,8 @@ class Register extends React.Component {
                               <Form.Control type="password" id="password" name="password" value={this.state.user.password} onChange={this.handleInputChange}></Form.Control>
                           </Form.Group>
                           <Form.Group>
-                              <Form.Label htmlFor="repeatPassword">{t('Repeat password')}</Form.Label>
-                              <Form.Control type="password" id="repeatPassword" name="repeatPassword" value={this.state.user.repeatPassword} onChange={this.handleInputChange}></Form.Control>
+                              <Form.Label htmlFor="passwordConfirmation">{t('Confirm password')}</Form.Label>
+                              <Form.Control type="password" id="passwordConfirmation" name="passwordConfirmation" value={this.state.user.passwordConfirmation} onChange={this.handleInputChange}></Form.Control>
                           </Form.Group>
                           <Form.Group>
                               <Button variant="primary" type="submit">{t('Register')}</Button>{' '}

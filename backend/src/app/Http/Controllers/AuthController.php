@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use LaravelDoctrine\ORM\Facades\EntityManager;
 use App\Entities\User;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -16,20 +18,35 @@ class AuthController extends Controller
         $this->middleware('auth:api', ['except' => ['getAccessToken','register']]);
     }
 
-    public function register() {
+    public function register( Request $request) {
 
-        $user = new User();
-        $user->setUsername( request('username'));
-        $user->setPassword(  request('password'));
-        $user->setFirstName( request('firstName'));
-        $user->setLastName( request('lastName'));
-        EntityManager::persist( $user );
-        EntityManager::flush();
+        $request->validate([
+            'firstName' => 'required|string|between:2,80',
+            'lastName' => 'required|string|between:2,80',
+            'username' => 'required|string|max:80',
+            'password' => 'required|string|confirmed|min:8',
+        ]);
 
-        return response()->json([
-            'message' => 'User successfully registered',
-            'user' => $user->toArray()
-        ], 201);
+        $userExists = EntityManager::getRepository( User::class )->findBy( [ 'username' => $request->username ] );
+        if (!$userExists) {
+            $user = new User();
+            $user->setUsername($request->username);
+            $user->setPassword($request->password);
+            $user->setFirstName($request->firstName);
+            $user->setLastName($request->lastName);
+            EntityManager::persist($user);
+            EntityManager::flush();
+
+            return response()->json([
+                'message' => 'User successfully registered',
+                'user' => $user->toArray(),
+            ], 201);
+        } else {
+            return response()->json([
+                'error' => 'A user with the username "{{username}}" already exists',
+                'username' => $request->username,
+            ], 422);
+        }
     }
 
     /**
