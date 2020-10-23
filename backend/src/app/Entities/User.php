@@ -6,8 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Illuminate\Contracts\Support\Arrayable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
-
+use Illuminate\Support\Facades\Hash;
 
 /**
  * @ORM\Entity

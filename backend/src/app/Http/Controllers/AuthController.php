@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use LaravelDoctrine\ORM\Facades\EntityManager;
+use App\Entities\User;
 
 class AuthController extends Controller
 {
@@ -11,7 +13,23 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['getAccessToken']]);
+        $this->middleware('auth:api', ['except' => ['getAccessToken','register']]);
+    }
+
+    public function register() {
+
+        $user = new User();
+        $user->setUsername( request('username'));
+        $user->setPassword(  request('password'));
+        $user->setFirstName( request('firstName'));
+        $user->setLastName( request('lastName'));
+        EntityManager::persist( $user );
+        EntityManager::flush();
+
+        return response()->json([
+            'message' => 'User successfully registered',
+            'user' => $user->toArray()
+        ], 201);
     }
 
     /**
