@@ -4,15 +4,17 @@ namespace App\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Support\Facades\Hash;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="users")
  */
-class User implements Arrayable, \Illuminate\Contracts\Auth\Authenticatable
+class User extends Authenticatable implements Arrayable, JWTSubject
 {
-    use \LaravelDoctrine\ORM\Auth\Authenticatable;
 
     /**
      * @ORM\Id
@@ -59,6 +61,28 @@ class User implements Arrayable, \Illuminate\Contracts\Auth\Authenticatable
         }
 
         return $output;
+    }
+
+    // Rest omitted for brevity
+
+    /**
+     * Get the identifier that will be stored in the subject claim of the JWT.
+     *
+     * @return mixed
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->getId();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 
     /**
