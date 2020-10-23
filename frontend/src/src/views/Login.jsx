@@ -11,6 +11,44 @@ import { connect } from 'react-redux'
 
 class Login extends React.Component{
 
+    constructor( props ) {
+        super( props );
+
+        this.state = {
+            user : {
+                username : '',
+                password : ''
+            }
+        }
+
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+
+        let history = this.props.history;
+
+        this.props.authUser( this.state.user, function( user ) {
+
+            history.push('/');
+ 
+        })
+    }
+
+    handleInputChange(e){
+        e.preventDefault();
+        const target = e.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        var user = {...this.state.user}
+        user[name] = value;
+        this.setState({user})
+    }
+
     render() {
 
         const { t } = this.props;
@@ -23,14 +61,14 @@ class Login extends React.Component{
                 <PageHeader title={t('Login')} />
                 <Row className="mb-3">
                     <Col sm="3">
-                        <Form>
+                        <Form onSubmit={this.handleSubmit}>
                             <Form.Group>
                                 <Form.Label>{t('Username')}</Form.Label>
-                                <Form.Control type="text" name="username"></Form.Control>
+                                <Form.Control type="text" name="username" value={this.state.user.username} onChange={this.handleInputChange}></Form.Control>
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label htmlFor="password">{t('Password')}</Form.Label>
-                                <Form.Control type="password" id="password" aria-describedby="passwordHelpBlock"></Form.Control>
+                                <Form.Control type="password" name="password" value={this.state.user.password} onChange={this.handleInputChange}></Form.Control>
                             </Form.Group>
                             <Form.Group>
                                 <Form.Check 

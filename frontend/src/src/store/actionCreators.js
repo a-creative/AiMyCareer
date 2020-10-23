@@ -70,18 +70,6 @@ export const deletePosting = ( posting ) => dispatch => {
         )
 }
 
-export const authUser = ( username, password) => dispatch => {
-        
-    dispatch({ type: AUTH_USER_AUTH });
-
-    Api.requestUser( username, password )
-        .then(response => response.json())
-        .then(
-            data => dispatch({ type: AUTH_USER_SUCCESS, data }),
-            error => dispatch({ type: AUTH_USER_ERROR, error: error.message || 'Unexpected Error!!!' })
-        )
-}
-
 export const registerUser = ( user, callback) => dispatch => {
         
     dispatch({ type: REGISTER_USER_REGISTERING });
@@ -95,4 +83,26 @@ export const registerUser = ( user, callback) => dispatch => {
             },
             error => dispatch({ type: REGISTER_USER_ERROR, error: error.message || 'Unexpected Error!!!' })
         )
+}
+
+export const authUser = ( user, callback) => dispatch => {
+    dispatch({ type: REGISTER_USER_REGISTERING });
+    Api.getAccessToken( user )
+        .then(response => {
+
+            alert(JSON.stringify(response));
+
+        });
+    /*
+        .then(response => response.json())
+        .then(
+            data => {
+                alert(JSON.stringify( data ));
+                dispatch({ type: REGISTER_USER_SUCCESS, data })
+                callback();
+            },
+            error => dispatch({ type: REGISTER_USER_ERROR, error: error.message || 'Unexpected Error!!!' })
+        );
+        */
+    
 }

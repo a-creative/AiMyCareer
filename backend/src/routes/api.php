@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobPostingController;
@@ -15,14 +16,22 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function ($router) {
+    Route::post('getAccessToken', [AuthController::class, 'getAccessToken']);
+    Route::post('register', [ AuthController::class, 'register'] );
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('refresh', [AuthController::class, 'refresh']);
+    Route::post('me', [AuthController::class, 'me']);
 });
 
 Route::get('/job-postings', [ JobPostingController::class, 'index'] );
 Route::post('/job-postings', [ JobPostingController::class, 'insert'] );
 Route::put('/job-postings/{id}', [ JobPostingController::class, 'update'] );
 Route::delete('/job-postings/{id}', [ JobPostingController::class, 'delete'] );
-Route::post('/users/auth', [ UserController::class, 'auth'] );
+
 Route::delete('/users/{id}', [ UserController::class, 'delete'] );
-Route::post('/users', [ UserController::class, 'register'] );
