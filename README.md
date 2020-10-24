@@ -54,7 +54,7 @@ The development process will be agile to some extent and as such features from t
 
 The file \docker-compose.yml is the easy key to get you started, if you know about Docker Compose. Otherwise read on.
 
-The following instructions will only get you started with trying out the web app in your own private space. I will later add information on how to deploy it to your own public host. But as it is it should be completely usable for a single user.  
+The following instructions will only get you started with trying out the web app in your own private space. I will later add information on how to deploy it to your own public host. But as it is it should be completely usable for a single user in a private testing environment.   
 [<div style="text-align: right">⇧ Back</div>](#job-finder)
 &nbsp;  
 
@@ -89,9 +89,9 @@ Next use this command to download the web app to the folder. Do not forget to in
 ```
 git clone https://github.com/a-creative/Job-Finder.git .
 ```
-Next use these two commands to start up the virtual host and initialize the database:
+Next use these two commands to init a test environment and start up the virtual host:
 ```
-docker-compose up -d
+docker-compose --f docker-compose.only-for-testing.yml up -d
 ```
 Finally you open up your favorite web browser and go to the address:
 ```
