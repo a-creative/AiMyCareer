@@ -3,21 +3,21 @@ import {
     LOAD_POSTINGS_LOADING, 
     LOAD_POSTINGS_SUCCESS, 
     LOAD_POSTINGS_ERROR,
-    INSERT_POSTING_INSERTING,
+    INSERT_POSTING_LOADING,
     INSERT_POSTING_SUCCESS,
     INSERT_POSTING_ERROR,
-    UPDATE_POSTING_UPDATING,
+    UPDATE_POSTING_LOADING,
     UPDATE_POSTING_SUCCESS,
     UPDATE_POSTING_ERROR,
-    DELETE_POSTING_DELETING,
+    DELETE_POSTING_LOADING,
     DELETE_POSTING_SUCCESS,
     DELETE_POSTING_ERROR,
-    REGISTER_USER_REGISTERING,
+    REGISTER_USER_LOADING,
     REGISTER_USER_SUCCESS,
     REGISTER_USER_ERROR,
-    AUTH_USER_AUTH,
-    AUTH_USER_SUCCESS,
-    AUTH_USER_ERROR,
+    LOGIN_USER_LOADING,
+    LOGIN_USER_SUCCESS,
+    LOGIN_USER_ERROR,
 } from "./actionTypes"
 
 export const fetchPostings = () => dispatch => {
@@ -31,7 +31,7 @@ export const fetchPostings = () => dispatch => {
 };
 
 export const insertPosting = ( posting, callback ) => dispatch => {
-    dispatch({ type: INSERT_POSTING_INSERTING });
+    dispatch({ type: INSERT_POSTING_LOADING });
     Api.insertPosting( posting )
         .then(response => response.json())
         .then(
@@ -45,7 +45,7 @@ export const insertPosting = ( posting, callback ) => dispatch => {
 
 export const updatePosting = ( posting, callback ) => dispatch => {
         
-    dispatch({ type: UPDATE_POSTING_UPDATING });
+    dispatch({ type: UPDATE_POSTING_LOADING });
 
     Api.updatePosting( posting )
         .then(response => response.json())
@@ -60,7 +60,7 @@ export const updatePosting = ( posting, callback ) => dispatch => {
 
 export const deletePosting = ( posting ) => dispatch => {
         
-    dispatch({ type: DELETE_POSTING_DELETING });
+    dispatch({ type: DELETE_POSTING_LOADING });
 
     Api.deletePosting( posting )
         .then(response => response.json())
@@ -72,7 +72,7 @@ export const deletePosting = ( posting ) => dispatch => {
 
 export const registerUser = ( user, callback) => dispatch => {
         
-    dispatch({ type: REGISTER_USER_REGISTERING });
+    dispatch({ type: REGISTER_USER_LOADING });
 
     Api.registerUser( user )
         .then(response => response.json())
@@ -85,24 +85,18 @@ export const registerUser = ( user, callback) => dispatch => {
         )
 }
 
-export const authUser = ( user, callback) => dispatch => {
-    dispatch({ type: REGISTER_USER_REGISTERING });
+export const login = ( user, callback) => dispatch => {
+    dispatch({ type: LOGIN_USER_LOADING });
     Api.getAccessToken( user )
-        .then(response => {
-
-            alert(JSON.stringify(response));
-
-        });
-    /*
         .then(response => response.json())
         .then(
             data => {
-                alert(JSON.stringify( data ));
-                dispatch({ type: REGISTER_USER_SUCCESS, data })
-                callback();
+                dispatch({ type: LOGIN_USER_SUCCESS, userToken: data });
+                callback(data)
             },
-            error => dispatch({ type: REGISTER_USER_ERROR, error: error.message || 'Unexpected Error!!!' })
+            error => {
+                dispatch({ type: LOGIN_USER_ERROR, error: error.message || 'Unexpected Error!!!' })
+            }
         );
-        */
     
 }

@@ -31,5 +31,9 @@
     "Register new user" : "Registrer ny bruger",
     "First name" : "Fornavn",
     "Last name" : "Efternavn",
-    "Back" : "Tilbage"
+    "Back" : "Tilbage",
+    "The password field is required." : "Adgangskoden skal udfyldes.",
+    "The user does not exist. Please make sure you typed the right information." : "Brugeren findes ikke. Vær sikker på at du har indtastet den rigtige information.",
+    "The email field is required." : "E-mail skal udfyldes.",
+    "The email must be a valid email address." : "E-mail skal være en gyldig adresse."
 }

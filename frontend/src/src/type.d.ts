@@ -22,8 +22,7 @@ interface IUser {
 
 type UserState = {
     loading : boolean,
-    error: string,
-    currentUser: IUser
+    error: string
 }
 
 type PostingState = {

@@ -2,13 +2,13 @@ import {
   LOAD_POSTINGS_ERROR,
   LOAD_POSTINGS_LOADING,
   LOAD_POSTINGS_SUCCESS,
-  INSERT_POSTING_INSERTING,
+  INSERT_POSTING_LOADING,
   INSERT_POSTING_SUCCESS,
   INSERT_POSTING_ERROR,
-  UPDATE_POSTING_UPDATING,
+  UPDATE_POSTING_LOADING,
   UPDATE_POSTING_SUCCESS,
   UPDATE_POSTING_ERROR,
-  DELETE_POSTING_DELETING,
+  DELETE_POSTING_LOADING,
   DELETE_POSTING_SUCCESS,
   DELETE_POSTING_ERROR,
 } from "store/actionTypes";
@@ -45,7 +45,7 @@ const postingReducer = (
         error: action.error,
       };
     }
-    case INSERT_POSTING_INSERTING: {
+    case INSERT_POSTING_LOADING: {
       return {
         ...state,
         loading: true,
@@ -72,7 +72,7 @@ const postingReducer = (
         error: action.error,
       };
     }
-    case UPDATE_POSTING_UPDATING: {
+    case UPDATE_POSTING_LOADING: {
       return {
         ...state,
         loading: true,
@@ -102,7 +102,7 @@ const postingReducer = (
         error: action.error,
       };
     }
-    case DELETE_POSTING_DELETING: {
+    case DELETE_POSTING_LOADING: {
       return {
         ...state,
         loading: true,

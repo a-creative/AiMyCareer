@@ -1,18 +1,15 @@
 import {
-  REGISTER_USER_REGISTERING,
+  REGISTER_USER_LOADING,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR,
+  LOGIN_USER_LOADING,
+  LOGIN_USER_SUCCESS,
+  LOGIN_USER_ERROR,
 } from "store/actionTypes";
 
 const initial_state: UserState = {
   loading: false,
-  error: "",
-  currentUser: {
-    id : -1,
-    email : '',
-    firstName : '',
-    lastName : ''
-  },
+  error: ""
 };
 
 const userReducer = (
@@ -20,7 +17,7 @@ const userReducer = (
   action: any
 ): UserState => {
   switch (action.type) {
-    case REGISTER_USER_REGISTERING: {
+    case REGISTER_USER_LOADING: {
       return {
         ...state,
         loading: true,
@@ -30,11 +27,31 @@ const userReducer = (
     case REGISTER_USER_SUCCESS: {
       return {
         ...state,
-        currentUser: action.data,
         loading: false,
       };
     }
     case REGISTER_USER_ERROR: {
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
+    }
+    case LOGIN_USER_LOADING: {
+      return {
+        ...state,
+        loading: true,
+        error: "",
+      };
+    }
+    case LOGIN_USER_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        error: "",
+      };
+    }
+    case LOGIN_USER_ERROR: {
       return {
         ...state,
         loading: false,

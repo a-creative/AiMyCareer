@@ -3,7 +3,7 @@ import { withTranslation } from 'react-i18next';
 import PageHeader from 'components/PageHeader';
 import { Row, Col, Form, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { formatNormalizedDate } from 'helpers';
+import { formatNormalizedDate } from 'helpers.js';
 import { insertPosting, updatePosting } from "store/actionCreators";
 
 class PostingsCreate extends React.Component {

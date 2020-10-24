@@ -54,12 +54,18 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getAccessToken()
+    public function getAccessToken( Request $request)
     {
+        $request->validate([
+            'email' => 'required|email|between:2,80',
+            'password' => 'required|string|between:2,80',
+        ]);
+
         $credentials = request(['email', 'password']);
 
         if (!$token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json([
+                'errors' => [ 'form' =>[ 'The user does not exist. Please make sure you typed the right information.'] ] ], 401);
         }
 
         return $this->respondWithToken($token);

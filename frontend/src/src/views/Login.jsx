@@ -1,12 +1,11 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 import PageHeader from 'components/PageHeader';
-import { Row, Col, Button, Form } from 'react-bootstrap'
+import { Row, Col, Button, Form, Alert } from 'react-bootstrap'
 import { Link } from "react-router-dom";
-import { authUser } from "store/actionCreators";
+import { login } from "store/actionCreators";
 import { connect } from 'react-redux'
-
-
+import { formValidate } from 'helpers.js';
 
 class Login extends React.Component{
 
@@ -14,10 +13,13 @@ class Login extends React.Component{
         super( props );
 
         this.state = {
+            validate: true,
             user : {
                 email : '',
-                password : ''
-            }
+                password : '',
+            },
+            formInvalid: false,
+            formMessage : '',
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -26,13 +28,21 @@ class Login extends React.Component{
     }
 
     handleSubmit(e) {
+
         e.preventDefault();
 
-        let history = this.props.history;
+        this.setState({ 'validated' : true });
 
-        this.props.authUser( this.state.user, function( user ) {
+        const that = this;
+        this.props.login( this.state.user, function( data ) {
 
-            history.push('/');
+            formValidate( { 
+                component : that, 
+                serverData: data, 
+                onSuccess : function() {
+                    that.props.history.push('/');
+                }
+            });
  
         })
     }
@@ -57,14 +67,17 @@ class Login extends React.Component{
                 <PageHeader title={t('Login')} />
                 <Row className="mb-3">
                     <Col sm="5">
-                        <Form onSubmit={this.handleSubmit}>
+                        <Form onSubmit={this.handleSubmit} noValidate validated={this.state.validated} >
                             <Form.Group controlId="emailField">
                                 <Form.Label>{t('Your e-mail address')}</Form.Label>
-                                <Form.Control type="email" name="email" value={this.state.user.email} onChange={this.handleInputChange}></Form.Control>
+                                <Form.Control required type="email" name="email" value={this.state.user.email} onChange={this.handleInputChange}></Form.Control>
+                                { this.state.emailInvalid && <Form.Control.Feedback type="invalid">{this.state.emailInvalidMessage}</Form.Control.Feedback>}
                             </Form.Group>
                             <Form.Group controlId="passwordField">
                                 <Form.Label>{t('Your password')}</Form.Label>
-                                <Form.Control type="password" name="password" value={this.state.user.password} onChange={this.handleInputChange}></Form.Control>
+                                <Form.Control required type="password" name="password" value={this.state.user.password} onChange={this.handleInputChange}></Form.Control>
+                                { this.state.passwordInvalid && <Form.Control.Feedback type="invalid">{this.state.passwordInvalidMessage}</Form.Control.Feedback>}
+                                { this.state.formInvalid && <Form.Control.Feedback variant="danger">{t(this.state.formInvalidMessage)}</Form.Control.Feedback> }
                             </Form.Group>
                             <Form.Group>
                                 <Form.Check 
@@ -94,7 +107,7 @@ class Login extends React.Component{
 
   
 const mapDispatchToProps = {
-   authUser
+   login
 };
 
 export default connect(
