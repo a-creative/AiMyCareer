@@ -67,24 +67,24 @@ class Register extends React.Component {
                   <Col sm="4">
                       <Form onSubmit={this.handleSubmit}>
                           <Form.Group controlId="firstNameField">
-                              <Form.Label htmlFor="firstNameField">{t('First name')}</Form.Label>
-                              <Form.Control type="text" id="firstNameField" name="firstName" value={this.state.user.firstName} onChange={this.handleInputChange}></Form.Control>
+                              <Form.Label>{t('First name')}</Form.Label>
+                              <Form.Control type="text" name="firstName" value={this.state.user.firstName} onChange={this.handleInputChange}></Form.Control>
                           </Form.Group>
                           <Form.Group controlId="lastNameField">
-                              <Form.Label htmlFor="lastNameField">{t('Last name')}</Form.Label>
-                              <Form.Control type="text" id="lastNameField" name="lastName" value={this.state.user.lastName} onChange={this.handleInputChange}></Form.Control>
+                              <Form.Label>{t('Last name')}</Form.Label>
+                              <Form.Control type="text" name="lastName" value={this.state.user.lastName} onChange={this.handleInputChange}></Form.Control>
                           </Form.Group>
                           <Form.Group controlId="usernameField">
-                              <Form.Label htmlFor="usernameField">{t('Select username')}</Form.Label>
-                              <Form.Control type="text" id="usernameField" name="username" value={this.state.user.username} onChange={this.handleInputChange}></Form.Control>
+                              <Form.Label>{t('Select username')}</Form.Label>
+                              <Form.Control type="text" name="username" value={this.state.user.username} onChange={this.handleInputChange}></Form.Control>
                           </Form.Group>
                           <Form.Group controlId="passwordField">
-                              <Form.Label htmlFor="passwordField">{t('Select password')}</Form.Label>
-                              <Form.Control type="password" id="passwordField" name="password" value={this.state.user.password} onChange={this.handleInputChange}></Form.Control>
+                              <Form.Label>{t('Select password')}</Form.Label>
+                              <Form.Control type="password" name="password" value={this.state.user.password} onChange={this.handleInputChange}></Form.Control>
                           </Form.Group>
                           <Form.Group controlId="passwordConfirmationField">
-                              <Form.Label htmlFor="passwordConfirmationField">{t('Confirm selected password')}</Form.Label>
-                              <Form.Control type="password" id="passwordConfirmationField" name="passwordConfirmation" value={this.state.user.passwordConfirmation} onChange={this.handleInputChange}></Form.Control>
+                              <Form.Label>{t('Confirm selected password')}</Form.Label>
+                              <Form.Control type="password" name="passwordConfirmation" value={this.state.user.passwordConfirmation} onChange={this.handleInputChange}></Form.Control>
                           </Form.Group>
                           <Form.Group>
                               <Button variant="primary" type="submit">{t('Register')}</Button>{' '}

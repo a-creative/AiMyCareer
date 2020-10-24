@@ -63,12 +63,12 @@ class Login extends React.Component{
                     <Col sm="4">
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Group controlId="usernameField">
-                                <Form.Label htmlFor="usernameField">{t('Username')}</Form.Label>
-                                <Form.Control type="text" id="usernameField" name="username" value={this.state.user.username} onChange={this.handleInputChange}></Form.Control>
+                                <Form.Label>{t('Username')}</Form.Label>
+                                <Form.Control type="text" name="username" value={this.state.user.username} onChange={this.handleInputChange}></Form.Control>
                             </Form.Group>
                             <Form.Group controlId="passwordField">
-                                <Form.Label htmlFor="passwordField">{t('Password')}</Form.Label>
-                                <Form.Control type="password" id="passwordField" name="password" value={this.state.user.password} onChange={this.handleInputChange}></Form.Control>
+                                <Form.Label>{t('Password')}</Form.Label>
+                                <Form.Control type="password" name="password" value={this.state.user.password} onChange={this.handleInputChange}></Form.Control>
                             </Form.Group>
                             <Form.Group>
                                 <Form.Check 
