@@ -60,20 +60,20 @@ class Login extends React.Component{
             <Col>
                 <PageHeader title={t('Login')} />
                 <Row className="mb-3">
-                    <Col sm="3">
+                    <Col sm="4">
                         <Form onSubmit={this.handleSubmit}>
-                            <Form.Group>
-                                <Form.Label>{t('Username')}</Form.Label>
-                                <Form.Control type="text" name="username" value={this.state.user.username} onChange={this.handleInputChange}></Form.Control>
+                            <Form.Group controlId="usernameField">
+                                <Form.Label htmlFor="usernameField">{t('Username')}</Form.Label>
+                                <Form.Control type="text" id="usernameField" name="username" value={this.state.user.username} onChange={this.handleInputChange}></Form.Control>
                             </Form.Group>
-                            <Form.Group>
-                                <Form.Label htmlFor="password">{t('Password')}</Form.Label>
-                                <Form.Control type="password" name="password" value={this.state.user.password} onChange={this.handleInputChange}></Form.Control>
+                            <Form.Group controlId="passwordField">
+                                <Form.Label htmlFor="passwordField">{t('Password')}</Form.Label>
+                                <Form.Control type="password" id="passwordField" name="password" value={this.state.user.password} onChange={this.handleInputChange}></Form.Control>
                             </Form.Group>
                             <Form.Group>
                                 <Form.Check 
                                             type="checkbox"
-                                            id="remember-password"
+                                            id="rememberPasswordField"
                                             label={t("Remember password")}
                                         />
                             </Form.Group>

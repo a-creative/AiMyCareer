@@ -20,8 +20,10 @@
     "Delete" : "Slet",
     "Do you really want to delete this job posting?" : "Ønsker du  virkeligt at slette dette jobopslag",
     "Username" : "Brugernavn",
+    "Select username" : "Vælg brugernavn",
     "Password" : "Adgangskode",
-    "Repeat password" : "Gentag adgangskode",
+    "Select password" : "Vælg adgangskode",
+    "Confirm selected password" : "Bekræft valgt adgangskode",
     "Login" : "Login",
     "Forgot password" : "Glemt adgangskode",
     "Remember password" : "Husk adgangskode",
@@ -31,6 +33,4 @@
     "First name" : "Fornavn",
     "Last name" : "Efternavn",
     "Back" : "Tilbage"
-
-    
 }
