@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { withTranslation } from 'react-i18next';
 import PageHeader from 'components/PageHeader';
 import { Row, Col, Form, Button } from 'react-bootstrap'
@@ -82,9 +81,6 @@ class PostingsCreate extends React.Component {
     const { t } = this.props;
 
     return <Row>
-    <Helmet>
-      <title>{t(this.state.pageTitleT)} - {t('Job Finder')}</title>
-    </Helmet>
     <Col>
       <PageHeader title={t(this.state.pageTitleT)} />
       <Form onSubmit={this.handleSubmit}>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { withTranslation } from 'react-i18next';
 import PageHeader from 'components/PageHeader';
 import { Row, Col, Button, Form } from 'react-bootstrap'
@@ -58,9 +57,6 @@ class Register extends React.Component {
         const { t } = this.props;
 
         return <Row>
-          <Helmet>
-              <title>{t('Job postings')} - {t('Register new user')}</title>
-          </Helmet>
           <Col>
               <PageHeader title={t('Register new user')} />
               <Row className="mb-3">
