@@ -83,7 +83,7 @@ export default class Api {
 
     static getAccessToken( user ) {
         var formData = new FormData();
-        formData.append('username', user.username);
+        formData.append('email', user.email);
         formData.append('password', user.password );
 
         return this.post( API_BASE_ADDRESS + "/auth/getAccessToken", false, formData )
@@ -91,7 +91,7 @@ export default class Api {
 
     static authUser( user ) {
         var formData = new FormData();
-        formData.append('username', user.username);
+        formData.append('email', user.email);
         formData.append('password', user.password )
 
         return this.post( API_BASE_ADDRESS + "/users/auth", true, formData )

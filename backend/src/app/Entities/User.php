@@ -23,9 +23,9 @@ class User extends Authenticatable implements Arrayable, JWTSubject
     protected $id;
 
     /**
-     * @ORM\Column(name="username", type="string",length=80, nullable=false)
+     * @ORM\Column(name="email", type="string",length=80, nullable=false)
      */
-    protected $username;
+    protected $email;
 
     /**
      * @ORM\Column(name="password", type="string",length=80, nullable=false)
@@ -93,21 +93,21 @@ class User extends Authenticatable implements Arrayable, JWTSubject
     }
 
     /**
-     * Get the value of username
+     * Get the value of email
      */ 
-    public function getUsername()
+    public function getEmail()
     {
-        return $this->username;
+        return $this->email;
     }
 
     /**
-     * Set the value of username
+     * Set the value of email
      *
      * @return  self
      */ 
-    public function setUsername($username)
+    public function setEmail($email)
     {
-        $this->username = $username;
+        $this->email = $email;
 
         return $this;
     }

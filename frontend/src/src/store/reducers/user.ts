@@ -9,7 +9,7 @@ const initial_state: UserState = {
   error: "",
   currentUser: {
     id : -1,
-    username : '',
+    email : '',
     firstName : '',
     lastName : ''
   },

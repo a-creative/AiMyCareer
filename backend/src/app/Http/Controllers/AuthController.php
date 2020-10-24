@@ -23,14 +23,14 @@ class AuthController extends Controller
         $request->validate([
             'firstName' => 'required|string|between:2,80',
             'lastName' => 'required|string|between:2,80',
-            'username' => 'required|string|max:80',
+            'email' => 'required|email|string|max:80',
             'password' => 'required|string|confirmed|min:8',
         ]);
 
-        $userExists = EntityManager::getRepository( User::class )->findBy( [ 'username' => $request->username ] );
+        $userExists = EntityManager::getRepository( User::class )->findBy( [ 'email' => $request->email ] );
         if (!$userExists) {
             $user = new User();
-            $user->setUsername($request->username);
+            $user->setEmail($request->email);
             $user->setPassword($request->password);
             $user->setFirstName($request->firstName);
             $user->setLastName($request->lastName);
@@ -43,8 +43,8 @@ class AuthController extends Controller
             ], 201);
         } else {
             return response()->json([
-                'error' => 'A user with the username "{{username}}" already exists',
-                'username' => $request->username,
+                'error' => 'A user with the email address "{{email}}" already exists',
+                'email' => $request->email,
             ], 422);
         }
     }
@@ -56,7 +56,7 @@ class AuthController extends Controller
      */
     public function getAccessToken()
     {
-        $credentials = request(['username', 'password']);
+        $credentials = request(['email', 'password']);
 
         if (!$token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);

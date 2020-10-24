@@ -17,7 +17,7 @@ class Register extends React.Component {
             user : {
                 firstName : '',
                 lastName : '',
-                username : '',
+                email : '',
                 password : '',
                 passwordConfirmation : ''
             }
@@ -60,7 +60,7 @@ class Register extends React.Component {
           <Col>
               <PageHeader title={t('Register new user')} />
               <Row className="mb-3">
-                  <Col sm="4">
+                  <Col sm="5">
                       <Form onSubmit={this.handleSubmit}>
                           <Form.Group controlId="firstNameField">
                               <Form.Label>{t('First name')}</Form.Label>
@@ -70,9 +70,9 @@ class Register extends React.Component {
                               <Form.Label>{t('Last name')}</Form.Label>
                               <Form.Control type="text" name="lastName" value={this.state.user.lastName} onChange={this.handleInputChange}></Form.Control>
                           </Form.Group>
-                          <Form.Group controlId="usernameField">
-                              <Form.Label>{t('Select username')}</Form.Label>
-                              <Form.Control type="text" name="username" value={this.state.user.username} onChange={this.handleInputChange}></Form.Control>
+                          <Form.Group controlId="emailField">
+                              <Form.Label>{t('Your e-mail address')}</Form.Label>
+                              <Form.Control type="email" name="email" value={this.state.user.email} onChange={this.handleInputChange}></Form.Control>
                           </Form.Group>
                           <Form.Group controlId="passwordField">
                               <Form.Label>{t('Select password')}</Form.Label>

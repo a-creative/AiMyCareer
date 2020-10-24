@@ -15,7 +15,7 @@ class Login extends React.Component{
 
         this.state = {
             user : {
-                username : '',
+                email : '',
                 password : ''
             }
         }
@@ -56,14 +56,14 @@ class Login extends React.Component{
             <Col>
                 <PageHeader title={t('Login')} />
                 <Row className="mb-3">
-                    <Col sm="4">
+                    <Col sm="5">
                         <Form onSubmit={this.handleSubmit}>
-                            <Form.Group controlId="usernameField">
-                                <Form.Label>{t('Username')}</Form.Label>
-                                <Form.Control type="text" name="username" value={this.state.user.username} onChange={this.handleInputChange}></Form.Control>
+                            <Form.Group controlId="emailField">
+                                <Form.Label>{t('Your e-mail address')}</Form.Label>
+                                <Form.Control type="email" name="email" value={this.state.user.email} onChange={this.handleInputChange}></Form.Control>
                             </Form.Group>
                             <Form.Group controlId="passwordField">
-                                <Form.Label>{t('Password')}</Form.Label>
+                                <Form.Label>{t('Your password')}</Form.Label>
                                 <Form.Control type="password" name="password" value={this.state.user.password} onChange={this.handleInputChange}></Form.Control>
                             </Form.Group>
                             <Form.Group>
