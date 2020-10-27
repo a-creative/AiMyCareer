@@ -2,7 +2,7 @@ import React from 'react';
 import { withTranslation } from 'react-i18next';
 import PageHeader from 'components/PageHeader';
 import { Row, Col, Button, Form, Alert } from 'react-bootstrap'
-import { Link, browserHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { loginUser } from "store/actionCreators";
 import { connect } from 'react-redux'
 import { formValidate } from 'helpers.js';
