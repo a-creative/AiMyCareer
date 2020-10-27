@@ -21,28 +21,22 @@ class Register extends React.Component {
                 password : '',
                 passwordConfirmation : ''
             }
-
             
         }
 
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-
     }
 
-    handleSubmit(e) {
+    handleSubmit = ( e ) => {
         e.preventDefault();
 
-        let history = this.props.history;
+        this.props.registerUser( this.state.user, ( user ) => {
 
-        this.props.registerUser( this.state.user, function( user ) {
-
-            history.push('/');
+            this.props.history.push('/');
  
         })
     }
 
-    handleInputChange(e){
+    handleInputChange = (e) => {
         e.preventDefault();
         const target = e.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;

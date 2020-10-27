@@ -22,12 +22,9 @@ class Login extends React.Component{
             formMessage : '',
         }
 
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-
     }
 
-    handleSubmit(e) {
+    handleSubmit = (e) => {
 
         e.preventDefault();
 
@@ -46,7 +43,7 @@ class Login extends React.Component{
         })
     }
 
-    handleInputChange(e){
+    handleInputChange = (e) => {
         e.preventDefault();
         const target = e.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;

@@ -24,7 +24,7 @@ export const formValidate = function( {
 
         Object.keys(errors).forEach(function( field_name ) {
             
-            if ( typeof errors[field_name] !== 'undefined' ) {
+            if ( errors[field_name] ) {
                 const { t } = component.props;
                 let state = { ...component.state };
                 state[ field_name + 'Invalid' ] = true;

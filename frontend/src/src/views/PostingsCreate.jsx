@@ -12,7 +12,7 @@ class PostingsCreate extends React.Component {
 
     super(props);
 
-    let pageTitleT = ( typeof this.props.match === 'undefined' ? 'Create job posting' : 'Edit job posting' )
+    let pageTitleT = ( this.props.match ? 'Edit job posting' : 'Create job posting' )
     let initPosting = {
       ...{
         
@@ -28,9 +28,6 @@ class PostingsCreate extends React.Component {
     this.state.posting.deadlineDate = formatNormalizedDate(initPosting.deadlineDate, 'YYYY-MM-DD');
     this.state.posting.postedDate = formatNormalizedDate(initPosting.postedDate, 'YYYY-MM-DD');
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-
   }
 
   componentDidMount() {
@@ -41,7 +38,7 @@ class PostingsCreate extends React.Component {
 
   }
 
-  handleInputChange(event) {
+  handleInputChange = ( event ) => {
 
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -56,20 +53,20 @@ class PostingsCreate extends React.Component {
 
   }
 
-  handleSubmit(event) {
+  handleSubmit = ( event ) => {
     event.preventDefault();
-    const history = this.props.history;
-    if ( typeof this.props.match.params.id === 'undefined' ) {
 
-      this.props.insertPosting( this.state.posting, function() {
-        history.push('/'); 
+    if ( this.props.match.params.id ) {
+
+      this.props.updatePosting( this.state.posting, () => {
+        this.props.history.push('/');
       });
 
     } else {
       
-      this.props.updatePosting( this.state.posting, function() {
-        history.push('/');
-      })
+      this.props.insertPosting( this.state.posting, () => {
+        this.props.history.push('/'); 
+      });
 
     }
 
@@ -186,16 +183,16 @@ class PostingsCreate extends React.Component {
 
 function mapStateToProps(rootReducer, ownProps) {
 
-  if ( typeof ownProps.match === 'undefined' ) {
+  if ( ownProps.match ) {
+    return {
+      obj: selectPosting(rootReducer, +ownProps.match.params.id )
+    };
+  } else {
     return {
       obj: {
         posting : {}
       }
     }
-  } else {
-    return {
-      obj: selectPosting(rootReducer, +ownProps.match.params.id )
-    };
   }  
 }
 

@@ -7,16 +7,7 @@ import { deletePosting } from "store/actionCreators";
 
 class PostingsListItem extends React.Component {
 
-  constructor(props) {
-
-    super(props);
-
-    this.handleClickDelete = this.handleClickDelete.bind(this);
-    this.handleClickArchive = this.handleClickArchive.bind(this);
-
-  }
-
-  handleClickDelete( e ) {
+  handleClickDelete = ( e ) => {
 
     const { t } = this.props;
 
@@ -28,7 +19,7 @@ class PostingsListItem extends React.Component {
     return false;
   }
 
-  handleClickArchive( e ) {
+  handleClickArchive = ( e ) => {
     e.preventDefault();
 
     alert('Archive not yet implemented');
