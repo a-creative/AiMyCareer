@@ -1,17 +1,21 @@
 const API_BASE_ADDRESS = 'http://localhost:5002/api';
 export default class Api {
 
-    static getOptions( baseOptions, includeCredentials, formData ) {
-        if ( typeof formData !== 'undefined' ) {
+    static getTokenFrom( loggedIn ) {
+        return loggedIn.token.key;
+    }
+
+    static getOptions( baseOptions = {}, formData, token ) {
+
+
+        baseOptions.headers = {};
+
+        if ( formData ) {
             baseOptions.body = formData;
         }
 
-        if ( typeof includeCredentials === 'undefined' ) {
-            includeCredentials = true;
-        }
-
-        if ( includeCredentials ) {
-            baseOptions.credentials = 'include';
+        if ( token ) {
+            baseOptions.headers.Authorization = 'Bearer ' + token;
         }
 
         baseOptions.headers = {
@@ -21,22 +25,22 @@ export default class Api {
         return baseOptions;
     }
 
-    static put( uri, includeCredentials, formData ) {
+    static put( uri, formData ) {
         formData.append('_method','PUT');
-        return this.post( uri, includeCredentials,formData );
+        return this.post( uri, formData );
 
     }
 
-    static post(uri, includeCredentials, formData ) {
-        return fetch( uri, this.getOptions({ method : 'post' }, includeCredentials, formData ) );
+    static post( uri, formData, token ) {
+        return fetch( uri, this.getOptions({ method : 'post' }, formData, token ) );
     }
 
-    static delete(uri, includeCredentials){
-        return fetch( uri, this.getOptions({ method : 'delete' }, includeCredentials ) );
+    static delete(uri){
+        return fetch( uri, this.getOptions({ method : 'delete' } ) );
     }
 
-    static get(uri, includeCredentials){
-        return fetch( uri, this.getOptions({ method : 'get' }, includeCredentials ) );
+    static get(uri){
+        return fetch( uri, this.getOptions({ method : 'get' } ) );
     }
 
     static appendFormData( formData, key, value ) {
@@ -66,35 +70,31 @@ export default class Api {
     }
 
     static getPostings() {
-        return this.get( API_BASE_ADDRESS + "/job-postings", false)
+        return this.get( API_BASE_ADDRESS + "/job-postings")
     }
 
     static insertPosting( posting ) {
-        return this.post( API_BASE_ADDRESS + "/job-postings", false, this.assignPostingToFormData( posting ) )
+        return this.post( API_BASE_ADDRESS + "/job-postings", this.assignPostingToFormData( posting ) )
     }
 
     static updatePosting( posting ) {
-        return this.put( API_BASE_ADDRESS + "/job-postings/" + posting.id, false, this.assignPostingToFormData( posting ) )
+        return this.put( API_BASE_ADDRESS + "/job-postings/" + posting.id,this.assignPostingToFormData( posting ) )
     }
 
     static deletePosting( posting ) {
-        return this.delete( API_BASE_ADDRESS + "/job-postings/" + posting.id, false );
+        return this.delete( API_BASE_ADDRESS + "/job-postings/" + posting.id );
     }
 
-    static getAccessToken( user ) {
+    static getLogin( user ) {
         var formData = new FormData();
         formData.append('email', user.email);
         formData.append('password', user.password );
 
-        return this.post( API_BASE_ADDRESS + "/auth/getAccessToken", false, formData )
+        return this.post( API_BASE_ADDRESS + "/auth/login", formData )
     }
 
-    static authUser( user ) {
-        var formData = new FormData();
-        formData.append('email', user.email);
-        formData.append('password', user.password )
-
-        return this.post( API_BASE_ADDRESS + "/users/auth", true, formData )
+    static logout( loggedIn ) {
+        return this.post( API_BASE_ADDRESS + "/auth/logout", null, this.getTokenFrom( loggedIn ) )
     }
 
     static registerUser( user ) {
@@ -104,7 +104,7 @@ export default class Api {
         }
         formData.append('password_confirmation', user.passwordConfirmation );
 
-        return this.post( API_BASE_ADDRESS + "/auth/register", false, formData )
+        return this.post( API_BASE_ADDRESS + "/auth/register", formData )
     }
 
     

@@ -19,7 +19,8 @@ i18n
       loadPath: '/locales/{{lng}}/{{ns}}.json',
     },
     fallbackLng: 'en',
-    keySeparator: false,
+    keySeparator: '>',
+    nsSeparator: '|',
 
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default

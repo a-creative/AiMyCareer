@@ -2,8 +2,8 @@ import React from 'react';
 import { withTranslation } from 'react-i18next';
 import PageHeader from 'components/PageHeader';
 import { Row, Col, Button, Form, Alert } from 'react-bootstrap'
-import { Link } from "react-router-dom";
-import { login } from "store/actionCreators";
+import { Link, browserHistory } from "react-router-dom";
+import { loginUser } from "store/actionCreators";
 import { connect } from 'react-redux'
 import { formValidate } from 'helpers.js';
 
@@ -33,14 +33,13 @@ class Login extends React.Component{
 
         this.setState({ 'validated' : true });
 
-        const that = this;
-        this.props.login( this.state.user, function( data ) {
+        this.props.loginUser( this.state.user,( userInfo ) => {
 
             formValidate( { 
-                component : that, 
-                serverData: data, 
-                onSuccess : function() {
-                    that.props.history.push('/');
+                component : this, 
+                serverData: userInfo, 
+                onSuccess : () => {
+                    this.props.history.push('/');
                 }
             });
  
@@ -107,7 +106,7 @@ class Login extends React.Component{
 
   
 const mapDispatchToProps = {
-   login
+    loginUser
 };
 
 export default connect(

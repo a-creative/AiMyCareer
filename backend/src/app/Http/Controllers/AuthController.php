@@ -15,7 +15,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['getAccessToken','register']]);
+        $this->middleware('auth:api', ['except' => ['login','register']]);
     }
 
     public function register( Request $request) {
@@ -54,7 +54,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getAccessToken( Request $request)
+    public function login( Request $request)
     {
         $request->validate([
             'email' => 'required|email|between:2,80',
@@ -68,17 +68,8 @@ class AuthController extends Controller
                 'errors' => [ 'form' =>[ 'The user does not exist. Please make sure you typed the right information.'] ] ], 401);
         }
 
-        return $this->respondWithToken($token);
-    }
-
-    /**
-     * Get the authenticated User.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function me()
-    {
-        return response()->json(auth()->user());
+        return $this->respondWithUserInfo($token);
+        
     }
 
     /**
@@ -100,7 +91,7 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(auth()->refresh());
+        return $this->respondWithUserInfo(auth()->refresh());
     }
 
     /**
@@ -110,12 +101,16 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function respondWithToken($token)
+    protected function respondWithUserInfo($token)
     {
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,
-        ]);
+        $user = auth()->user()->toArray();
+
+        $user[ 'token'  ] = [
+            'key' => $token,
+            'type' => 'bearer',
+            'expiresIn' => auth()->factory()->getTTL() * 60
+        ];
+
+        return response()->json($user); 
     }
 }

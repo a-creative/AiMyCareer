@@ -14,15 +14,20 @@ interface IPosting {
 }
 
 interface IUser {
-    id : number,
     email : string,
     firstName : string,
     lastName : string
+    token : {
+        key : string,
+        type: string,
+        expiresIn : number
+    }
 }
 
 type UserState = {
     loading : boolean,
-    error: string
+    error: string,
+    loggedIn: IUser | null
 }
 
 type PostingState = {

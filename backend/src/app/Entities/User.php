@@ -49,17 +49,13 @@ class User extends Authenticatable implements Arrayable, JWTSubject
 
 
     public function toArray() {
-        $output = [];
+        $user = [    
+            'email' => $this->getEmail(),
+            'firstName' => $this->getFirstName(),
+            'lastName' => $this->getLastName(),
+        ];
 
-        foreach (get_class_vars(get_class($this)) as $propName => $propDefaultValue) {
-            if (in_array($propName, ['password'])) {
-                continue;
-            }
-
-            $output[$propName] = $this->{$propName};
-        }
-
-        return $output;
+        return $user;
     }
 
     // Rest omitted for brevity
@@ -130,10 +126,6 @@ class User extends Authenticatable implements Arrayable, JWTSubject
         $this->password = Hash::make($password);
 
         return $this;
-    }
-
-    public function auth( $password ) {
-        return Hash::check( $password, $this->password );
     }
  
     /**
