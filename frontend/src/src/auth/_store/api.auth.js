@@ -1,4 +1,4 @@
-import Api from '_shared/api'
+import Api from '_shared/Api'
 
 export default class ApiAuth {
 
