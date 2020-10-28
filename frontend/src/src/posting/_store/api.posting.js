@@ -25,16 +25,16 @@ export default class ApiPosting {
         return Api.get("/auth/job-postings", undefined, Api.getTokenFrom( loggedIn ))
     }
 
-    static insertPosting( posting ) {
-        return Api.post("/job-postings", this.assignPostingToFormData( posting ) )
+    static insertPosting( posting, loggedIn ) {
+        return Api.post("/auth/job-postings", this.assignPostingToFormData( posting ), Api.getTokenFrom( loggedIn ) )
     }
 
-    static updatePosting( posting ) {
-        return Api.put("/job-postings/" + posting.id,this.assignPostingToFormData( posting ) )
+    static updatePosting( posting, loggedIn ) {
+        return Api.put("/auth/job-postings/" + posting.id,this.assignPostingToFormData( posting ), Api.getTokenFrom( loggedIn )  )
     }
 
-    static deletePosting( posting ) {
-        return Api.delete("/job-postings/" + posting.id );
+    static deletePosting( posting, loggedIn ) {
+        return Api.delete("/auth/job-postings/" + posting.id, Api.getTokenFrom( loggedIn ) );
     }
     
 }

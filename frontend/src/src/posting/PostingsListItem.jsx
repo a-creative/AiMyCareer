@@ -13,7 +13,7 @@ class PostingsListItem extends React.Component {
 
     e.preventDefault();
     if (window.confirm( t('Do you really want to delete this job posting?'))) {
-      this.props.deletePosting( this.props );
+      this.props.deletePosting( this.props.posting, this.props.loggedIn );
     }
 
     return false;
@@ -56,7 +56,10 @@ function selectPosting( rootReducer, postingId ) {
 }
 
 function mapStateToProps(rootReducer, ownProps) {
-  return { ...selectPosting(rootReducer, +ownProps.id ) };
+  return { 
+    loggedIn: rootReducer.auth.loggedIn, 
+    posting :selectPosting(rootReducer, +ownProps.id ) 
+  };
 }
 
 

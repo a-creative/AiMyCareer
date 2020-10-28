@@ -69,6 +69,7 @@ class JobPostingController extends Controller
 
     public function insert(Request $request ) {
         $jobPosting = new JobPosting();
+        $jobPosting->setOwnerUser( auth()->user() );
         $jobPosting = static::assignFromRequest( $request, $jobPosting, true );
         EntityManager::persist( $jobPosting);
         EntityManager::flush();
@@ -80,19 +81,37 @@ class JobPostingController extends Controller
 
     public function update(Request $request, int $id) {
         $jobPosting = EntityManager::find( JobPosting::class, $id );
-        $jobPosting = static::assignFromRequest( $request, $jobPosting );
-        EntityManager::persist( $jobPosting );
-        EntityManager::flush();
 
-        return response()->json([
-            "posting" => $jobPosting->toArray()
-        ]);
+        /** @var User $authUser */
+        $authUser = auth()->user();
+
+        /** @var JobPosting $jobPosting */
+        if ( $jobPosting->getOwnerUser()->getId() === $authUser->getId() ) {
+
+            $jobPosting = static::assignFromRequest( $request, $jobPosting );
+            EntityManager::persist( $jobPosting );
+            EntityManager::flush();
+
+            return response()->json([
+                "posting" => $jobPosting->toArray()
+            ]);
+
+        }
+        
     }
 
     public function delete(Request $request, int $id) {
+
+        /** @var User $authUser */
+        $authUser = auth()->user();
+
+        /** @var JobPosting $jobPosting */
         $jobPosting = EntityManager::find( JobPosting::class, $id );
-        EntityManager::remove( $jobPosting );
-        EntityManager::flush();
-        return $id;
+
+        if ($jobPosting->getOwnerUser()->getId() === $authUser->getId()) {
+            EntityManager::remove($jobPosting);
+            EntityManager::flush();
+            return $id;
+        }
     }
 }

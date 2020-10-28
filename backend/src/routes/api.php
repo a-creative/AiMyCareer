@@ -28,10 +28,9 @@ Route::group([
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::post('me', [AuthController::class, 'me']);
     Route::get('job-postings', [ JobPostingController::class, 'index'] );
+    Route::post('/job-postings', [ JobPostingController::class, 'insert'] );
+    Route::put('/job-postings/{id}', [ JobPostingController::class, 'update'] );
+    Route::delete('/job-postings/{id}', [ JobPostingController::class, 'delete'] );
 });
 
-Route::post('/job-postings', [ JobPostingController::class, 'insert'] );
-Route::put('/job-postings/{id}', [ JobPostingController::class, 'update'] );
-Route::delete('/job-postings/{id}', [ JobPostingController::class, 'delete'] );
 
-Route::delete('/users/{id}', [ UserController::class, 'delete'] );

@@ -22,9 +22,9 @@ export default class Api {
         return baseOptions;
     }
 
-    static put( uri, formData ) {
+    static put( uri, formData, token ) {
         formData.append('_method','PUT');
-        return this.post( uri, formData );
+        return this.post( uri, formData, token );
 
     }
 
@@ -32,8 +32,8 @@ export default class Api {
         return fetch( process.env.REACT_APP_BACKEND_API_URL + uri, this.getOptions({ method : 'post' }, formData, token ) );
     }
 
-    static delete(uri){
-        return fetch( process.env.REACT_APP_BACKEND_API_URL + uri, this.getOptions({ method : 'delete' } ) );
+    static delete(uri, token){
+        return fetch( process.env.REACT_APP_BACKEND_API_URL + uri, this.getOptions({ method : 'delete' }, undefined, token ) );
     }
 
     static get(uri,formData, token){

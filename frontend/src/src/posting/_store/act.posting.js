@@ -35,9 +35,9 @@ export const fetchPostings = ( { loggedIn } = {} ) => dispatch => {
         })
  };
  
- export const insertPosting = ( posting, callback ) => dispatch => {
+ export const insertPosting = ( posting, loggedIn, callback ) => dispatch => {
      dispatch({ type: INSERT_POSTING_LOADING });
-     Api.insertPosting( posting )
+     Api.insertPosting( posting, loggedIn )
          .then(response => response.json())
          .then(
              data => {
@@ -48,11 +48,11 @@ export const fetchPostings = ( { loggedIn } = {} ) => dispatch => {
          )
  };
  
- export const updatePosting = ( posting, callback ) => dispatch => {
+ export const updatePosting = ( posting, loggedIn, callback ) => dispatch => {
          
      dispatch({ type: UPDATE_POSTING_LOADING });
  
-     Api.updatePosting( posting )
+     Api.updatePosting( posting, loggedIn )
          .then(response => response.json())
          .then(
              data => {
@@ -63,11 +63,11 @@ export const fetchPostings = ( { loggedIn } = {} ) => dispatch => {
          )
  }
  
- export const deletePosting = ( posting ) => dispatch => {
+ export const deletePosting = ( posting, loggedIn ) => dispatch => {
          
      dispatch({ type: DELETE_POSTING_LOADING });
  
-     Api.deletePosting( posting )
+     Api.deletePosting( posting, loggedIn )
          .then(response => response.json())
          .then(
              data => dispatch({ type: DELETE_POSTING_SUCCESS, data }),

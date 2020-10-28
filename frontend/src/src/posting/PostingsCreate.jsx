@@ -13,10 +13,8 @@ class PostingsCreate extends React.Component {
     super(props);
 
     let initPosting = {
-      ...{
-        
-      },
-      ...props.obj.posting
+      ...{},
+      ...props.posting
     }
 
     this.state = {
@@ -56,13 +54,13 @@ class PostingsCreate extends React.Component {
 
     if ( this.props.match.params.id ) {
 
-      this.props.updatePosting( this.state.posting, () => {
+      this.props.updatePosting( this.state.posting, this.props.loggedIn, () => {
         this.props.history.push('/');
       });
 
     } else {
       
-      this.props.insertPosting( this.state.posting, () => {
+      this.props.insertPosting( this.state.posting, this.props.loggedIn, () => {
         this.props.history.push('/'); 
       });
 
@@ -178,36 +176,34 @@ class PostingsCreate extends React.Component {
 
 }
 
+function selectPosting( rootReducer, postingId ) {
+
+  let postings = rootReducer.posting.postings;
+  let posting = postings.filter( function( posting ) { return posting.id === postingId })[0];
+
+  return posting;
+}
+
+
 function mapStateToProps(rootReducer, ownProps) {
 
+  let r = {
+      loggedIn : rootReducer.auth.loggedIn
+  }
+
   if ( ownProps.match ) {
-    return {
-      obj: selectPosting(rootReducer, +ownProps.match.params.id )
-    };
+    r.posting = selectPosting(rootReducer, +ownProps.match.params.id )
   } else {
-    return {
-      obj: {
-        posting : {}
-      }
-    }
+    r.posting = {}
   }  
+
+  return r;
 }
 
 const mapDispatchToProps = {
   updatePosting,
   insertPosting
 };
-
-function selectPosting( rootReducer, postingId ) {
-
-  let postings = rootReducer.posting.postings;
-  let posting = postings.filter( function( posting ) { return posting.id === postingId })[0];
-
-  return {
-    posting: posting
-  }
-}
-
 
 export default connect(
   mapStateToProps,
