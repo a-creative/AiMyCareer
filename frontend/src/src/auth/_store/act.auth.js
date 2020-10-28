@@ -20,7 +20,7 @@ export const registerUser = ( user, callback) => dispatch => {
         .then(
             data => {
                 dispatch({ type: REGISTER_USER_SUCCESS, data })
-                callback();
+                callback( data );
             },
             error => dispatch({ type: REGISTER_USER_ERROR, error: error.message || 'Unexpected Error!!!' })
         )

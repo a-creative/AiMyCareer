@@ -25,6 +25,7 @@ class AuthController extends Controller
             'lastName' => 'required|string|between:2,80',
             'email' => 'required|email|string|max:80',
             'password' => 'required|string|confirmed|min:8',
+            'passwordConfirmation' => 'required|string|min:8',
         ]);
 
         $userExists = EntityManager::getRepository( User::class )->findBy( [ 'email' => $request->email ] );
