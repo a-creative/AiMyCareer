@@ -68,8 +68,8 @@ class App extends React.Component {
               </Switch>
               </Col>
             </Row>
-            <PageFooter />
           </Container>
+          <PageFooter />
         </div>
       </BrowserRouter>
     );

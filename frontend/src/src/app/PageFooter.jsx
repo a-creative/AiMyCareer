@@ -2,7 +2,7 @@ import React from 'react';
 import { logout } from "auth/_store/act.auth";
 import { connect } from 'react-redux'
 import { withTranslation } from 'react-i18next';
-import { Row, Col, Nav, Navbar } from '_shared/react-bootstrap'
+import { Row, Col, Nav, Navbar, Container } from '_shared/react-bootstrap'
 import { withRouter  } from "react-router-dom";
 
 
@@ -22,7 +22,7 @@ class PageFooter extends React.Component {
 
         const { t } = this.props;
         
-        return <Row>
+        return <Container className="fixed-bottom"><Row>
         <Col>
             {
             this.props.loggedIn &&
@@ -38,7 +38,7 @@ class PageFooter extends React.Component {
             </Navbar>
             }
         </Col>
-        </Row>;
+        </Row></Container>;
 
     }
 
