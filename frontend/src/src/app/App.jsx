@@ -26,6 +26,7 @@ class App extends React.Component {
   render() {
 
     const { t } = this.props;
+    console.log(this.props.loading);
 
     return (
       <BrowserRouter>
@@ -78,8 +79,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  loadingPostings: state.posting.loading,
-  loadingUser: state.auth.loading,
+  loading: ( state.posting.loading || state.auth.loading ),
   loggedIn: state.auth.loggedIn,
 });
 
