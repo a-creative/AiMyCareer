@@ -27,9 +27,9 @@ Route::group([
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::post('me', [AuthController::class, 'me']);
+    Route::get('job-postings', [ JobPostingController::class, 'index'] );
 });
 
-Route::get('/job-postings', [ JobPostingController::class, 'index'] );
 Route::post('/job-postings', [ JobPostingController::class, 'insert'] );
 Route::put('/job-postings/{id}', [ JobPostingController::class, 'update'] );
 Route::delete('/job-postings/{id}', [ JobPostingController::class, 'delete'] );

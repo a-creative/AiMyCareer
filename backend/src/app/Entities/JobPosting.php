@@ -4,6 +4,7 @@ namespace App\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 use Illuminate\Contracts\Support\Arrayable;
+use App\Entities\User;
 
 /**
  * @ORM\Entity
@@ -87,6 +88,13 @@ class JobPosting implements Arrayable
      * @ORM\Column(name="content_raw", type="text", nullable=true)
      */
     protected $contentRaw;
+
+    /**
+     * Many job postings have one owner. This is the owning side.
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="jobPostings")
+     * @ORM\JoinColumn(name="owner_user_id", referencedColumnName="id")
+     */
+    protected $ownerUser;
 
     public function getJobTitle()
     {
@@ -372,5 +380,25 @@ class JobPosting implements Arrayable
 
         return $output;
 
+    }
+
+    /**
+     * Get many job postings have one owner. This is the owning side.
+     */ 
+    public function getOwnerUser()
+    {
+        return $this->ownerUser;
+    }
+
+    /**
+     * Set many job postings have one owner. This is the owning side.
+     *
+     * @return  self
+     */ 
+    public function setOwnerUser($ownerUser)
+    {
+        $this->ownerUser = $ownerUser;
+
+        return $this;
     }
 }

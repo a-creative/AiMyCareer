@@ -7,6 +7,8 @@ use Illuminate\Contracts\Support\Arrayable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
+use Doctrine\Common\Collections\ArrayCollection;
+use JobPosting;
 
 /**
  * @ORM\Entity
@@ -14,6 +16,10 @@ use Illuminate\Support\Facades\Hash;
  */
 class User extends Authenticatable implements Arrayable, JWTSubject
 {
+
+    public function __construct() {
+        $this->jobPostings = new ArrayCollection();
+    }
 
     /**
      * @ORM\Id
@@ -47,6 +53,11 @@ class User extends Authenticatable implements Arrayable, JWTSubject
      */
     protected $rememberToken;
 
+    /**
+     * One user has many job posting. This is the inverse side.
+     * @ORM\OneToMany(targetEntity="JobPosting", mappedBy="ownerUser")
+     */
+    protected $jobPostings;
 
     public function toArray() {
         $user = [    
@@ -164,6 +175,26 @@ class User extends Authenticatable implements Arrayable, JWTSubject
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get one user has many job posting. This is the inverse side.
+     */ 
+    public function getJobPostings()
+    {
+        return $this->jobPostings;
+    }
+
+    /**
+     * Set one user has many job posting. This is the inverse side.
+     *
+     * @return  self
+     */ 
+    public function setJobPostings($jobPostings)
+    {
+        $this->jobPostings = $jobPostings;
 
         return $this;
     }

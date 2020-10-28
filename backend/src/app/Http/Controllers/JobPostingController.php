@@ -3,16 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Entities\JobPosting;
+use App\Entities\User;
 use LaravelDoctrine\ORM\Facades\EntityManager;
 use Illuminate\Http\Request;
 
 class JobPostingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => []]);
+    }
+
     public function index()
     {
         $result = EntityManager::createQueryBuilder()
             ->select('jp')
             ->from(JobPosting::class, 'jp')
+            ->where('jp.ownerUser = :user')
+            ->setParameter('user', auth()->user())
             ->getQuery()
             ->getResult(\Doctrine\ORM\AbstractQuery::HYDRATE_ARRAY)
         ;

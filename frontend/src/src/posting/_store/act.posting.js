@@ -14,14 +14,25 @@ import {
     DELETE_POSTING_ERROR
 } from "./con.posting"
 
-export const fetchPostings = () => dispatch => {
+const handleErrors = (response) => {
+    if (!response.ok) {
+        throw Error(response.statusText);
+    }
+    return response;
+}
+
+export const fetchPostings = ( { loggedIn } = {} ) => dispatch => {
     dispatch({ type: LOAD_POSTINGS_LOADING });
-    Api.getPostings()
+    Api.getPostings( loggedIn )
+        .then(handleErrors)
         .then(response => response.json())
         .then(
-            data => dispatch({ type: LOAD_POSTINGS_SUCCESS, data }),
-            error => dispatch({ type: LOAD_POSTINGS_ERROR, error: error.message || 'Unexpected Error!!!' })
-        )
+            data => {
+                dispatch({ type: LOAD_POSTINGS_SUCCESS, data })
+            }
+        ).catch( error => {
+            dispatch({ type: LOAD_POSTINGS_ERROR, error: error || 'Unexpected Error!!!' })
+        })
  };
  
  export const insertPosting = ( posting, callback ) => dispatch => {

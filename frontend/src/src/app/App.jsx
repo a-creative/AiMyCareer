@@ -14,15 +14,10 @@ import Page from './Page'
 import PageFooter from './PageFooter';
 import { BrowserRouter, Redirect, Switch, Route, Link  } from "react-router-dom";
 import { withTranslation } from 'react-i18next';
-import { fetchPostings } from "posting/_store/act.posting";
 import { connect } from 'react-redux'
 import 'app/App.css';
 
 class App extends React.Component {
-
-  componentDidMount() {
-    this.props.fetchPostings();
-  }
 
   render() {
 
@@ -42,7 +37,9 @@ class App extends React.Component {
                   <Navbar.Toggle aria-controls="basic-navbar-nav" />
                   <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                      <Nav.Link to="/postings">{t('Job postings')}</Nav.Link>
+                      {this.props.loggedIn &&
+                        <Nav.Link to="/postings">{t('Job postings')}</Nav.Link>
+                      } 
                     </Nav>
                     <Nav>
                       <Spinner show={this.props.loading} />{' '}
@@ -85,10 +82,9 @@ const mapStateToProps = state => ({
 
 
 const mapDispatchToProps = {
-  fetchPostings
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(withTranslation()(App));

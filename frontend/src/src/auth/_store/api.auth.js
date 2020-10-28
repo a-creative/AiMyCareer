@@ -1,10 +1,6 @@
 import Api from '_shared/Api'
 
 export default class ApiAuth {
-
-    static getTokenFrom( loggedIn ) {
-        return loggedIn.token.key;
-    }
     
     static getLogin( user ) {
         var formData = new FormData();
@@ -15,7 +11,7 @@ export default class ApiAuth {
     }
 
     static logout( loggedIn ) {
-        return Api.post( "/auth/logout", null, this.getTokenFrom( loggedIn ) )
+        return Api.post( "/auth/logout", null, Api.getTokenFrom( loggedIn ) )
     }
 
     static registerUser( user ) {

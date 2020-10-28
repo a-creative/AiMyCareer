@@ -7,6 +7,14 @@ import { withTranslation } from 'react-i18next';
 
 class PostingsList extends React.Component {
 
+  componentDidMount() {
+
+    this.props.fetchPostings( {
+      loggedIn: this.props.loggedIn
+    });
+
+  }
+
   render() {
 
     const { t } = this.props;
@@ -44,7 +52,8 @@ class PostingsList extends React.Component {
 const mapStateToProps = state => ({
   postings: state.posting.postings,
   loading: state.posting.loading,
-  error: state.posting.error
+  error: state.posting.error,
+  loggedIn : state.auth.loggedIn,
 });
 
 const mapDispatchToProps = {

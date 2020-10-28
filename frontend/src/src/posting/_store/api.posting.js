@@ -21,8 +21,8 @@ export default class ApiPosting {
 
     }
 
-    static getPostings() {
-        return Api.get("/job-postings")
+    static getPostings( loggedIn ) {
+        return Api.get("/auth/job-postings", undefined, Api.getTokenFrom( loggedIn ))
     }
 
     static insertPosting( posting ) {

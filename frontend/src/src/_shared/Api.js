@@ -1,9 +1,15 @@
 export default class Api {
 
+    static getTokenFrom( loggedIn ) {
+        return loggedIn.token.key;
+    }
+    
     static getOptions( baseOptions = {}, formData, token ) {
 
 
-        baseOptions.headers = {};
+        baseOptions.headers = {
+            'Accept': 'application/json'
+        };
 
         if ( formData ) {
             baseOptions.body = formData;
@@ -12,10 +18,6 @@ export default class Api {
         if ( token ) {
             baseOptions.headers.Authorization = 'Bearer ' + token;
         }
-
-        baseOptions.headers = {
-            'Accept': 'application/json',
-        };
 
         return baseOptions;
     }
@@ -34,8 +36,8 @@ export default class Api {
         return fetch( process.env.REACT_APP_BACKEND_API_URL + uri, this.getOptions({ method : 'delete' } ) );
     }
 
-    static get(uri){
-        return fetch( process.env.REACT_APP_BACKEND_API_URL + uri, this.getOptions({ method : 'get' } ) );
+    static get(uri,formData, token){
+        return fetch( process.env.REACT_APP_BACKEND_API_URL + uri, this.getOptions({ method : 'get' }, formData, token ) );
     }
 
     static appendFormData( formData, key, value ) {
