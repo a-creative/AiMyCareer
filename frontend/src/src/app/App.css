@@ -9,3 +9,7 @@ div.row + div.row {
     right:0;
     padding:20px;
 }
+
+.App .container:nth-child(1) {
+    padding-bottom:100px;
+}

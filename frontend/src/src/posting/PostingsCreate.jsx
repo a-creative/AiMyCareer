@@ -1,10 +1,10 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next';
-import PageHeader from 'app/PageHeader';
 import { Row, Col, Form, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { formatNormalizedDate } from '_shared/helpers.js';
 import { insertPosting, updatePosting } from "posting/_store/act.posting";
+import { withRouter  } from "react-router-dom";
 
 class PostingsCreate extends React.Component {
 
@@ -12,7 +12,6 @@ class PostingsCreate extends React.Component {
 
     super(props);
 
-    let pageTitleT = ( this.props.match ? 'Edit job posting' : 'Create job posting' )
     let initPosting = {
       ...{
         
@@ -21,8 +20,7 @@ class PostingsCreate extends React.Component {
     }
 
     this.state = {
-      posting : initPosting,
-      ...{ pageTitleT }
+      posting : initPosting
     }
 
     this.state.posting.deadlineDate = formatNormalizedDate(initPosting.deadlineDate, 'YYYY-MM-DD');
@@ -79,7 +77,6 @@ class PostingsCreate extends React.Component {
 
     return <Row>
     <Col>
-      <PageHeader title={t(this.state.pageTitleT)} />
       <Form onSubmit={this.handleSubmit}>
       <Form.Row>
         <Col>
@@ -215,4 +212,4 @@ function selectPosting( rootReducer, postingId ) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withTranslation()(PostingsCreate));
+)(withTranslation()(withRouter(PostingsCreate)));

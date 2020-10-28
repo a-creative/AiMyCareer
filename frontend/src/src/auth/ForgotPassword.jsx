@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import PageHeader from 'app/PageHeader';
 import { Row, Col } from 'react-bootstrap'
+import { withRouter  } from "react-router-dom";
 
 function ForgotPassword(){
 
@@ -9,7 +9,6 @@ function ForgotPassword(){
 
   return <Row>
     <Col>
-        <PageHeader title={t('Forgot password')} />
         <Row className="mb-3">
             <Col sm="3">
                 
@@ -19,4 +18,4 @@ function ForgotPassword(){
 </Row>;
 }
 
-export default ForgotPassword;
+export default withRouter(ForgotPassword);

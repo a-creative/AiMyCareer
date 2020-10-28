@@ -1,11 +1,11 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next';
-import PageHeader from 'app/PageHeader';
 import { Row, Col, Button, Form } from 'react-bootstrap'
 import { Link } from "react-router-dom";
 import { registerUser } from "auth/_store/act.auth";
 import { connect } from 'react-redux'
 import { validateFormByLaravelResponse } from '_shared/helpers.js';
+import { withRouter  } from "react-router-dom";
 
 class Register extends React.Component {
 
@@ -57,23 +57,22 @@ class Register extends React.Component {
 
         return <Row>
           <Col>
-              <PageHeader title={t('Register new user')} />
               <Row className="mb-3">
                   <Col sm="5">
                       <Form onSubmit={this.handleSubmit} noValidate validated={this.state.validated} >
                           <Form.Group controlId="firstNameField">
                               <Form.Label>{t('First name')}</Form.Label>
-                              <Form.Control required isInvalid={this.state.errors.firstName} type="text" name="firstName" autocomplete="given-name" value={this.state.user.firstName} onChange={this.handleInputChange}></Form.Control>
+                              <Form.Control required isInvalid={this.state.errors.firstName} type="text" name="firstName" autoComplete="given-name" value={this.state.user.firstName} onChange={this.handleInputChange}></Form.Control>
                               <Form.Control.Feedback type="invalid">{this.state.errors.firstName}</Form.Control.Feedback>
                           </Form.Group>
                           <Form.Group controlId="lastNameField">
                               <Form.Label>{t('Last name')}</Form.Label>
-                              <Form.Control isInvalid={this.state.errors.lastName} required type="text" name="lastName" autocomplete="family-name" value={this.state.user.lastName} onChange={this.handleInputChange}></Form.Control>
+                              <Form.Control isInvalid={this.state.errors.lastName} required type="text" name="lastName" autoComplete="family-name" value={this.state.user.lastName} onChange={this.handleInputChange}></Form.Control>
                               <Form.Control.Feedback type="invalid">{this.state.errors.lastName}</Form.Control.Feedback>
                           </Form.Group>
                           <Form.Group controlId="emailField">
                               <Form.Label>{t('Your e-mail address')}</Form.Label>
-                              <Form.Control required isInvalid={this.state.errors.email} type="email" name="email" autocomplete="email" value={this.state.user.email} onChange={this.handleInputChange}></Form.Control>
+                              <Form.Control required isInvalid={this.state.errors.email} type="email" name="email" autoComplete="email" value={this.state.user.email} onChange={this.handleInputChange}></Form.Control>
                               <Form.Control.Feedback type="invalid">{this.state.errors.email}</Form.Control.Feedback>
                           </Form.Group>
                           <Form.Group controlId="passwordField">
@@ -109,4 +108,4 @@ const mapDispatchToProps = {
 export default connect(
     null,
     mapDispatchToProps
-  )(withTranslation()(Register));
+  )(withTranslation()(withRouter(Register)));

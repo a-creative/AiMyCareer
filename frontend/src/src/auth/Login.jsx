@@ -1,11 +1,11 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next';
-import PageHeader from 'app/PageHeader';
 import { Row, Col, Button, Form } from 'react-bootstrap'
 import { Link } from "react-router-dom";
 import { loginUser } from "auth/_store/act.auth";
 import { connect } from 'react-redux'
 import { validateFormByLaravelResponse } from '_shared/helpers.js';
+import { withRouter  } from "react-router-dom";
 
 class Login extends React.Component{
 
@@ -59,7 +59,6 @@ class Login extends React.Component{
 
         return <Row>
             <Col>
-                <PageHeader title={t('Login')} />
                 <Row className="mb-3">
                     <Col sm="5">
                         <Form onSubmit={this.handleSubmit} noValidate validated={this.state.validated} >
@@ -70,7 +69,7 @@ class Login extends React.Component{
                             </Form.Group>
                             <Form.Group controlId="passwordField">
                                 <Form.Label>{t('Your password')}</Form.Label>
-                                <Form.Control required isInvalid={this.state.errors.password} type="password" name="password" autocomplete="current-password" value={this.state.user.password} onChange={this.handleInputChange}></Form.Control>
+                                <Form.Control required isInvalid={this.state.errors.password} type="password" name="password" autoComplete="current-password" value={this.state.user.password} onChange={this.handleInputChange}></Form.Control>
                                 <Form.Control.Feedback type="invalid">{this.state.errors.password}</Form.Control.Feedback>
                             </Form.Group>
                             <Form.Group>
@@ -107,4 +106,4 @@ const mapDispatchToProps = {
 export default connect(
     null,
     mapDispatchToProps
-  )(withTranslation()(Login));
+  )(withTranslation()(withRouter(Login)));
