@@ -1,5 +1,4 @@
 import moment from 'moment-timezone'
-import React from 'react';
 
 export const formatNormalizedDate = function( inputDate, outputFormat ) {
 

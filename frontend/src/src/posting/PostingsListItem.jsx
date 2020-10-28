@@ -3,7 +3,7 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 import { withTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux'
-import { deletePosting } from "store/actionCreators";
+import { deletePosting } from "posting/_store/act.posting";
 
 class PostingsListItem extends React.Component {
 

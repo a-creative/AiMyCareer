@@ -1,8 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import PageHeader from 'components/PageHeader';
-import { Row, Col, Button, Form } from 'react-bootstrap'
-import { Link } from "react-router-dom";
+import PageHeader from 'app/PageHeader';
+import { Row, Col } from 'react-bootstrap'
 
 function ForgotPassword(){
 

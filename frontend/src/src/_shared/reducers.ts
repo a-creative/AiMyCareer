@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
-import postingReducer from './reducers/posting'
-import userReducer from './reducers/user'
+import postingReducer from 'posting/_store/red.posting'
+import authReducer from 'auth/_store/red.auth'
 
 
 const rootReducer = combineReducers({
     posting : postingReducer,
-    user: userReducer
+    auth: authReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

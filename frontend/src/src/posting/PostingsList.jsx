@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col, Table } from 'react-bootstrap'
 import PostingListItem from './PostingsListItem.jsx'
 import { connect } from 'react-redux'
-import { fetchPostings } from "store/actionCreators";
+import { fetchPostings } from "posting/_store/act.posting";
 import { withTranslation } from 'react-i18next';
 
 class PostingsList extends React.Component {

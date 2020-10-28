@@ -1,8 +1,8 @@
 import React from 'react';
-import { logout } from "store/actionCreators";
+import { logout } from "auth/_store/act.auth";
 import { connect } from 'react-redux'
 import { withTranslation } from 'react-i18next';
-import { Row, Col, Nav, Navbar } from 'components/react-bootstrap'
+import { Row, Col, Nav, Navbar } from '_shared/react-bootstrap'
 import { withRouter  } from "react-router-dom";
 
 
@@ -45,7 +45,7 @@ class PageFooter extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  loggedIn: state.user.loggedIn,
+  loggedIn: state.auth.loggedIn,
 });
 
 

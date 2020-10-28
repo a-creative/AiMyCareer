@@ -1,14 +1,21 @@
 import React from 'react';
 import { Helmet } from "react-helmet";
-import { Postings, PostingsCreate, Login, ForgotPassword, Register } from 'views'
-import { Container, Row, Col, Nav, Navbar, Form, Button,NavDropdown} from 'components/react-bootstrap'
-import Spinner from 'components/Spinner'
-import PageFooter from 'components/PageFooter';
+
+import Postings from 'posting/Postings';
+import PostingsCreate from 'posting/PostingsCreate'
+
+import Login from 'auth/Login'
+import ForgotPassword from 'auth/ForgotPassword'
+import Register from 'auth/Register'
+
+import { Container, Row, Col, Nav, Navbar} from '_shared/react-bootstrap'
+import Spinner from '_shared/_components/Spinner'
+import PageFooter from 'app/PageFooter';
 import { BrowserRouter, Redirect, Switch, Route, Link  } from "react-router-dom";
 import { withTranslation } from 'react-i18next';
-import { fetchPostings } from "store/actionCreators";
+import { fetchPostings } from "posting/_store/act.posting";
 import { connect } from 'react-redux'
-import 'App.css';
+import 'app/App.css';
 
 class App extends React.Component {
 
@@ -72,8 +79,8 @@ class App extends React.Component {
 
 const mapStateToProps = state => ({
   loadingPostings: state.posting.loading,
-  loadingUser: state.user.loading,
-  loggedIn: state.user.loggedIn,
+  loadingUser: state.auth.loading,
+  loggedIn: state.auth.loggedIn,
 });
 
 

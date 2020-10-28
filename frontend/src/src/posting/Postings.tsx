@@ -1,9 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import PageHeader from 'components/PageHeader';
+import PageHeader from 'app/PageHeader';
 import { Row, Col, Button } from 'react-bootstrap'
 import { Link } from "react-router-dom";
-import PostingsList from './postings/PostingsList.jsx';
+import PostingsList from './PostingsList.jsx';
 
 function Postings(){
 

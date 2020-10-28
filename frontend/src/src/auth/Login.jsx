@@ -1,11 +1,11 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next';
-import PageHeader from 'components/PageHeader';
-import { Row, Col, Button, Form, Alert } from 'react-bootstrap'
+import PageHeader from 'app/PageHeader';
+import { Row, Col, Button, Form } from 'react-bootstrap'
 import { Link } from "react-router-dom";
-import { loginUser } from "store/actionCreators";
+import { loginUser } from "auth/_store/act.auth";
 import { connect } from 'react-redux'
-import { formValidate } from 'helpers.js';
+import { formValidate } from '_shared/helpers.js';
 
 class Login extends React.Component{
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next';
-import PageHeader from 'components/PageHeader';
+import PageHeader from 'app/PageHeader';
 import { Row, Col, Form, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { formatNormalizedDate } from 'helpers.js';
-import { insertPosting, updatePosting } from "store/actionCreators";
+import { formatNormalizedDate } from '_shared/helpers.js';
+import { insertPosting, updatePosting } from "posting/_store/act.posting";
 
 class PostingsCreate extends React.Component {
 
