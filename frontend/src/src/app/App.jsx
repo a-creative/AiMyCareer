@@ -10,7 +10,7 @@ import Register from 'auth/Register'
 
 import { Container, Row, Col, Nav, Navbar} from '_shared/react-bootstrap'
 import Spinner from '_shared/_components/Spinner'
-import PageFooter from 'app/PageFooter';
+import PageFooter from './PageFooter';
 import { BrowserRouter, Redirect, Switch, Route, Link  } from "react-router-dom";
 import { withTranslation } from 'react-i18next';
 import { fetchPostings } from "posting/_store/act.posting";

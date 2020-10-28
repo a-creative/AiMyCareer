@@ -1,4 +1,3 @@
-const API_BASE_ADDRESS = 'http://localhost:5002/api';
 export default class Api {
 
     static getOptions( baseOptions = {}, formData, token ) {
@@ -28,15 +27,15 @@ export default class Api {
     }
 
     static post( uri, formData, token ) {
-        return fetch( API_BASE_ADDRESS + uri, this.getOptions({ method : 'post' }, formData, token ) );
+        return fetch( process.env.REACT_APP_BACKEND_API_URL + uri, this.getOptions({ method : 'post' }, formData, token ) );
     }
 
     static delete(uri){
-        return fetch( API_BASE_ADDRESS + uri, this.getOptions({ method : 'delete' } ) );
+        return fetch( process.env.REACT_APP_BACKEND_API_URL + uri, this.getOptions({ method : 'delete' } ) );
     }
 
     static get(uri){
-        return fetch( API_BASE_ADDRESS + uri, this.getOptions({ method : 'get' } ) );
+        return fetch( process.env.REACT_APP_BACKEND_API_URL + uri, this.getOptions({ method : 'get' } ) );
     }
 
     static appendFormData( formData, key, value ) {
