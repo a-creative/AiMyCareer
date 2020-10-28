@@ -44,8 +44,11 @@ class AuthController extends Controller
             ], 201);
         } else {
             return response()->json([
-                'error' => 'A user with the email address "{{email}}" already exists',
-                'email' => $request->email,
+                'errors' => [ 
+                    'email' => [ 
+                        ['A user with the email address "{{email}}" already exist.', [ "email" => $request->email ] ] 
+                    ]
+                ]
             ], 422);
         }
     }
@@ -66,7 +69,7 @@ class AuthController extends Controller
 
         if (!$token = auth()->attempt($credentials)) {
             return response()->json([
-                'errors' => [ 'form' =>[ 'The user does not exist. Please make sure you typed the right information.'] ] ], 401);
+                'errors' => [ 'password' =>[ 'The user does not exist. Please make sure you typed the right information.'] ] ], 401);
         }
 
         return $this->respondWithUserInfo($token);

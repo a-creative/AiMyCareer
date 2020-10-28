@@ -5,7 +5,7 @@ import { Row, Col, Button, Form } from 'react-bootstrap'
 import { Link } from "react-router-dom";
 import { loginUser } from "auth/_store/act.auth";
 import { connect } from 'react-redux'
-import { formValidate } from '_shared/helpers.js';
+import { validateFormByLaravelResponse } from '_shared/helpers.js';
 
 class Login extends React.Component{
 
@@ -13,13 +13,13 @@ class Login extends React.Component{
         super( props );
 
         this.state = {
-            validate: true,
             user : {
                 email : '',
                 password : '',
             },
             formInvalid: false,
             formMessage : '',
+            errors : {}
         }
 
     }
@@ -28,16 +28,15 @@ class Login extends React.Component{
 
         e.preventDefault();
 
-        this.setState({ 'validated' : true });
+        this.props.loginUser( this.state.user,( responseData ) => {
 
-        this.props.loginUser( this.state.user,( userInfo ) => {
-
-            formValidate( { 
-                component : this, 
-                serverData: userInfo, 
-                onSuccess : () => {
+            validateFormByLaravelResponse({
+                component: this, 
+                ...{responseData}, 
+                onSuccess: () => {
                     this.props.history.push('/');
-                }
+                },
+                stateSelectorId : 'user'
             });
  
         })
@@ -66,14 +65,13 @@ class Login extends React.Component{
                         <Form onSubmit={this.handleSubmit} noValidate validated={this.state.validated} >
                             <Form.Group controlId="emailField">
                                 <Form.Label>{t('Your e-mail address')}</Form.Label>
-                                <Form.Control required type="email" name="email" value={this.state.user.email} onChange={this.handleInputChange}></Form.Control>
-                                { this.state.emailInvalid && <Form.Control.Feedback type="invalid">{this.state.emailInvalidMessage}</Form.Control.Feedback>}
+                                <Form.Control required isInvalid={this.state.errors.email} type="email" name="email" value={this.state.user.email} onChange={this.handleInputChange}></Form.Control>
+                                <Form.Control.Feedback type="invalid">{this.state.errors.email}</Form.Control.Feedback>
                             </Form.Group>
                             <Form.Group controlId="passwordField">
                                 <Form.Label>{t('Your password')}</Form.Label>
-                                <Form.Control required type="password" name="password" value={this.state.user.password} onChange={this.handleInputChange}></Form.Control>
-                                { this.state.passwordInvalid && <Form.Control.Feedback type="invalid">{this.state.passwordInvalidMessage}</Form.Control.Feedback>}
-                                { this.state.formInvalid && <Form.Control.Feedback variant="danger">{t(this.state.formInvalidMessage)}</Form.Control.Feedback> }
+                                <Form.Control required isInvalid={this.state.errors.password} type="password" name="password" autocomplete="current-password" value={this.state.user.password} onChange={this.handleInputChange}></Form.Control>
+                                <Form.Control.Feedback type="invalid">{this.state.errors.password}</Form.Control.Feedback>
                             </Form.Group>
                             <Form.Group>
                                 <Form.Check 

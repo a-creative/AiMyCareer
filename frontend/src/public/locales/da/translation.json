@@ -40,6 +40,6 @@
     "The email must be a valid email address." : "E-mail skal være en gyldig adresse.",
     "The first name field is required." : "Fornavn skal udfyldes.",
     "The last name field is required." : "Efternavn skal udfyldes.",
-    "The password confirmation field is required." : "Valgt adgangskode skal bekræftes."
-    
+    "The password confirmation field is required." : "Valgt adgangskode skal bekræftes.",
+    "A user with the email address \"{{email}}\" already exist." : "En bruger med e-mailadressen \"{{email}}\" eksisterer allerede."
 }

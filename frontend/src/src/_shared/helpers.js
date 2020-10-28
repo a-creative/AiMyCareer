@@ -1,4 +1,5 @@
 import moment from 'moment-timezone'
+import React from 'react';
 
 export const formatNormalizedDate = function( inputDate, outputFormat ) {
 
@@ -11,36 +12,73 @@ export const formatNormalizedDate = function( inputDate, outputFormat ) {
     
 }
 
-export const formValidate = function( { 
+export const validateFormByLaravelResponse = ({
     component,
-    serverData, 
-    onSuccess, 
-    onFailure 
-} = {} ) {
+    responseData,
+    onSuccess,
+    stateSelectorId = 'fields',
+    onFailure
+} = {} ) => { 
 
-    let errors = serverData.errors;
+    let errors = responseData.errors;
+
     if ( errors ) {
 
-        Object.keys(errors).forEach(function( field_name ) {
-            
-            if ( errors[field_name] ) {
-                const { t } = component.props;
-                let state = { ...component.state };
-                state[ field_name + 'Invalid' ] = true;
-                state[ field_name + 'InvalidMessage' ] = 
-                    errors[field_name].map( function( error ) { 
-                        return t( error ); 
-                    }).join('<br>');
-                component.setState(state)
-            }
-            
+        const { t } = component.props;
+
+        let state = {validated : false, ...component.state };
+
+        state.errors = state.errors || {};
+
+        let formState = component.state[ stateSelectorId ];
+        let formFieldNames = Object.keys( formState );
+        let errorFieldNames = Object.keys( errors );
+
+        // Removed fixed errors from error state
+        formFieldNames.forEach( function( fieldName ) {
+
+            if ( ( state.errors[ fieldName ] ) && ( errorFieldNames.indexOf( fieldName ) === -1 ) ) {
+
+                // If we have a previous shown error on this field 
+                // AND the error is not in the response data any more
+
+                // Then remove the error on this field
+                delete( state.errors[ fieldName ] );
+            } 
+        })
+
+        // Add new error to error state 
+        errorFieldNames.forEach( ( errorFieldName ) => {
+
+            let error_text = errors[ errorFieldName ]
+                .map( ( error ) => { 
+                
+                    let translated;
+                    if ( typeof error === 'object' ) {
+                        translated = t( error[0], error[1])
+                    } else {
+                        translated = t( error )
+                    }
+
+                    return <div>- {translated}</div>; 
+                
+                });
+
+            state.errors[ errorFieldName ] = error_text;
         });
+
+        component.setState( state );
 
         if ( typeof onFailure === 'function') {
             onFailure( errors );
         }
 
-    } else if ( typeof onSuccess === 'function' ) {
+    } else {
+
+        let state = { validated: true, ...component.state };
+        state.errors = {};
+        component.setState( state );
+
         onSuccess();
     }
 
