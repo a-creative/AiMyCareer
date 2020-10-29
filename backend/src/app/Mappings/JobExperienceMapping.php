@@ -4,6 +4,7 @@ namespace App\Mappings;
 
 use App\Entities\User;
 use App\Entities\JobExperience;
+use App\Entities\Task;
 use LaravelDoctrine\Fluent\EntityMapping;
 use LaravelDoctrine\Fluent\Fluent;
 
@@ -38,6 +39,7 @@ class JobExperienceMapping extends EntityMapping
         $builder->datetime('updatedTime')->nullable();
     
         $builder->manyToOne(User::class, 'ownerUser');
+        $builder->hasMany(Task::class, 'performedTasks')->mappedBy('performedInJobExperience');
 
     }
 

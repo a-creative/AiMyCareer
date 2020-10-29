@@ -8,6 +8,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
 use App\Entities\JobPosting;
 use App\Entities\JobExperience;
+use App\Entities\Education;
+use App\Entities\SkillCategory;
+use App\Entities\Skill;
+
 
 class User extends Authenticatable implements Arrayable, JWTSubject
 {
@@ -18,6 +22,15 @@ class User extends Authenticatable implements Arrayable, JWTSubject
     protected $firstName;
     protected $lastName;
     protected $rememberToken;
+
+    /** @var Education [] */
+    protected $educations;
+
+    /** @var Skill [] */
+    protected $skills;
+
+    /** @var SkillCategory [] */
+    protected $skillCategories;
 
     /**
      * The Job Postings this user has recorded.

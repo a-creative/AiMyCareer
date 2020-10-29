@@ -5,6 +5,10 @@ namespace App\Mappings;
 use App\Entities\User;
 use App\Entities\JobPosting;
 use App\Entities\JobExperience;
+use App\Entities\Education;
+use App\Entities\Skill;
+use App\Entities\SkillCategory;
+
 use LaravelDoctrine\Fluent\EntityMapping;
 use LaravelDoctrine\Fluent\Fluent;
 
@@ -37,6 +41,9 @@ class UserMapping extends EntityMapping
         
         $builder->hasMany( JobPosting::class, 'jobPostings')->mappedBy('ownerUser');
         $builder->hasMany( JobExperience::class, 'jobExperiences')->mappedBy('ownerUser');
+        $builder->hasMany( Education::class, 'educations')->mappedBy('educatedUser');
+        $builder->hasMany( Skill::class, 'skills')->mappedBy('ownerUser');
+        $builder->hasMany( SkillCategory::class, 'skillCategories')->mappedBy('ownerUser');
     
     }
 
