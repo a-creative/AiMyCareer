@@ -21,9 +21,14 @@ return [
     |
     */
     'managers'                   => [
+
         'default' => [
             'dev'           => env('APP_DEBUG', false),
-            'meta'          => env('DOCTRINE_METADATA', 'annotations'),
+            'meta'          => env('DOCTRINE_METADATA', 'fluent'),
+            'mappings'      => [
+                App\Mappings\UserMapping::class,
+                App\Mappings\JobPostingMapping::class,
+            ],
             'connection'    => env('DB_CONNECTION', 'mysql'),
             'namespaces'    => [],
             'paths'         => [

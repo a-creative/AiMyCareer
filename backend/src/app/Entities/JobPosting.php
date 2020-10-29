@@ -6,94 +6,22 @@ use Doctrine\ORM\Mapping as ORM;
 use Illuminate\Contracts\Support\Arrayable;
 use App\Entities\User;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="job_postings",
- *  uniqueConstraints={
- *      @ORM\UniqueConstraint(name="employer_jobtitle_idx",
- *          columns={"employer", "job_title"})
- *      }
- * )
- */
 class JobPosting implements Arrayable
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
     protected $id;
-
-    /**
-     * @ORM\Column(name="job_title", type="string",length=150, nullable=true)
-     */
     protected $jobTitle;
-
-    /**
-     * @ORM\Column(type="string",length=150, nullable=true)
-     */
     protected $employer;
-
-    /**
-     * @ORM\Column(name="ext_link", type="string", length=500, nullable=true)
-     */
     protected $extLink;
-
-    /**
-     * @ORM\Column(name="created_time", type="datetime", nullable=true)
-     */
     protected $createdTime;
-
-    /**
-     * @ORM\Column(name="updated_time", type="datetime", nullable=true)
-     */
     protected $updatedTime;
-
-    /**
-     * @ORM\Column(name="posted_date", type="date", nullable=true)
-     */
     protected $postedDate;
-
-    /**
-     * @ORM\Column(name="deadline_date", type="date", nullable=true)
-     */
     protected $deadlineDate;
-
-    /**
-     * @ORM\Column(name="location_postal_code", type="string",length=10, nullable=true)
-     */
     protected $locationPostalCode;
-
-    /**
-     * @ORM\Column(name="location_city", type="string",length=150, nullable=true)
-     */
     protected $locationCity;
-
-    /**
-     * @ORM\Column(name="contact_name", type="string",length=150, nullable=true)
-     */
     protected $contactName;
-
-    /**
-     * @ORM\Column(name="contact_job_title", type="string",length=150, nullable=true)
-     */
     protected $contactJobTitle;
-
-    /**
-     * @ORM\Column(name="contact_details", type="string",length=500, nullable=true)
-     */
     protected $contactDetails;
-
-    /**
-     * @ORM\Column(name="content_raw", type="text", nullable=true)
-     */
     protected $contentRaw;
-
-    /**
-     * Many job postings have one owner. This is the owning side.
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="jobPostings")
-     * @ORM\JoinColumn(name="owner_user_id", referencedColumnName="id")
-     */
     protected $ownerUser;
 
     public function getJobTitle()

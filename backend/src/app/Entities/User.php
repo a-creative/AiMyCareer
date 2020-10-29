@@ -10,53 +10,15 @@ use Illuminate\Support\Facades\Hash;
 use Doctrine\Common\Collections\ArrayCollection;
 use JobPosting;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="users")
- */
 class User extends Authenticatable implements Arrayable, JWTSubject
 {
 
-    public function __construct() {
-        $this->jobPostings = new ArrayCollection();
-    }
-
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
     protected $id;
-
-    /**
-     * @ORM\Column(name="email", type="string",length=80, nullable=false)
-     */
     protected $email;
-
-    /**
-     * @ORM\Column(name="password", type="string",length=80, nullable=false)
-     */
     protected $password;
-
-    /**
-     * @ORM\Column(name="first_name", type="string",length=80, nullable=true)
-     */
     protected $firstName;
-
-    /**
-     * @ORM\Column(name="last_name", type="string",length=80, nullable=true)
-     */
     protected $lastName;
-
-    /**
-     * @ORM\Column(name="remember_token", type="string",length=100, nullable=true)
-     */
     protected $rememberToken;
-
-    /**
-     * One user has many job posting. This is the inverse side.
-     * @ORM\OneToMany(targetEntity="JobPosting", mappedBy="ownerUser")
-     */
     protected $jobPostings;
 
     public function toArray() {
