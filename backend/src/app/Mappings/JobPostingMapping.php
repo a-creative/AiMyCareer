@@ -30,19 +30,19 @@ class JobPostingMapping extends EntityMapping
 
         $builder->increments('id');
 
-        $builder->string('jobTitle')->name('job_title')->length(150)->nullable();
+        $builder->string('jobTitle')->length(150)->nullable();
         $builder->string('employer')->length(150)->nullable();
-        $builder->string('extLink')->name('ext_link')->length(500)->nullable();
-        $builder->datetime('createdTime')->name('created_time')->nullable();
-        $builder->datetime('updatedTime')->name('updated_time')->nullable();
-        $builder->date('postedDate')->name('posted_date')->nullable();
-        $builder->date('deadlineDate')->name('deadline_date')->nullable();
-        $builder->string('locationPostalCode')->name('location_postal_code')->length(10)->nullable();
-        $builder->string('locationCity')->name('location_city')->length(150)->nullable();
-        $builder->string('contactName')->name('contact_name')->length(150)->nullable();
-        $builder->string('contactJobTitle')->name('contact_job_title')->length(150)->nullable();
-        $builder->string('contactDetails')->name('contact_details')->length(500)->nullable();
-        $builder->text('contentRaw')->name('content_raw')->nullable();
+        $builder->string('extLink')->length(500)->nullable();
+        $builder->datetime('createdTime')->nullable();
+        $builder->datetime('updatedTime')->nullable();
+        $builder->date('postedDate')->nullable();
+        $builder->date('deadlineDate')->nullable();
+        $builder->string('locationPostalCode')->length(10)->nullable();
+        $builder->string('locationCity')->length(150)->nullable();
+        $builder->string('contactName')->length(150)->nullable();
+        $builder->string('contactJobTitle')->length(150)->nullable();
+        $builder->string('contactDetails')->length(500)->nullable();
+        $builder->text('contentRaw')->nullable();
                     
         $builder->manyToOne(User::class, 'ownerUser');
 
