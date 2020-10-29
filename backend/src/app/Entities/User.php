@@ -2,13 +2,12 @@
 
 namespace App\Entities;
 
-use Doctrine\ORM\Mapping as ORM;
 use Illuminate\Contracts\Support\Arrayable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
-use Doctrine\Common\Collections\ArrayCollection;
-use JobPosting;
+use App\Entities\JobPosting;
+use App\Entities\JobExperience;
 
 class User extends Authenticatable implements Arrayable, JWTSubject
 {
@@ -19,7 +18,20 @@ class User extends Authenticatable implements Arrayable, JWTSubject
     protected $firstName;
     protected $lastName;
     protected $rememberToken;
+
+    /**
+     * The Job Postings this user has recorded.
+     *
+     * @var JobPosting [];
+     */
     protected $jobPostings;
+    
+    /**
+     * The Job Experiences this user has recorded.
+     *
+     * @var JobExperience [];
+     */
+    protected $jobExperiences;
 
     public function toArray() {
         $user = [    
@@ -142,7 +154,33 @@ class User extends Authenticatable implements Arrayable, JWTSubject
     }
 
     /**
-     * Get one user has many job posting. This is the inverse side.
+     * Get [];
+     *
+     * @return  JobExperience
+     */ 
+    public function getJobExperiences()
+    {
+        return $this->jobExperiences;
+    }
+
+    /**
+     * Set [];
+     *
+     * @param  JobExperience  $jobExperiences  [];
+     *
+     * @return  self
+     */ 
+    public function setJobExperiences(JobExperience $jobExperiences)
+    {
+        $this->jobExperiences = $jobExperiences;
+
+        return $this;
+    }
+
+    /**
+     * Get [];
+     *
+     * @return  JobPosting
      */ 
     public function getJobPostings()
     {
@@ -150,11 +188,13 @@ class User extends Authenticatable implements Arrayable, JWTSubject
     }
 
     /**
-     * Set one user has many job posting. This is the inverse side.
+     * Set [];
+     *
+     * @param  JobPosting  $jobPostings  [];
      *
      * @return  self
      */ 
-    public function setJobPostings($jobPostings)
+    public function setJobPostings(JobPosting $jobPostings)
     {
         $this->jobPostings = $jobPostings;
 

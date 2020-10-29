@@ -2,7 +2,6 @@
 
 namespace App\Entities;
 
-use Doctrine\ORM\Mapping as ORM;
 use Illuminate\Contracts\Support\Arrayable;
 use App\Entities\User;
 
@@ -22,6 +21,12 @@ class JobPosting implements Arrayable
     protected $contactJobTitle;
     protected $contactDetails;
     protected $contentRaw;
+
+    /**
+     * The User that has recorde this job posting
+     *
+     * @var User $ownerUser;
+     */
     protected $ownerUser;
 
     public function getJobTitle()
@@ -311,7 +316,9 @@ class JobPosting implements Arrayable
     }
 
     /**
-     * Get many job postings have one owner. This is the owning side.
+     * Get $ownerUser;
+     *
+     * @return  User
      */ 
     public function getOwnerUser()
     {
@@ -319,11 +326,13 @@ class JobPosting implements Arrayable
     }
 
     /**
-     * Set many job postings have one owner. This is the owning side.
+     * Set $ownerUser;
+     *
+     * @param  User  $ownerUser  $ownerUser;
      *
      * @return  self
      */ 
-    public function setOwnerUser($ownerUser)
+    public function setOwnerUser(User $ownerUser)
     {
         $this->ownerUser = $ownerUser;
 

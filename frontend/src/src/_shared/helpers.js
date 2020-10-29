@@ -1,7 +1,7 @@
 import moment from 'moment-timezone'
 import React from 'react';
 
-export const formatNormalizedDate = function( inputDate, outputFormat ) {
+export const formatNormalizedDate = ( inputDate, outputFormat ) => {
 
     if ( !inputDate ) {
         return null;
@@ -11,6 +11,56 @@ export const formatNormalizedDate = function( inputDate, outputFormat ) {
     }
     
 }
+
+export const formatNormalizedPeriod = ( inputFromDate, inputToDate, t ) => {
+
+    let fromDate = moment.tz( inputFromDate.date, inputFromDate.timezone);
+    let toDate = moment.tz( inputToDate.date, inputToDate.timezone);
+
+    let diffMonths = toDate.diff(fromDate, 'months')
+
+    if ( fromDate.get('year') === toDate.get('year') ) {
+
+        if ( diffMonths >= 6 ) {
+            
+            return <span>{fromDate.format('YYYY')}</span>
+
+        } else {
+
+            return <span>{t(fromDate.format('MMM')+'Abbr')} {fromDate.format('YYYY')}<br />{diffMonths} {t('monthsAbbr.')}</span>
+        }
+
+
+    } else {
+
+        let fromDateStr, toDateStr;
+
+        if ( fromDate.get('month') >=6 ) {
+            
+            fromDateStr = t(fromDate.format('MMM')) + ' ' + fromDate.format('YYYY')
+            
+        } else {
+            fromDateStr = fromDate.format('YYYY')
+        }
+
+        if ( toDate.get('month') >=6 ) {
+            
+            toDateStr = toDate.format('YYYY')
+            
+        } else {
+            toDateStr = t(toDate.format('MMM')) + ' ' + toDate.format('YYYY')
+        }
+
+        if ( (fromDateStr.length + toDateStr.length) > 8 ) {
+            return <span>{fromDateStr}-<br />{toDateStr}</span>;
+        } else {
+            return <span>{fromDateStr}-{toDateStr}</span>;
+        }
+
+    }
+    
+}
+
 
 export const validateFormByLaravelResponse = ({
     component,

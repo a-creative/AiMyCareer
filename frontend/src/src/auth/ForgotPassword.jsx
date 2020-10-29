@@ -5,7 +5,7 @@ import { withRouter  } from "react-router-dom";
 
 function ForgotPassword(){
 
-  const { t } = useTranslation();
+  //const { t } = useTranslation();
 
   return <Row>
     <Col>

@@ -16,7 +16,7 @@ class JobPostingController extends Controller
 
     public function index()
     {
-        $result = EntityManager::createQueryBuilder()
+        $postings = EntityManager::createQueryBuilder()
             ->select('jp')
             ->from(JobPosting::class, 'jp')
             ->where('jp.ownerUser = :user')
@@ -25,9 +25,7 @@ class JobPostingController extends Controller
             ->getResult(\Doctrine\ORM\AbstractQuery::HYDRATE_ARRAY)
         ;
 
-        return [
-            'posting' => ['postings' => $result],
-        ];
+        return $postings;
     }
 
     private static function assignFromRequest( Request $request, JobPosting $jobPosting, bool $isInsert = false ) : JobPosting {
@@ -74,9 +72,7 @@ class JobPostingController extends Controller
         EntityManager::persist( $jobPosting);
         EntityManager::flush();
 
-        return response()->json([
-            "posting" => $jobPosting->toArray()
-        ]);
+        return response()->json( $jobPosting->toArray() );
     }
 
     public function update(Request $request, int $id) {
@@ -92,9 +88,7 @@ class JobPostingController extends Controller
             EntityManager::persist( $jobPosting );
             EntityManager::flush();
 
-            return response()->json([
-                "posting" => $jobPosting->toArray()
-            ]);
+            return response()->json( $jobPosting->toArray() );
 
         }
         

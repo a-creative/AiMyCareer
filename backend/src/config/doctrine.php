@@ -28,6 +28,7 @@ return [
             'mappings'      => [
                 App\Mappings\UserMapping::class,
                 App\Mappings\JobPostingMapping::class,
+                App\Mappings\JobExperienceMapping::class,
             ],
             'connection'    => env('DB_CONNECTION', 'mysql'),
             'namespaces'    => [],

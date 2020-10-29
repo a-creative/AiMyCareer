@@ -4,6 +4,7 @@ namespace App\Mappings;
 
 use App\Entities\User;
 use App\Entities\JobPosting;
+use App\Entities\JobExperience;
 use LaravelDoctrine\Fluent\EntityMapping;
 use LaravelDoctrine\Fluent\Fluent;
 
@@ -35,6 +36,8 @@ class UserMapping extends EntityMapping
         $builder->rememberToken();
         
         $builder->hasMany( JobPosting::class, 'jobPostings')->mappedBy('ownerUser');
+        $builder->hasMany( JobExperience::class, 'jobExperiences')->mappedBy('ownerUser');
+    
     }
 
 

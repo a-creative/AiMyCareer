@@ -1,117 +1,117 @@
 import {
-    LOAD_POSTINGS_ERROR,
-    LOAD_POSTINGS_LOADING,
-    LOAD_POSTINGS_SUCCESS,
-    INSERT_POSTING_LOADING,
-    INSERT_POSTING_SUCCESS,
-    INSERT_POSTING_ERROR,
-    UPDATE_POSTING_LOADING,
-    UPDATE_POSTING_SUCCESS,
-    UPDATE_POSTING_ERROR,
-    DELETE_POSTING_LOADING,
-    DELETE_POSTING_SUCCESS,
-    DELETE_POSTING_ERROR,
-  } from "./con.posting";
+    LOAD_EXPERIENCES_ERROR,
+    LOAD_EXPERIENCES_LOADING,
+    LOAD_EXPERIENCES_SUCCESS,
+    INSERT_EXPERIENCE_LOADING,
+    INSERT_EXPERIENCE_SUCCESS,
+    INSERT_EXPERIENCE_ERROR,
+    UPDATE_EXPERIENCE_LOADING,
+    UPDATE_EXPERIENCE_SUCCESS,
+    UPDATE_EXPERIENCE_ERROR,
+    DELETE_EXPERIENCE_LOADING,
+    DELETE_EXPERIENCE_SUCCESS,
+    DELETE_EXPERIENCE_ERROR,
+  } from "./con.experience";
   
   const initial_state = {
     loading: false,
     error: "",
-    postings: [],
+    experiences: [],
   };
   
-  const postingReducer = ( state = initial_state, action ) => {
+  const experienceReducer = ( state = initial_state, action ) => {
     switch (action.type) {
-      case LOAD_POSTINGS_LOADING: {
+      case LOAD_EXPERIENCES_LOADING: {
         return {
           ...state,
           loading: true,
           error: "",
         };
       }
-      case LOAD_POSTINGS_SUCCESS: {
+      case LOAD_EXPERIENCES_SUCCESS: {
         return {
           ...state,
-          postings: action.data,
+          experiences: action.data,
           loading: false,
         };
       }
-      case LOAD_POSTINGS_ERROR: {
+      case LOAD_EXPERIENCES_ERROR: {
         return {
           ...state,
           loading: false,
           error: action.error,
         };
       }
-      case INSERT_POSTING_LOADING: {
+      case INSERT_EXPERIENCE_LOADING: {
         return {
           ...state,
           loading: true,
           error: "",
         };
       }
-      case INSERT_POSTING_SUCCESS: {
+      case INSERT_EXPERIENCE_SUCCESS: {
   
-        let postings = [
-          ...state.postings,
+        let experiences = [
+          ...state.experiences,
           action.data
         ]
   
         return {
-          postings: postings,
+          experiences: experiences,
           loading: false,
           error: "",
         };
       }
-      case INSERT_POSTING_ERROR: {
+      case INSERT_EXPERIENCE_ERROR: {
         return {
           ...state,
           loading: false,
           error: action.error,
         };
       }
-      case UPDATE_POSTING_LOADING: {
+      case UPDATE_EXPERIENCE_LOADING: {
         return {
           ...state,
           loading: true,
           error: "",
         };
       }
-      case UPDATE_POSTING_SUCCESS: {
+      case UPDATE_EXPERIENCE_SUCCESS: {
   
         return {
           ...state,
-          postings: state.postings.map((posting) => {
-             if ( posting.id === action.data.id) {
+          experiences: state.experiences.map((experience) => {
+             if ( experience.id === action.data.id) {
                return action.data
              }
   
-             return posting
+             return experience
            }),
           loading: false,
           error: "",
         };
   
       }
-      case UPDATE_POSTING_ERROR: {
+      case UPDATE_EXPERIENCE_ERROR: {
         return {
           ...state,
           loading: false,
           error: action.error,
         };
       }
-      case DELETE_POSTING_LOADING: {
+      case DELETE_EXPERIENCE_LOADING: {
         return {
           ...state,
           loading: true,
           error: "",
         };
       }
-      case DELETE_POSTING_SUCCESS: {
+      case DELETE_EXPERIENCE_SUCCESS: {
   
         return {
           ...state,
-          postings: state.postings.filter((posting) => {
-             if ( posting.id !== action.data) {
+          experiences: state.experiences.filter((experience) => {
+             if ( experience.id !== action.data) {
                return true
              }
   
@@ -122,7 +122,7 @@ import {
         };
   
       }
-      case DELETE_POSTING_ERROR: {
+      case DELETE_EXPERIENCE_ERROR: {
         return {
           ...state,
           loading: false,
@@ -134,5 +134,5 @@ import {
       }
     }
   };
-  export default postingReducer;
+  export default experienceReducer;
   

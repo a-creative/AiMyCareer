@@ -3,11 +3,11 @@
 namespace App\Mappings;
 
 use App\Entities\User;
-use App\Entities\JobPosting;
+use App\Entities\JobExperience;
 use LaravelDoctrine\Fluent\EntityMapping;
 use LaravelDoctrine\Fluent\Fluent;
 
-class JobPostingMapping extends EntityMapping
+class JobExperienceMapping extends EntityMapping
 {
     /**
      * Returns the fully qualified name of the class that this mapper maps.
@@ -16,7 +16,7 @@ class JobPostingMapping extends EntityMapping
      */
     public function mapFor()
     {
-        return JobPosting::class;
+        return JobExperience::class;
     }
 
     /**
@@ -26,26 +26,17 @@ class JobPostingMapping extends EntityMapping
      */
     public function map(Fluent $builder)
     {
-        
-
         $builder->increments('id');
 
         $builder->string('jobTitle')->length(150)->nullable();
         $builder->string('employer')->length(150)->nullable();
-        $builder->string('extLink')->length(500)->nullable();
+
+        $builder->date('startedDate')->nullable();
+        $builder->date('endedDate')->nullable();
+
         $builder->datetime('createdTime')->nullable();
         $builder->datetime('updatedTime')->nullable();
-        $builder->date('postedDate')->nullable();
-        $builder->date('deadlineDate')->nullable();
-        $builder->string('locationPostalCode')->length(10)->nullable();
-        $builder->string('locationCity')->length(150)->nullable();
-        $builder->string('contactName')->length(150)->nullable();
-        $builder->string('contactJobTitle')->length(150)->nullable();
-        $builder->string('contactDetails')->length(500)->nullable();
-        $builder->text('contentRaw')->nullable();
-                    
-        $builder->unique(['employer','job_title']);
-
+    
         $builder->manyToOne(User::class, 'ownerUser');
 
     }

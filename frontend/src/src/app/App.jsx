@@ -4,6 +4,9 @@ import { Helmet } from "react-helmet";
 import Postings from 'posting/Postings';
 import PostingsCreate from 'posting/PostingsCreate'
 
+import Experiences from 'experience/Experiences';
+import ExperiencesCreate from 'experience/ExperiencesCreate'
+
 import Login from 'auth/Login'
 import ForgotPassword from 'auth/ForgotPassword'
 import Register from 'auth/Register'
@@ -37,9 +40,8 @@ class App extends React.Component {
                   <Navbar.Toggle aria-controls="basic-navbar-nav" />
                   <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                      {this.props.loggedIn &&
-                        <Nav.Link to="/postings">{t('Job postings')}</Nav.Link>
-                      } 
+                      {this.props.loggedIn && <Nav.Link as={Link} to="/postings">{t('Job postings')}</Nav.Link>}
+                      {this.props.loggedIn && <Nav.Link as={Link} to="/experiences">{t('Job experiences')}</Nav.Link>}
                     </Nav>
                     <Nav>
                       <Spinner show={this.props.loading} />{' '}
@@ -54,11 +56,19 @@ class App extends React.Component {
                 <Route path="/login"><Page title={t('Login')}><Login /></Page></Route>
                 <Route path="/forgot-password"><Page title={t('Forgot password')}><ForgotPassword /></Page></Route>
                 <Route path="/register"><Page title={t('Register new user')}><Register /></Page></Route>
+                
                 <Route path="/postings/create" render={(props) => <Page title={t('Create job posting')}><PostingsCreate {...props} /></Page>} />
                 <Route path="/postings/edit/:id" render={(props) => <Page title={t('Edit job posting')}><PostingsCreate {...props} /></Page>} />
                 <Route path="/postings">
-                  <Page title={t('Job posting')}><Postings /></Page>
+                  <Page title={t('Job postings')}><Postings /></Page>
                 </Route>
+
+                <Route path="/experiences/create" render={(props) => <Page title={t('Create job experience')}><ExperiencesCreate {...props} /></Page>} />
+                <Route path="/experiences/edit/:id" render={(props) => <Page title={t('Edit job experience')}><ExperiencesCreate {...props} /></Page>} />
+                <Route path="/experiences">
+                  <Page title={t('Job experiences')}><Experiences /></Page>
+                </Route>
+
                 <Route path="/">
                   {this.props.loggedIn &&<Redirect to="/postings" />}
                   {!this.props.loggedIn && <Redirect to="/login" />}
@@ -76,13 +86,9 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  loading: ( state.posting.loading || state.auth.loading ),
+  loading: ( state.posting.loading || state.auth.loading || state.experience.loading ),
   loggedIn: state.auth.loggedIn,
 });
-
-
-const mapDispatchToProps = {
-};
 
 export default connect(
   mapStateToProps,

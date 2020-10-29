@@ -1,7 +1,13 @@
 {
+    "Job experiences" : "Joberfaring",
+    "Create job experience" : "Opret joberfaring",
+    "Edit job experience" : "Rediger joberfaring",
+
     "Job postings" : "Jobopslag",
     "Create job posting" : "Opret jobopslag",
     "Edit job posting" : "Rediger jobopslag",
+    "Posting date" : "Opslagsdato",
+
     "Experience" : "Erfaring",
     "Job title" : "Stillingsbeskrivelse",
     "Employer" : "Arbejdsgiver",
@@ -9,7 +15,7 @@
     "Postal code" : "Postnummer",
     "City" : "By",
     "Work location" : "Arbejdssted",
-    "Posting date" : "Opslagsdato",
+    
     "Application deadline" : "Ansøgningsfrist",
     "Contact information" : "Kontaktinformation",
     "Details" : "Detaljer",
@@ -19,6 +25,7 @@
     "Archive" : "Arkiver",
     "Delete" : "Slet",
     "Do you really want to delete this job posting?" : "Ønsker du  virkeligt at slette dette jobopslag",
+    "Do you really want to delete this job experience?" : "Ønsker du  virkeligt at slette denne joberfaring",
     "Your e-mail address" : "Din e-mailadresse",
     "Your password" : "Din adgangskode",
     "Select password" : "Vælg adgangskode",
@@ -41,5 +48,20 @@
     "The first name field is required." : "Fornavn skal udfyldes.",
     "The last name field is required." : "Efternavn skal udfyldes.",
     "The password confirmation field is required." : "Valgt adgangskode skal bekræftes.",
-    "A user with the email address \"{{email}}\" already exist." : "En bruger med e-mailadressen \"{{email}}\" eksisterer allerede."
+    "A user with the email address \"{{email}}\" already exist." : "En bruger med e-mailadressen \"{{email}}\" eksisterer allerede.",
+    "Period" : "Periode",
+    "monthsAbbr." : "mdr.",
+    "JanAbbr" : "Jan.",
+    "FebAbbr" : "Feb.",
+    "MarAbbr" : "Mar.",
+    "AprAbbr" : "Apr.",
+    "MayAbbr" : "Maj",
+    "JunAbbr" : "Juni",
+    "JulAbbr" : "Juli",
+    "AugAbbr" : "Aug.",
+    "SepAbbr" : "Sep.",
+    "OctAbbr" : "Okt.",
+    "NovAbbr" : "Nov.",
+    "DecAbbr" : "Dec."
+    
 }

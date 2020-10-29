@@ -1,10 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\JobExperienceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobPostingController;
-use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,10 +26,16 @@ Route::group([
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::post('me', [AuthController::class, 'me']);
+
     Route::get('job-postings', [ JobPostingController::class, 'index'] );
     Route::post('/job-postings', [ JobPostingController::class, 'insert'] );
     Route::put('/job-postings/{id}', [ JobPostingController::class, 'update'] );
     Route::delete('/job-postings/{id}', [ JobPostingController::class, 'delete'] );
+
+    Route::get('job-experiences', [ JobExperienceController::class, 'index'] );
+    Route::post('/job-experiences', [ JobExperienceController::class, 'insert'] );
+    Route::put('/job-experiences/{id}', [ JobExperienceController::class, 'update'] );
+    Route::delete('/job-experiences/{id}', [ JobExperienceController::class, 'delete'] );
 });
 
 
