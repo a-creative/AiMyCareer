@@ -99,6 +99,8 @@ class ExperiencesCreate extends React.Component {
         <Form.Row>
           <Col>
             <Button variant="primary" type="submit">{t('Save')}</Button>
+            { ' ' }
+            <Button onClick={ (e) => { this.props.history.goBack();} } variant="light" type="submit">{t('Cancel')}</Button>
           </Col>
         </Form.Row>
       </Form>

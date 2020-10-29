@@ -86,10 +86,9 @@ class Register extends React.Component {
                               <Form.Control.Feedback type="invalid">{this.state.errors.passwordConfirmation}</Form.Control.Feedback>
                           </Form.Group>
                           <Form.Group>
-                              <Button variant="primary" type="submit">{t('Register')}</Button>{' '}
-                              <Link to="/">
-                                  <Button variant="light">{t('Back')}</Button>
-                              </Link>
+                                <Button variant="primary" type="submit">{t('Register')}</Button>
+                                { ' ' }
+                                <Button onClick={ (e) => { this.props.history.goBack();} } variant="light" type="submit">{t('Cancel')}</Button>
                           </Form.Group>
                       </Form>
                   </Col>
