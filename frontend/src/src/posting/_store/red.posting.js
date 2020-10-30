@@ -11,9 +11,11 @@ import {
     DELETE_POSTING_LOADING,
     DELETE_POSTING_SUCCESS,
     DELETE_POSTING_ERROR,
+    LOGOUT_POSTING,
   } from "./con.posting";
   
   const initial_state = {
+    loaded: false,
     loading: false,
     error: "",
     postings: [],
@@ -31,6 +33,7 @@ import {
       case LOAD_POSTINGS_SUCCESS: {
         return {
           ...state,
+          loaded: true,
           postings: action.data,
           loading: false,
         };
@@ -128,6 +131,13 @@ import {
           loading: false,
           error: action.error,
         };
+      }
+      case LOGOUT_POSTING: {
+        return {
+          ...state,
+          loaded: false,
+          postings: []
+        }
       }
       default: {
         return state;

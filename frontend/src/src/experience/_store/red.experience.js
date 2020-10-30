@@ -11,9 +11,11 @@ import {
     DELETE_EXPERIENCE_LOADING,
     DELETE_EXPERIENCE_SUCCESS,
     DELETE_EXPERIENCE_ERROR,
+    LOGOUT_EXPERIENCE,
   } from "./con.experience";
   
   const initial_state = {
+    loaded: false,
     loading: false,
     error: "",
     experiences: [],
@@ -31,6 +33,7 @@ import {
       case LOAD_EXPERIENCES_SUCCESS: {
         return {
           ...state,
+          loaded: true,
           experiences: action.data,
           loading: false,
         };
@@ -128,6 +131,13 @@ import {
           loading: false,
           error: action.error,
         };
+      }
+      case LOGOUT_EXPERIENCE: {
+        return {
+          ...state,
+          loaded: false,
+          experiences: []
+        }
       }
       default: {
         return state;

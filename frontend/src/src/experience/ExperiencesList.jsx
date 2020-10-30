@@ -9,9 +9,11 @@ class ExperiencesList extends React.Component {
 
   componentDidMount() {
 
-    this.props.fetchExperiences( {
-      loggedIn: this.props.loggedIn
-    });
+    if ( !this.props.loaded ) {
+      this.props.fetchExperiences( {
+        loggedIn: this.props.loggedIn
+      });
+    }
 
   }
 
@@ -57,6 +59,7 @@ const mapStateToProps = state => ({
   loading: state.experience.loading,
   error: state.experience.error,
   loggedIn : state.auth.loggedIn,
+  loaded : state.experience.loaded,
 });
 
 const mapDispatchToProps = {

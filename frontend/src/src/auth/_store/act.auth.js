@@ -11,6 +11,10 @@ import {
     LOGOUT_USER_ERROR,
 } from "./con.auth"
 
+import { LOGOUT_EXPERIENCE} from 'experience/_store/con.experience';
+import { LOGOUT_POSTING} from 'posting/_store/con.posting';
+
+
 export const registerUser = ( user, callback) => dispatch => {
         
     dispatch({ type: REGISTER_USER_LOADING });
@@ -51,6 +55,8 @@ export const logout = ( loggedIn, callback ) => dispatch => {
         .then(
             data => {
                 dispatch({ type: LOGOUT_USER_SUCCESS });
+                dispatch({ type: LOGOUT_EXPERIENCE } );
+                dispatch({ type: LOGOUT_POSTING } );
                 callback()
             },
             error => {

@@ -9,9 +9,11 @@ class PostingsList extends React.Component {
 
   componentDidMount() {
 
-    this.props.fetchPostings( {
-      loggedIn: this.props.loggedIn
-    });
+    if ( !this.props.loaded ) {
+      this.props.fetchPostings( {
+        loggedIn: this.props.loggedIn
+      });
+    }
 
   }
 
@@ -54,6 +56,7 @@ const mapStateToProps = state => ({
   loading: state.posting.loading,
   error: state.posting.error,
   loggedIn : state.auth.loggedIn,
+  loaded : state.posting.loaded,
 });
 
 const mapDispatchToProps = {
