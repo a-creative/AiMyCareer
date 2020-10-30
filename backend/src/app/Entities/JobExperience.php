@@ -16,6 +16,7 @@ class JobExperience implements Arrayable
     protected $createdTime;
     protected $updatedTime;
     protected $performedTasks;
+    protected $givenTestimonials;
 
     /**
      * The User that owns that has this job experience

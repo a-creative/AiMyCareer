@@ -35,6 +35,7 @@ return [
                 App\Mappings\SkillMapping::class,
                 App\Mappings\TaskExpSkillMapping::class,
                 App\Mappings\TaskMapping::class,
+                App\Mappings\TestimonialMapping::class,
             ],
             'connection'    => env('DB_CONNECTION', 'mysql'),
             'namespaces'    => [],
