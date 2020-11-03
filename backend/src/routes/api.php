@@ -32,6 +32,7 @@ Route::group([
     Route::put('/job-postings/{id}', [ JobPostingController::class, 'update'] );
     Route::delete('/job-postings/{id}', [ JobPostingController::class, 'delete'] );
 
+    Route::get('job-experiences/{id}', [ JobExperienceController::class, 'get'] );
     Route::get('job-experiences', [ JobExperienceController::class, 'index'] );
     Route::post('/job-experiences', [ JobExperienceController::class, 'insert'] );
     Route::put('/job-experiences/{id}', [ JobExperienceController::class, 'update'] );

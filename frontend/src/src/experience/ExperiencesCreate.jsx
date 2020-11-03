@@ -1,10 +1,12 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 import { Row, Col, Form, Button } from 'react-bootstrap'
+import TaskCreate from './TaskCreate';
 import { connect } from 'react-redux'
 import { formatNormalizedDate } from '_shared/helpers.js';
-import { insertExperience, updateExperience } from "experience/_store/act.experience";
+import { insertExperience, updateExperience, resetExperience } from "experience/_store/act.experience";
 import { withRouter  } from "react-router-dom";
+import Api from 'experience/_store/api.experience';
 
 class ExperiencesCreate extends React.Component {
 
@@ -12,17 +14,25 @@ class ExperiencesCreate extends React.Component {
 
     super(props);
 
-    let initExperience = {
-      ...{},
-      ...props.experience
-    }
-
     this.state = {
-      experience : initExperience
+      experience : {
+        ...{ nextTaskKey: 0 },
+        ...props.experience
+      },
     }
 
-    this.state.experience.endedDate = formatNormalizedDate(initExperience.endedDate, 'YYYY-MM-DD');
-    this.state.experience.startedDate = formatNormalizedDate(initExperience.startedDate, 'YYYY-MM-DD');
+    this.initExperience = {
+      ...this.state.experience
+    }
+
+    this.state.experience.endedDate = formatNormalizedDate(this.state.experience.endedDate, 'YYYY-MM-DD');
+    this.state.experience.startedDate = formatNormalizedDate(this.state.experience.startedDate, 'YYYY-MM-DD');
+    
+    this.state.experience.tasksLoaded = true;
+    if (!this.state.experience.tasks) {
+
+      this.state.experience.tasksLoaded = false;
+    }
 
   }
   
@@ -60,7 +70,81 @@ class ExperiencesCreate extends React.Component {
 
     return  false;
   }
-  
+
+
+  handleAddTask = ( e ) => {
+    let state = { ...this.state };
+    state.experience.tasks.push({
+      key : state.experience.nextTaskKey
+    })
+    state.experience.nextTaskKey++;
+    this.setState(state);
+  }
+
+  handleRemoveTask = ( removeTask ) => {
+
+    let updatedTasks = [];
+
+    this.state.experience.tasks.forEach( ( task ) => {
+      if ( task.key !== removeTask.key ) {
+        updatedTasks.push( task )
+      } 
+    });
+
+    let state = { ...this.state };
+    state.experience.tasks = updatedTasks;
+    this.setState(state);
+
+  }
+
+  handleUpdateTask = ( updateTask, key, value ) => {
+
+    let i = this.state.experience.tasks.findIndex( ( task ) => { return task.key === updateTask.key });
+
+    if ( typeof i !== 'undefined') {
+      let state = { ...this.state };
+      state.experience.tasks[ i ][ key ] = value;
+      this.setState(state);
+    }
+
+  }
+
+  componentDidMount() {
+
+    if (!this.state.experience.tasksLoaded) {
+
+      Api.getExperience( this.state.experience, this.props.loggedIn )
+        .then(response => response.json())
+        .then(
+            data => {
+
+              let state = { ...this.state };
+              
+              state.experience.tasksLoaded = true;
+              state.experience.tasks = data.tasks
+                .sort( (taskA,taskB) => { return taskA.weightPct > taskB.weightPct })
+                .map(( task, key ) => {
+                  task.key = key
+                  return task;
+                });
+              state.experience.nextTaskKey = data.tasks.length;              
+
+              this.initExperience = { ...this.state.experience };
+
+              this.setState(state);  
+            }
+        )
+    }
+  } 
+
+  handleCancel = () => {
+    
+    this.props.resetExperience(this.state.experience.id, this.initExperience, () => {
+      this.props.history.goBack();
+    } )
+
+  }
+
   render() {
 
     const { t } = this.props;
@@ -96,11 +180,35 @@ class ExperiencesCreate extends React.Component {
             </Form.Group>
           </Col>
         </Form.Row>
+        <fieldset>
+          <Form.Label as="legend">
+            {t('Tasks')} <Button onClick={this.handleAddTask}>+</Button>
+          </Form.Label> 
+          <Form.Row>
+            <Col>
+              { this.state.experience.tasksLoaded && 
+                (
+                  this.state.experience.tasks.length > 0 ?
+                    ( this.state.experience.tasks.map((task) => (
+                    <TaskCreate 
+                      key={task.key} 
+                      weightPct={task.weightPct} 
+                      description={task.description} 
+                      handleRemove={() => this.handleRemoveTask( task ) }
+                      handleUpdate={( key, value ) => this.handleUpdateTask( task, key, value ) }
+                    />
+                    )))
+                  : <p>{t('No tasks.')}</p>
+                )
+              }
+            </Col>
+          </Form.Row>
+        </fieldset>
         <Form.Row>
           <Col>
             <Button variant="primary" type="submit">{t('Save')}</Button>
             { ' ' }
-            <Button onClick={ (e) => { this.props.history.goBack();} } variant="light" type="submit">{t('Cancel')}</Button>
+            <Button onClick={this.handleCancel} variant="light">{t('Cancel')}</Button>
           </Col>
         </Form.Row>
       </Form>
@@ -119,15 +227,14 @@ function selectExperience( rootReducer, experienceId ) {
   return experience;
 }
 
-
 function mapStateToProps(rootReducer, ownProps) {
 
   let r = {
       loggedIn : rootReducer.auth.loggedIn
   }
 
-  if ( ownProps.match ) {
-    r.experience = selectExperience(rootReducer, +ownProps.match.params.id )
+  if ( ownProps.match.params.id ) {
+    r.experience = selectExperience(rootReducer, +ownProps.match.params.id );
   } else {
     r.experience = {}
   }  
@@ -137,7 +244,8 @@ function mapStateToProps(rootReducer, ownProps) {
 
 const mapDispatchToProps = {
   updateExperience,
-  insertExperience
+  insertExperience,
+  resetExperience
 };
 
 export default connect(

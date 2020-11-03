@@ -4,8 +4,16 @@ import React from 'react';
 export const formatNormalizedDate = ( inputDate, outputFormat ) => {
 
     if ( !inputDate ) {
+
+        // If undefined, return null
         return null;
+    } else if (!inputDate.date) {
+
+        // If already normalized, return as is
+        return inputDate;
     } else {
+
+        // Otherwise, normalize
         var date = moment.tz( inputDate.date, inputDate.timezone);
         return date.format( outputFormat );
     }

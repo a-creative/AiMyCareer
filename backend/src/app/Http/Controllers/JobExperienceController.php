@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Entities\JobExperience;
 use App\Entities\User;
+use App\Entities\Task;
 use LaravelDoctrine\ORM\Facades\EntityManager;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,33 @@ class JobExperienceController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api', ['except' => []]);
+    }
+
+    public function get(Request $request, int $id) {
+
+        $jobExperience = EntityManager::find( JobExperience::class, $id );
+        
+        /** @var User $authUser */
+        $authUser = auth()->user();
+
+        /** @var JobExperience $jobExperience */
+        if ($jobExperience->getOwnerUser()->getId() === $authUser->getId()) {
+
+            $tasks = EntityManager::createQueryBuilder()
+                ->select('t')
+                ->from(Task::class, 't')
+                ->where('t.performedInJobExperience = :jobExperience')
+                ->setParameter('jobExperience', $jobExperience)
+                ->getQuery()
+                ->getResult(\Doctrine\ORM\AbstractQuery::HYDRATE_ARRAY);
+
+            return response()->json([
+                'id' => $jobExperience->getId(),
+                'tasks' => $tasks,
+            ]);
+        
+        }
+
     }
 
     public function index()
@@ -46,9 +74,23 @@ class JobExperienceController extends Controller
             $jobExperience->setEndedDate( null );
         }
 
-        $now = new \DateTime();
+        // Update tasks
+        foreach ($jobExperience->getPerformedTasks() as $task ) {
+            EntityManager::remove( $task );
+        }
+
+        $requestTasks = json_decode( $request->tasks );
+        foreach ( $requestTasks as $requestTask ) {
+            $task = new Task();
+            $task->setWeightPct( $requestTask->weightPct );
+            $task->setDescription( $requestTask->description );
+            EntityManager::persist( $task );
+            $jobExperience->addTask( $task );
+            
+        }
 
         // Update system controlled
+        $now = new \DateTime();
         if ( $isInsert ) {
             $jobExperience->setCreatedTime( $now );
         }

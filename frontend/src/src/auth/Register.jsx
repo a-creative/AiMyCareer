@@ -1,7 +1,6 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 import { Row, Col, Button, Form } from 'react-bootstrap'
-import { Link } from "react-router-dom";
 import { registerUser } from "auth/_store/act.auth";
 import { connect } from 'react-redux'
 import { validateFormByLaravelResponse } from '_shared/helpers.js';

@@ -39,10 +39,6 @@ class ExperiencesListItem extends React.Component {
     return false;
   }
 
-  componentDidMount() {
-      console.log(this.props)
-  }
-
   render() {
 
     const { t } = this.props;

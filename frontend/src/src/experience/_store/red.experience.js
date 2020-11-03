@@ -12,6 +12,7 @@ import {
     DELETE_EXPERIENCE_SUCCESS,
     DELETE_EXPERIENCE_ERROR,
     LOGOUT_EXPERIENCE,
+    RESET_EXPERIENCE
   } from "./con.experience";
   
   const initial_state = {
@@ -138,6 +139,20 @@ import {
           loaded: false,
           experiences: []
         }
+      }
+      case RESET_EXPERIENCE : {
+        return {
+          ...state,
+          experiences: state.experiences.map((experience) => {
+          
+            if ( experience.id === action.experienceId) {
+              console.log('Found experience to reset:' + experience.id);
+              console.log('setting to:' + JSON.stringify(action.experience));
+              return action.experience
+            }
+            return experience
+          })
+        };    
       }
       default: {
         return state;

@@ -4,6 +4,8 @@ namespace App\Entities;
 
 use Illuminate\Contracts\Support\Arrayable;
 use App\Entities\User;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 class JobExperience implements Arrayable
 {
@@ -17,6 +19,11 @@ class JobExperience implements Arrayable
     protected $updatedTime;
     protected $performedTasks;
     protected $givenTestimonials;
+
+    public function __construct()
+    {
+        $this->performedTasks = new ArrayCollection();
+    }
 
     /**
      * The User that owns that has this job experience
@@ -187,5 +194,27 @@ class JobExperience implements Arrayable
         $this->updatedTime = $updatedTime;
 
         return $this;
+    }
+
+    public function addTask(Task $task)
+    {
+        if( !$this->performedTasks->contains($task) ) {
+            $task->setPerformedInJobExperience($this);
+            $this->performedTasks->add($task);
+        }
+    }
+
+    /**
+     * Get the value of performedTasks
+     */ 
+    public function getPerformedTasks() : Collection
+    {
+        return $this->performedTasks;
+    }
+
+    public function removeTasks() {
+        foreach ( $this->performedTasks as $task ) {
+            $this->performedTasks->removeElement( $task );
+        }
     }
 }

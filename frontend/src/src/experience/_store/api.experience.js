@@ -4,7 +4,7 @@ export default class ApiExperience {
 
     static assignExperienceToFormData( experience ) {
         var formData = new FormData();
-    
+        formData = Api.appendFormData(formData, 'tasks', JSON.stringify( experience.tasks ) );
         formData = Api.appendFormData(formData, 'jobTitle', experience.jobTitle);
         formData = Api.appendFormData(formData, 'employer', experience.employer);
         formData = Api.appendFormData(formData, 'startedDate', experience.startedDate);
@@ -12,6 +12,10 @@ export default class ApiExperience {
         
         return formData;
 
+    }
+
+    static getExperience( experience, loggedIn ) {
+        return Api.get("/auth/job-experiences/" + experience.id, undefined, Api.getTokenFrom( loggedIn ))
     }
 
     static getExperiences( loggedIn ) {

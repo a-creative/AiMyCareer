@@ -11,7 +11,8 @@ import {
     UPDATE_EXPERIENCE_ERROR,
     DELETE_EXPERIENCE_LOADING,
     DELETE_EXPERIENCE_SUCCESS,
-    DELETE_EXPERIENCE_ERROR
+    DELETE_EXPERIENCE_ERROR,
+    RESET_EXPERIENCE
 } from "./con.experience"
 
 const handleErrors = (response) => {
@@ -49,18 +50,23 @@ export const fetchExperiences = ( { loggedIn } = {} ) => dispatch => {
  };
  
  export const updateExperience = ( experience, loggedIn, callback ) => dispatch => {
+
+    // Filter empty/invalid tasks
+    experience.tasks = experience.tasks.filter( ( task ) => {
+        return ( task.description && task.weightPct)
+    });
          
-     dispatch({ type: UPDATE_EXPERIENCE_LOADING });
+    dispatch({ type: UPDATE_EXPERIENCE_LOADING });
  
-     Api.updateExperience( experience, loggedIn )
-         .then(response => response.json())
-         .then(
-             data => {
-                 dispatch({ type: UPDATE_EXPERIENCE_SUCCESS, data });
-                 callback();
-             },
-             error => dispatch({ type: UPDATE_EXPERIENCE_ERROR, error: error.message || 'Unexpected Error!!!' })
-         )
+    Api.updateExperience( experience, loggedIn )
+        .then(response => response.json())
+        .then(
+            data => {
+                dispatch({ type: UPDATE_EXPERIENCE_SUCCESS, data });
+                callback();
+            },
+            error => dispatch({ type: UPDATE_EXPERIENCE_ERROR, error: error.message || 'Unexpected Error!!!' })
+        )
  }
  
  export const deleteExperience = ( experience, loggedIn ) => dispatch => {
@@ -73,4 +79,13 @@ export const fetchExperiences = ( { loggedIn } = {} ) => dispatch => {
              data => dispatch({ type: DELETE_EXPERIENCE_SUCCESS, data }),
              error => dispatch({ type: DELETE_EXPERIENCE_ERROR, error: error.message || 'Unexpected Error!!!' })
          )
+ }
+
+ export const resetExperience = ( experienceId, initExperience, onSuccess ) => dispatch => {
+     dispatch( {
+         type: RESET_EXPERIENCE,
+         experienceId : experienceId,
+         experience : initExperience
+     });
+     onSuccess();
  }
