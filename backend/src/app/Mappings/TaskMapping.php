@@ -31,7 +31,7 @@ class TaskMapping extends EntityMapping
         $builder->text('description')->nullable(false);
         $builder->unsignedSmallInteger('weightPct')->nullable(false);
 
-        $builder->manyToOne(JobExperience::class, 'performedInJobExperience');
+        $builder->manyToOne(JobExperience::class, 'performedInJobExperience')->inversedBy('performedTasks');
         
     }
 

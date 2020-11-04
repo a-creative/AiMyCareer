@@ -111,29 +111,37 @@ class ExperiencesCreate extends React.Component {
 
   componentDidMount() {
 
-    if (!this.state.experience.tasksLoaded) {
+    if ( this.props.match.params.id ) {
 
-      Api.getExperience( this.state.experience, this.props.loggedIn )
-        .then(response => response.json())
-        .then(
-            data => {
+      if (!this.state.experience.tasksLoaded) {
 
-              let state = { ...this.state };
-              
-              state.experience.tasksLoaded = true;
-              state.experience.tasks = data.tasks
-                .sort( (taskA,taskB) => { return taskA.weightPct > taskB.weightPct })
-                .map(( task, key ) => {
-                  task.key = key
-                  return task;
-                });
-              state.experience.nextTaskKey = data.tasks.length;              
+        Api.getExperience( this.state.experience, this.props.loggedIn )
+          .then(response => response.json())
+          .then(
+              data => {
 
-              this.initExperience = { ...this.state.experience };
+                let state = { ...this.state };
+                
+                state.experience.tasksLoaded = true;
+                state.experience.tasks = data.tasks
+                  .sort( (taskA,taskB) => { return taskA.weightPct > taskB.weightPct })
+                  .map(( task, key ) => {
+                    task.key = key
+                    return task;
+                  });
+                state.experience.nextTaskKey = data.tasks.length;              
 
-              this.setState(state);  
-            }
-        )
+                this.initExperience = { ...this.state.experience };
+
+                this.setState(state);  
+              }
+          )
+      }
+    } else {
+        let state = { ...this.state };
+        state.experience.tasksLoaded = true;
+        state.experience.tasks = [];
+        this.setState(state);  
     }
   } 
 

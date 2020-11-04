@@ -28,6 +28,7 @@ services:
       APP_NAME: "Job Finder"
       APP_ENV: local
       APP_KEY: nIUYRvYsDIGMFJaunZpE0U4nDSgXmruD
+      APP_DEBUG: "true"
       LOG_CHANNEL: stack
       BROADCAST_DRIVER: log
       CACHE_DRIVER: file

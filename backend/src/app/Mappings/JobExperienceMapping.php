@@ -40,7 +40,7 @@ class JobExperienceMapping extends EntityMapping
         $builder->datetime('updatedTime')->nullable();
     
         $builder->manyToOne(User::class, 'ownerUser');
-        $builder->hasMany(Task::class, 'performedTasks')->mappedBy('performedInJobExperience');
+        $builder->hasMany(Task::class, 'performedTasks')->mappedBy('performedInJobExperience')->cascadePersist();
         $builder->hasMany(Testimonial::class, 'givenTestimonials')->mappedBy('aboutJobExperience');
 
     }

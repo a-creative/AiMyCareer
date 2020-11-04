@@ -82,4 +82,8 @@ class Task implements Arrayable
 
         return $this;
     }
+
+    public function getId() {
+        return $this->id;
+    }
 }

@@ -25,17 +25,11 @@ class JobExperienceController extends Controller
         /** @var JobExperience $jobExperience */
         if ($jobExperience->getOwnerUser()->getId() === $authUser->getId()) {
 
-            $tasks = EntityManager::createQueryBuilder()
-                ->select('t')
-                ->from(Task::class, 't')
-                ->where('t.performedInJobExperience = :jobExperience')
-                ->setParameter('jobExperience', $jobExperience)
-                ->getQuery()
-                ->getResult(\Doctrine\ORM\AbstractQuery::HYDRATE_ARRAY);
+            $tasks = $jobExperience->getPerformedTasks();
 
             return response()->json([
                 'id' => $jobExperience->getId(),
-                'tasks' => $tasks,
+                'tasks' => $tasks->map(function($task) { return $task->toArray(); })->toArray()
             ]);
         
         }
@@ -74,19 +68,45 @@ class JobExperienceController extends Controller
             $jobExperience->setEndedDate( null );
         }
 
-        // Update tasks
-        foreach ($jobExperience->getPerformedTasks() as $task ) {
-            EntityManager::remove( $task );
-        }
-
         $requestTasks = json_decode( $request->tasks );
-        foreach ( $requestTasks as $requestTask ) {
-            $task = new Task();
+
+        if ( !$isInsert ) {
+
+            // On update
+
+            // Detect all saved entities that exists in the saved entities, but not in the request
+            $removeTasks = [];
+            $requestTaskIds = array_map( function( $requestTask ) { return ( property_exists( $requestTask, 'id') ? $requestTask->id : -1); }, $requestTasks );
+            foreach( $jobExperience->getPerformedTasks() as $task ) {
+                if (!in_array($task->getId(), $requestTaskIds)) {
+                    $removeTasks[] = $task;
+                } 
+            }
+
+            // Delete the saved entities and remove from collection
+            foreach( $removeTasks as $removeTask) {
+                $jobExperience->removeTask( $removeTask );
+                EntityManager::remove( $removeTask );
+            }
+        }
+        
+        // On insert and update
+        
+        // Loop all the entities in the request
+        
+        foreach ($requestTasks as $requestTask) {
+
+            if ( property_exists( $requestTask, 'id') ) {
+                $task = EntityManager::find( Task::class, $requestTask->id );
+            } else {
+                $task = new Task();
+            }
+
             $task->setWeightPct( $requestTask->weightPct );
             $task->setDescription( $requestTask->description );
-            EntityManager::persist( $task );
             $jobExperience->addTask( $task );
-            
+            EntityManager::persist( $task );
+
         }
 
         // Update system controlled
@@ -110,6 +130,7 @@ class JobExperienceController extends Controller
     }
 
     public function update(Request $request, int $id) {
+
         $jobExperience = EntityManager::find( JobExperience::class, $id );
 
         /** @var User $authUser */

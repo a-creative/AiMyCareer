@@ -204,6 +204,12 @@ class JobExperience implements Arrayable
         }
     }
 
+    public function removeTask(Task $task)
+    {
+        $this->performedTasks->removeElement($task);
+        $task->getPerformedInJobExperience( null );
+    }
+
     /**
      * Get the value of performedTasks
      */ 
