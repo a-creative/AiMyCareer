@@ -42,10 +42,11 @@ class App extends React.Component {
                   <Navbar.Brand as={Link} to="/">{t('Job Finder')}</Navbar.Brand>
                   <Navbar.Toggle aria-controls="basic-navbar-nav" />
                   <Navbar.Collapse id="basic-navbar-nav">
+                    {this.props.loggedIn && 
                     <Nav className="mr-auto">
-                      {this.props.loggedIn && <Nav.Link as={Link} to="/postings">{t('Job postings')}</Nav.Link>}
-                      {this.props.loggedIn && <Nav.Link as={Link} to="/experiences">{t('Job experiences')}</Nav.Link>}
-                    </Nav>
+                          <Nav.Link as={Link} to="/postings">{t('Job postings')}</Nav.Link>
+                          <Nav.Link as={Link} to="/experiences">{t('Job experiences')}</Nav.Link>
+                    </Nav>}
                     <Nav>
                       <Spinner show={this.props.loading} />{' '}
                     </Nav>
@@ -73,8 +74,10 @@ class App extends React.Component {
                 </Route>
 
                 <Route path="/">
-                  {this.props.loggedIn &&<Redirect to="/postings" />}
-                  {!this.props.loggedIn && <Redirect to="/login" />}
+                  {this.props.loggedIn ? 
+                      <Redirect to="/postings" />
+                    : <Redirect to="/login" />
+                  }
                 </Route>
               </Switch>
               </Col>
