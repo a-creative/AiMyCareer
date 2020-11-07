@@ -4,7 +4,7 @@ import { Row, Col, Form, Button } from 'react-bootstrap'
 import TaskCreate from './TaskCreate';
 import { connect } from 'react-redux'
 import { formatNormalizedDate } from '_shared/helpers.js';
-import { insertExperience, updateExperience, resetExperience } from "experience/_store/act.experience";
+import { insertExperience, updateExperience, resetExperience, experienceLoaded, experienceLoading } from "experience/_store/act.experience";
 import { withRouter  } from "react-router-dom";
 import Api from 'experience/_store/api.experience';
 
@@ -115,6 +115,7 @@ class ExperiencesCreate extends React.Component {
 
       if (!this.state.experience.tasksLoaded) {
 
+        this.props.experienceLoading();
         Api.getExperience( this.state.experience, this.props.loggedIn )
           .then(response => response.json())
           .then(
@@ -134,7 +135,9 @@ class ExperiencesCreate extends React.Component {
                 this.initExperience = { ...this.state.experience };
 
                 this.setState(state);  
-              }
+                this.props.experienceLoaded();
+              },
+              error => this.props.experienceHandleError( error )
           )
       }
     } else {
@@ -253,7 +256,9 @@ function mapStateToProps(rootReducer, ownProps) {
 const mapDispatchToProps = {
   updateExperience,
   insertExperience,
-  resetExperience
+  resetExperience,
+  experienceLoaded,
+  experienceLoading
 };
 
 export default connect(

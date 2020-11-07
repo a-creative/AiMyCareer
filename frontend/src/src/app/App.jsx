@@ -13,6 +13,7 @@ import Register from 'auth/Register'
 
 import { Container, Row, Col, Nav, Navbar} from '_shared/react-bootstrap'
 import Spinner from '_shared/_components/Spinner'
+import ErrorMessage from 'error/ErrorMessage'
 import Page from './Page'
 import PageFooter from './PageFooter';
 import { BrowserRouter, Redirect, Switch, Route, Link  } from "react-router-dom";
@@ -28,10 +29,12 @@ class App extends React.Component {
 
     return (
       <BrowserRouter>
+        <ErrorMessage />
         <div className="App">
           <Helmet>
               <title>{t('Job Finder')}</title>
           </Helmet>
+          
           <Container>
             <Row className="mb-4">
               <Col>
@@ -87,6 +90,7 @@ class App extends React.Component {
 
 const mapStateToProps = state => ({
   loading: ( state.posting.loading || state.auth.loading || state.experience.loading ),
+  error: ( state.posting.error || state.auth.error || state.experience.error ),
   loggedIn: state.auth.loggedIn,
 });
 

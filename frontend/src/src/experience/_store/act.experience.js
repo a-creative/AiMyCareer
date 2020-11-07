@@ -1,43 +1,40 @@
 import Api from "./api.experience.js"
 import { 
-    LOAD_EXPERIENCES_LOADING, 
-    LOAD_EXPERIENCES_SUCCESS, 
-    LOAD_EXPERIENCES_ERROR,
-    INSERT_EXPERIENCE_LOADING,
+    EXPERIENCE_LOADING,
+    EXPERIENCE_LOADED,
+    EXPERIENCE_ABORT, 
+     
+    LOAD_EXPERIENCES_SUCCESS,
     INSERT_EXPERIENCE_SUCCESS,
-    INSERT_EXPERIENCE_ERROR,
-    UPDATE_EXPERIENCE_LOADING,
     UPDATE_EXPERIENCE_SUCCESS,
-    UPDATE_EXPERIENCE_ERROR,
-    DELETE_EXPERIENCE_LOADING,
     DELETE_EXPERIENCE_SUCCESS,
-    DELETE_EXPERIENCE_ERROR,
+
     RESET_EXPERIENCE
 } from "./con.experience"
 
-const handleErrors = (response) => {
-    if (!response.ok) {
-        throw Error(response.statusText);
-    }
-    return response;
+import {
+    REGISTER_ERROR
+} from "error/_store/con.error"
+
+const handleError = ( dispatch, error ) => {
+    dispatch({ type: EXPERIENCE_ABORT })
+    dispatch({ type: REGISTER_ERROR, message: error.message })
 }
 
 export const fetchExperiences = ( { loggedIn } = {} ) => dispatch => {
-    dispatch({ type: LOAD_EXPERIENCES_LOADING });
+    dispatch({ type: EXPERIENCE_LOADING });
     Api.getExperiences( loggedIn )
-        .then(handleErrors)
         .then(response => response.json())
         .then(
             data => {
                 dispatch({ type: LOAD_EXPERIENCES_SUCCESS, data })
-            }
-        ).catch( error => {
-            dispatch({ type: LOAD_EXPERIENCES_ERROR, error: error || 'Unexpected Error!!!' })
-        })
+            },
+            error => handleError( dispatch, error )
+        );
  };
  
  export const insertExperience = ( experience, loggedIn, callback ) => dispatch => {
-     dispatch({ type: INSERT_EXPERIENCE_LOADING });
+     dispatch({ type: EXPERIENCE_LOADING });
      Api.insertExperience( experience, loggedIn )
          .then(response => response.json())
          .then(
@@ -45,7 +42,7 @@ export const fetchExperiences = ( { loggedIn } = {} ) => dispatch => {
                  dispatch({ type: INSERT_EXPERIENCE_SUCCESS, data });
                  callback();
              },
-             error => dispatch({ type: INSERT_EXPERIENCE_ERROR, error: error.message || 'Unexpected Error!!!' })
+             error => handleError( dispatch, error )
          )
  };
  
@@ -56,7 +53,7 @@ export const fetchExperiences = ( { loggedIn } = {} ) => dispatch => {
         return ( task.description && task.weightPct)
     });
          
-    dispatch({ type: UPDATE_EXPERIENCE_LOADING });
+    dispatch({ type: EXPERIENCE_LOADING });
  
     Api.updateExperience( experience, loggedIn )
         .then(response => response.json())
@@ -65,19 +62,19 @@ export const fetchExperiences = ( { loggedIn } = {} ) => dispatch => {
                 dispatch({ type: UPDATE_EXPERIENCE_SUCCESS, data });
                 callback();
             },
-            error => dispatch({ type: UPDATE_EXPERIENCE_ERROR, error: error.message || 'Unexpected Error!!!' })
+            error => handleError( dispatch, error )
         )
  }
  
  export const deleteExperience = ( experience, loggedIn ) => dispatch => {
          
-     dispatch({ type: DELETE_EXPERIENCE_LOADING });
+     dispatch({ type: EXPERIENCE_LOADING });
  
      Api.deleteExperience( experience, loggedIn )
          .then(response => response.json())
          .then(
              data => dispatch({ type: DELETE_EXPERIENCE_SUCCESS, data }),
-             error => dispatch({ type: DELETE_EXPERIENCE_ERROR, error: error.message || 'Unexpected Error!!!' })
+             error => handleError( dispatch, error )
          )
  }
 
@@ -89,3 +86,15 @@ export const fetchExperiences = ( { loggedIn } = {} ) => dispatch => {
      });
      onSuccess();
  }
+
+ export const experienceLoading = () => dispatch => {
+    dispatch({ type: EXPERIENCE_LOADING })
+ }
+ export const experienceLoaded = () => dispatch => {
+    dispatch({ type: EXPERIENCE_LOADED })
+ }
+
+ export const experienceHandleError = ( error ) => dispatch => {
+    this.handleError( dispatch, error )
+ }
+ 

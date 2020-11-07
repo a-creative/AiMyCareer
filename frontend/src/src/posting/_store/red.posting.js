@@ -1,33 +1,33 @@
 import {
-    LOAD_POSTINGS_ERROR,
-    LOAD_POSTINGS_LOADING,
+    POSTING_LOADING,
+    POSTING_ABORT,
+
     LOAD_POSTINGS_SUCCESS,
-    INSERT_POSTING_LOADING,
     INSERT_POSTING_SUCCESS,
-    INSERT_POSTING_ERROR,
-    UPDATE_POSTING_LOADING,
     UPDATE_POSTING_SUCCESS,
-    UPDATE_POSTING_ERROR,
-    DELETE_POSTING_LOADING,
     DELETE_POSTING_SUCCESS,
-    DELETE_POSTING_ERROR,
+    
     LOGOUT_POSTING,
   } from "./con.posting";
   
   const initial_state = {
     loaded: false,
     loading: false,
-    error: "",
     postings: [],
   };
   
   const postingReducer = ( state = initial_state, action ) => {
     switch (action.type) {
-      case LOAD_POSTINGS_LOADING: {
+      case POSTING_LOADING: {
         return {
           ...state,
-          loading: true,
-          error: "",
+          loading: true
+        };
+      }
+      case POSTING_ABORT: {
+        return {
+          ...state,
+          loading: false
         };
       }
       case LOAD_POSTINGS_SUCCESS: {
@@ -36,20 +36,6 @@ import {
           loaded: true,
           postings: action.data,
           loading: false,
-        };
-      }
-      case LOAD_POSTINGS_ERROR: {
-        return {
-          ...state,
-          loading: false,
-          error: action.error,
-        };
-      }
-      case INSERT_POSTING_LOADING: {
-        return {
-          ...state,
-          loading: true,
-          error: "",
         };
       }
       case INSERT_POSTING_SUCCESS: {
@@ -61,22 +47,7 @@ import {
   
         return {
           postings: postings,
-          loading: false,
-          error: "",
-        };
-      }
-      case INSERT_POSTING_ERROR: {
-        return {
-          ...state,
-          loading: false,
-          error: action.error,
-        };
-      }
-      case UPDATE_POSTING_LOADING: {
-        return {
-          ...state,
-          loading: true,
-          error: "",
+          loading: false
         };
       }
       case UPDATE_POSTING_SUCCESS: {
@@ -90,24 +61,9 @@ import {
   
              return posting
            }),
-          loading: false,
-          error: "",
+          loading: false
         };
   
-      }
-      case UPDATE_POSTING_ERROR: {
-        return {
-          ...state,
-          loading: false,
-          error: action.error,
-        };
-      }
-      case DELETE_POSTING_LOADING: {
-        return {
-          ...state,
-          loading: true,
-          error: "",
-        };
       }
       case DELETE_POSTING_SUCCESS: {
   
@@ -120,17 +76,9 @@ import {
   
              return false
            }),
-          loading: false,
-          error: "",
+          loading: false
         };
   
-      }
-      case DELETE_POSTING_ERROR: {
-        return {
-          ...state,
-          loading: false,
-          error: action.error,
-        };
       }
       case LOGOUT_POSTING: {
         return {

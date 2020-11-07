@@ -1,16 +1,13 @@
 import {
-    LOAD_EXPERIENCES_ERROR,
-    LOAD_EXPERIENCES_LOADING,
+    EXPERIENCE_LOADING,
+    EXPERIENCE_LOADED,
+    EXPERIENCE_ABORT,
+
     LOAD_EXPERIENCES_SUCCESS,
-    INSERT_EXPERIENCE_LOADING,
     INSERT_EXPERIENCE_SUCCESS,
-    INSERT_EXPERIENCE_ERROR,
-    UPDATE_EXPERIENCE_LOADING,
     UPDATE_EXPERIENCE_SUCCESS,
-    UPDATE_EXPERIENCE_ERROR,
-    DELETE_EXPERIENCE_LOADING,
     DELETE_EXPERIENCE_SUCCESS,
-    DELETE_EXPERIENCE_ERROR,
+
     LOGOUT_EXPERIENCE,
     RESET_EXPERIENCE
   } from "./con.experience";
@@ -18,17 +15,22 @@ import {
   const initial_state = {
     loaded: false,
     loading: false,
-    error: "",
     experiences: [],
   };
   
   const experienceReducer = ( state = initial_state, action ) => {
     switch (action.type) {
-      case LOAD_EXPERIENCES_LOADING: {
+      case EXPERIENCE_LOADING: {
         return {
           ...state,
-          loading: true,
-          error: "",
+          loading: true
+        };
+      }
+      case EXPERIENCE_LOADED:
+      case EXPERIENCE_ABORT: {
+        return {
+          ...state,
+          loading: false
         };
       }
       case LOAD_EXPERIENCES_SUCCESS: {
@@ -37,20 +39,6 @@ import {
           loaded: true,
           experiences: action.data,
           loading: false,
-        };
-      }
-      case LOAD_EXPERIENCES_ERROR: {
-        return {
-          ...state,
-          loading: false,
-          error: action.error,
-        };
-      }
-      case INSERT_EXPERIENCE_LOADING: {
-        return {
-          ...state,
-          loading: true,
-          error: "",
         };
       }
       case INSERT_EXPERIENCE_SUCCESS: {
@@ -62,22 +50,7 @@ import {
   
         return {
           experiences: experiences,
-          loading: false,
-          error: "",
-        };
-      }
-      case INSERT_EXPERIENCE_ERROR: {
-        return {
-          ...state,
-          loading: false,
-          error: action.error,
-        };
-      }
-      case UPDATE_EXPERIENCE_LOADING: {
-        return {
-          ...state,
-          loading: true,
-          error: "",
+          loading: false
         };
       }
       case UPDATE_EXPERIENCE_SUCCESS: {
@@ -91,24 +64,9 @@ import {
   
              return experience
            }),
-          loading: false,
-          error: "",
+          loading: false
         };
   
-      }
-      case UPDATE_EXPERIENCE_ERROR: {
-        return {
-          ...state,
-          loading: false,
-          error: action.error,
-        };
-      }
-      case DELETE_EXPERIENCE_LOADING: {
-        return {
-          ...state,
-          loading: true,
-          error: "",
-        };
       }
       case DELETE_EXPERIENCE_SUCCESS: {
   
@@ -121,17 +79,9 @@ import {
   
              return false
            }),
-          loading: false,
-          error: "",
+          loading: false
         };
   
-      }
-      case DELETE_EXPERIENCE_ERROR: {
-        return {
-          ...state,
-          loading: false,
-          error: action.error,
-        };
       }
       case LOGOUT_EXPERIENCE: {
         return {
@@ -146,8 +96,6 @@ import {
           experiences: state.experiences.map((experience) => {
           
             if ( experience.id === action.experienceId) {
-              console.log('Found experience to reset:' + experience.id);
-              console.log('setting to:' + JSON.stringify(action.experience));
               return action.experience
             }
             return experience

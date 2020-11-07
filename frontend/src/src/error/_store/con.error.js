@@ -1,0 +1,2 @@
+export const REGISTER_ERROR = 'REGISTER_ERROR'
+export const ACK_ALL_ERRORS = 'ACK_ALL_ERRORS'
