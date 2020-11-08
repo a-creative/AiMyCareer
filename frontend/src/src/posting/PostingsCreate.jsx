@@ -23,6 +23,7 @@ class PostingsCreate extends React.Component {
 
     this.state.posting.deadlineDate = formatNormalizedDate(initPosting.deadlineDate, 'YYYY-MM-DD');
     this.state.posting.postedDate = formatNormalizedDate(initPosting.postedDate, 'YYYY-MM-DD');
+    this.state.posting.appliedDate = formatNormalizedDate(initPosting.appliedDate, 'YYYY-MM-DD');
     this.state.posting.earliestFeedbackDate = formatNormalizedDate(initPosting.earliestFeedbackDate, 'YYYY-MM-DD');
     this.state.posting.earliestStartingDate = formatNormalizedDate(initPosting.earliestStartingDate, 'YYYY-MM-DD');
 
@@ -103,6 +104,12 @@ class PostingsCreate extends React.Component {
           <Form.Group controlId="postedDateField">
             <Form.Label>{t('Posted')}</Form.Label>
             <Form.Control type="date" name="postedDate" value={this.state.posting.postedDate || ''} onChange={this.handleInputChange}></Form.Control>
+          </Form.Group>
+        </Col>
+        <Col>
+          <Form.Group controlId="appliedDateField">
+            <Form.Label>{t('Applied')}</Form.Label>
+            <Form.Control type="date" name="appliedDate" value={this.state.posting.appliedDate || ''} onChange={this.handleInputChange}></Form.Control>
           </Form.Group>
         </Col>
         <Col>

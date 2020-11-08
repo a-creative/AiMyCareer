@@ -14,6 +14,7 @@ class JobPosting implements Arrayable
     protected $createdTime;
     protected $updatedTime;
     protected $postedDate;
+    protected $appliedDate;
     protected $deadlineDate;
     protected $earliestFeedbackDate;
     protected $earliestStartingDate;
@@ -377,6 +378,26 @@ class JobPosting implements Arrayable
     public function setEarliestStartingDate($earliestStartingDate)
     {
         $this->earliestStartingDate = $earliestStartingDate;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of appliedDate
+     */ 
+    public function getAppliedDate()
+    {
+        return $this->appliedDate;
+    }
+
+    /**
+     * Set the value of appliedDate
+     *
+     * @return  self
+     */ 
+    public function setAppliedDate($appliedDate)
+    {
+        $this->appliedDate = $appliedDate;
 
         return $this;
     }

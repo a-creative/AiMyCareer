@@ -36,6 +36,7 @@ class JobPostingMapping extends EntityMapping
         $builder->datetime('createdTime')->nullable();
         $builder->datetime('updatedTime')->nullable();
         $builder->date('postedDate')->nullable();
+        $builder->date('appliedDate')->nullable();
         $builder->date('deadlineDate')->nullable();
         $builder->date('earliestFeedbackDate')->nullable();
         $builder->date('earliestStartingDate')->nullable();

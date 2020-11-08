@@ -41,6 +41,12 @@ class JobPostingController extends Controller
             $jobPosting->setPostedDate( null );
         }
 
+        if ( $request->has('appliedDate')) {
+            $jobPosting->setAppliedDate( new \DateTime($request->input('appliedDate')));
+        } else {
+            $jobPosting->setAppliedDate( null );
+        }
+
         if ( $request->has('deadlineDate')) {
             $jobPosting->setDeadlineDate( new \DateTime($request->input('deadlineDate')));
         } else {

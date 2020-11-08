@@ -9,6 +9,7 @@ export default class ApiPosting {
         formData = Api.appendFormData(formData, 'employer', posting.employer);
         formData = Api.appendFormData(formData, 'extLink', posting.extLink);
         formData = Api.appendFormData(formData, 'postedDate', posting.postedDate);
+        formData = Api.appendFormData(formData, 'appliedDate', posting.appliedDate);
         formData = Api.appendFormData(formData, 'deadlineDate', posting.deadlineDate);
         formData = Api.appendFormData(formData, 'earliestFeedbackDate', posting.earliestFeedbackDate);
         formData = Api.appendFormData(formData, 'earliestStartingDate', posting.earliestStartingDate);
