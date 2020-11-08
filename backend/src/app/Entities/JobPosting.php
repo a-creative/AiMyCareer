@@ -15,6 +15,8 @@ class JobPosting implements Arrayable
     protected $updatedTime;
     protected $postedDate;
     protected $deadlineDate;
+    protected $earliestFeedbackDate;
+    protected $earliestStartingDate;
     protected $locationPostalCode;
     protected $locationCity;
     protected $contactName;
@@ -335,6 +337,46 @@ class JobPosting implements Arrayable
     public function setOwnerUser(User $ownerUser)
     {
         $this->ownerUser = $ownerUser;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of earliestFeedbackDate
+     */ 
+    public function getEarliestFeedbackDate()
+    {
+        return $this->earliestFeedbackDate;
+    }
+
+    /**
+     * Set the value of earliestFeedbackDate
+     *
+     * @return  self
+     */ 
+    public function setEarliestFeedbackDate($earliestFeedbackDate)
+    {
+        $this->earliestFeedbackDate = $earliestFeedbackDate;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of earliestStartingDate
+     */ 
+    public function getEarliestStartingDate()
+    {
+        return $this->earliestStartingDate;
+    }
+
+    /**
+     * Set the value of earliestStartingDate
+     *
+     * @return  self
+     */ 
+    public function setEarliestStartingDate($earliestStartingDate)
+    {
+        $this->earliestStartingDate = $earliestStartingDate;
 
         return $this;
     }

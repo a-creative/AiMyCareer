@@ -47,6 +47,18 @@ class JobPostingController extends Controller
             $jobPosting->setDeadlineDate( null );
         }
 
+        if ( $request->has('earliestFeedbackDate')) {
+            $jobPosting->setEarliestFeedbackDate( new \DateTime($request->input('earliestFeedbackDate')));
+        } else {
+            $jobPosting->setEarliestFeedbackDate( null );
+        }
+
+        if ( $request->has('earliestStartingDate')) {
+            $jobPosting->setEarliestStartingDate( new \DateTime($request->input('earliestStartingDate')));
+        } else {
+            $jobPosting->setEarliestStartingDate( null );
+        }
+
         $jobPosting->setLocationCity( $request->input('locationCity' ) );
         $jobPosting->setLocationPostalCode( $request->input('locationPostalCode' ) );
         $jobPosting->setContactName( $request->input('contactName' ) );

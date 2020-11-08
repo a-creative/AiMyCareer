@@ -23,6 +23,8 @@ class PostingsCreate extends React.Component {
 
     this.state.posting.deadlineDate = formatNormalizedDate(initPosting.deadlineDate, 'YYYY-MM-DD');
     this.state.posting.postedDate = formatNormalizedDate(initPosting.postedDate, 'YYYY-MM-DD');
+    this.state.posting.earliestFeedbackDate = formatNormalizedDate(initPosting.earliestFeedbackDate, 'YYYY-MM-DD');
+    this.state.posting.earliestStartingDate = formatNormalizedDate(initPosting.earliestStartingDate, 'YYYY-MM-DD');
 
   }
 
@@ -99,7 +101,7 @@ class PostingsCreate extends React.Component {
       <Form.Row>
         <Col>
           <Form.Group controlId="postedDateField">
-            <Form.Label>{t('Posting date')}</Form.Label>
+            <Form.Label>{t('Posted')}</Form.Label>
             <Form.Control type="date" name="postedDate" value={this.state.posting.postedDate || ''} onChange={this.handleInputChange}></Form.Control>
           </Form.Group>
         </Col>
@@ -107,6 +109,18 @@ class PostingsCreate extends React.Component {
         <Form.Group controlId="deadlineDateField">
             <Form.Label>{t('Application deadline')}</Form.Label>
             <Form.Control type="date" name="deadlineDate" value={this.state.posting.deadlineDate || ''} onChange={this.handleInputChange}></Form.Control>
+          </Form.Group>
+        </Col>
+        <Col>
+        <Form.Group controlId="earliestFeedbackDateField">
+            <Form.Label>{t('Earl. feedback')}</Form.Label>
+            <Form.Control type="date" name="earliestFeedbackDate" value={this.state.posting.earliestFeedbackDate || ''} onChange={this.handleInputChange}></Form.Control>
+          </Form.Group>
+        </Col>
+        <Col>
+        <Form.Group controlId="earliestStartingDateField">
+            <Form.Label>{t('Earl. start')}</Form.Label>
+            <Form.Control type="date" name="earliestStartingDate" value={this.state.posting.earliestStartingDate || ''} onChange={this.handleInputChange}></Form.Control>
           </Form.Group>
         </Col>
       </Form.Row>

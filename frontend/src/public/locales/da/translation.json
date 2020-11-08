@@ -6,7 +6,6 @@
     "Job postings" : "Jobopslag",
     "Create job posting" : "Opret jobopslag",
     "Edit job posting" : "Rediger jobopslag",
-    "Posting date" : "Opslagsdato",
 
     "Experience" : "Erfaring",
     "Job title" : "Stillingsbeskrivelse",
@@ -16,7 +15,11 @@
     "City" : "By",
     "Work location" : "Arbejdssted",
     
+    "Posted" : "Opslået",
     "Application deadline" : "Ansøgningsfrist",
+    "Earl. feedback" : "Tidl. tilbagemelding",
+    "Earl. start" : "Tidl. start",
+
     "Contact information" : "Kontaktinformation",
     "Details" : "Detaljer",
     "Raw text content" : "Råt tekstindhold",
