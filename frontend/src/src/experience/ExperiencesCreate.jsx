@@ -125,7 +125,7 @@ class ExperiencesCreate extends React.Component {
                 
                 state.experience.tasksLoaded = true;
                 state.experience.tasks = data.tasks
-                  .sort( (taskA,taskB) => { return taskA.weightPct > taskB.weightPct })
+                  .sort( (taskA,taskB) => { return taskB.weightPct - taskA.weightPct })
                   .map(( task, key ) => {
                     task.key = key
                     return task;
