@@ -1,7 +1,7 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 import { Row, Col, Form, Button } from 'react-bootstrap'
-import { connect } from 'react-redux'
+import SkillCreate from './SkillCreate'
 
 class TaskCreate extends React.Component {
 
@@ -24,27 +24,35 @@ class TaskCreate extends React.Component {
 
         const { t } = this.props;
 
-        return <Form.Group><Row>
-        <Col md="2">
-            <Form.Control placeholder={t('Weight')} type="number" name="weightPct" value={this.state.weightPct || ''} onChange={this.handleInputChange}></Form.Control>
-        </Col>
-        <Col>
-            <Form.Control placeholder={t('Description')} type="text" name="description" value={this.state.description || ''} onChange={this.handleInputChange}></Form.Control>
-        </Col>
-        <Col md="auto">{this.state.myKey}
-            <Button onClick={this.props.handleRemove}>-</Button>
-        </Col>
+        return <Form.Group>
+        <Row>
+            <Col md="2">
+                <Form.Control placeholder={t('Weight')} type="number" name="weightPct" value={this.state.weightPct || ''} onChange={this.handleInputChange}></Form.Control>
+            </Col>
+            <Col>
+                <Form.Control placeholder={t('Description')} type="text" name="description" value={this.state.description || ''} onChange={this.handleInputChange}></Form.Control>
+            </Col>
+            <Col md="auto">
+                <Button onClick={this.props.handleRemove}>-</Button>
+            </Col>
+        </Row>
+        <Row>
+            <Col md={ { offset: 2 } }>
+                { this.state.usedSkills.map( ( usedSkill ) => (
+                <SkillCreate 
+                    key={usedSkill.id} 
+                    id={usedSkill.id} 
+                    usageWeightPct={usedSkill.usageWeightPct} 
+                    name={usedSkill.name} />
+                ) ) }
+            </Col>
+        </Row>
         
-      </Row></Form.Group>
+      </Form.Group>
 
     }
 
 }
 
-const mapDispatchToProps = {
-};
 
-export default connect(
-    null,
-    mapDispatchToProps
-  )(withTranslation()(TaskCreate));
+export default withTranslation()(TaskCreate);

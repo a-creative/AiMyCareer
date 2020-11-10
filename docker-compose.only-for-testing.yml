@@ -42,6 +42,7 @@ services:
       DB_DATABASE: laravel
       DB_USERNAME: root
       DB_PASSWORD : wM09y6Rre
+      DOCTRINE_PROXY_AUTOGENERATE: "true"
   phpmyadmin:
     image: phpmyadmin:5.0.2-apache
     restart: always

@@ -4,6 +4,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\JobExperienceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobPostingController;
+use App\Http\Controllers\SkillController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -37,6 +39,11 @@ Route::group([
     Route::post('/job-experiences', [ JobExperienceController::class, 'insert'] );
     Route::put('/job-experiences/{id}', [ JobExperienceController::class, 'update'] );
     Route::delete('/job-experiences/{id}', [ JobExperienceController::class, 'delete'] );
+
+    Route::get('skills', [ SkillController::class, 'index'] );
+    Route::post('/skills', [ SkillController::class, 'insert'] );
+    Route::put('/skills/{id}', [ SkillController::class, 'update'] );
+    Route::delete('/skills/{id}', [ SkillController::class, 'delete'] );
 });
 
 

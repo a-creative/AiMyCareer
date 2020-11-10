@@ -32,6 +32,9 @@ class SkillMapping extends EntityMapping
         $builder->string('name')->length(150)->nullable(false);
         $builder->text('explainer')->nullable(true);
         $builder->unsignedSmallInteger('type')->nullable(false);
+        $builder->boolean('fixedCase')->default(true);
+        $builder->datetime('createdTime')->nullable();
+        $builder->datetime('updatedTime')->nullable();
 
         $builder->manyToOne(SkillCategory::class, 'category');
         $builder->manyToOne(User::class, 'ownerUser');

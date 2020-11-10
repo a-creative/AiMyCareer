@@ -176,8 +176,6 @@ class PostingsList extends React.Component {
 
 const mapStateToProps = state => ({
   postings: state.posting.postings,
-  loading: state.posting.loading,
-  error: state.posting.error,
   loggedIn : state.auth.loggedIn,
   loaded : state.posting.loaded,
 });

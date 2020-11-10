@@ -207,6 +207,7 @@ class ExperiencesCreate extends React.Component {
                       description={task.description} 
                       handleRemove={() => this.handleRemoveTask( task ) }
                       handleUpdate={( key, value ) => this.handleUpdateTask( task, key, value ) }
+                      usedSkills={task.usedSkills}
                     />
                     )))
                   : <p>{t('No tasks.')}</p>

@@ -15,6 +15,7 @@ import {
 
 import { LOGOUT_EXPERIENCE} from 'experience/_store/con.experience';
 import { LOGOUT_POSTING} from 'posting/_store/con.posting';
+import { LOGOUT_SKILL} from 'skill/_store/con.skill';
 
 
 const handleError = ( dispatch, error )  => {
@@ -61,6 +62,7 @@ export const logout = ( loggedIn, callback ) => dispatch => {
                 dispatch({ type: LOGOUT_USER_SUCCESS });
                 dispatch({ type: LOGOUT_EXPERIENCE } );
                 dispatch({ type: LOGOUT_POSTING } );
+                dispatch({ type: LOGOUT_SKILL } );
                 callback()
             },
             error => handleError( dispatch,  error )

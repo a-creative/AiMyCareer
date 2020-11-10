@@ -16,8 +16,11 @@ class Skill implements Arrayable
     protected $name;
     protected $explainer;
     protected $type;
+    protected $fixedCase;
     protected $category;
     protected $ownerUser;
+    protected $createdTime;
+    protected $updatedTime;
 
     public function toArray() {
 
@@ -51,6 +54,134 @@ class Skill implements Arrayable
         }
 
         $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of id
+     */ 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get the value of name
+     */ 
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set the value of name
+     *
+     * @return  self
+     */ 
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of explainer
+     */ 
+    public function getExplainer()
+    {
+        return $this->explainer;
+    }
+
+    /**
+     * Set the value of explainer
+     *
+     * @return  self
+     */ 
+    public function setExplainer($explainer)
+    {
+        $this->explainer = $explainer;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of category
+     */ 
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set the value of category
+     *
+     * @return  self
+     */ 
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of ownerUser
+     */ 
+    public function getOwnerUser()
+    {
+        return $this->ownerUser;
+    }
+
+    /**
+     * Set the value of ownerUser
+     *
+     * @return  self
+     */ 
+    public function setOwnerUser($ownerUser)
+    {
+        $this->ownerUser = $ownerUser;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of createdTime
+     */ 
+    public function getCreatedTime()
+    {
+        return $this->createdTime;
+    }
+
+    /**
+     * Set the value of createdTime
+     *
+     * @return  self
+     */ 
+    public function setCreatedTime($createdTime)
+    {
+        $this->createdTime = $createdTime;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of updatedTime
+     */ 
+    public function getUpdatedTime()
+    {
+        return $this->updatedTime;
+    }
+
+    /**
+     * Set the value of updatedTime
+     *
+     * @return  self
+     */ 
+    public function setUpdatedTime($updatedTime)
+    {
+        $this->updatedTime = $updatedTime;
 
         return $this;
     }
