@@ -66,10 +66,10 @@ class SkillCategory extends \App\Entities\SkillCategory implements \Doctrine\ORM
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'name', 'icon', 'foregroundColorHex', 'backgroundColorHex', 'usedInSkills', 'ownerUser'];
+            return ['__isInitialized__', 'id', 'name', 'icon', 'foregroundColorHex', 'backgroundColorHex', 'usedInSkills', 'ownerUser', 'createdTime', 'updatedTime'];
         }
 
-        return ['__isInitialized__', 'id', 'name', 'icon', 'foregroundColorHex', 'backgroundColorHex', 'usedInSkills', 'ownerUser'];
+        return ['__isInitialized__', 'id', 'name', 'icon', 'foregroundColorHex', 'backgroundColorHex', 'usedInSkills', 'ownerUser', 'createdTime', 'updatedTime'];
     }
 
     /**
@@ -185,6 +185,186 @@ class SkillCategory extends \App\Entities\SkillCategory implements \Doctrine\ORM
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'toArray', []);
 
         return parent::toArray();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCreatedTime()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedTime', []);
+
+        return parent::getCreatedTime();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setCreatedTime($createdTime)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedTime', [$createdTime]);
+
+        return parent::setCreatedTime($createdTime);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUpdatedTime()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedTime', []);
+
+        return parent::getUpdatedTime();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUpdatedTime($updatedTime)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedTime', [$updatedTime]);
+
+        return parent::setUpdatedTime($updatedTime);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getId()
+    {
+        if ($this->__isInitialized__ === false) {
+            return (int)  parent::getId();
+        }
+
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
+
+        return parent::getId();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setId($id)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setId', [$id]);
+
+        return parent::setId($id);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getName()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', []);
+
+        return parent::getName();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setName($name)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setName', [$name]);
+
+        return parent::setName($name);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIcon()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIcon', []);
+
+        return parent::getIcon();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIcon($icon)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIcon', [$icon]);
+
+        return parent::setIcon($icon);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getForegroundColorHex()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getForegroundColorHex', []);
+
+        return parent::getForegroundColorHex();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setForegroundColorHex($foregroundColorHex)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setForegroundColorHex', [$foregroundColorHex]);
+
+        return parent::setForegroundColorHex($foregroundColorHex);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getBackgroundColorHex()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBackgroundColorHex', []);
+
+        return parent::getBackgroundColorHex();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setBackgroundColorHex($backgroundColorHex)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBackgroundColorHex', [$backgroundColorHex]);
+
+        return parent::setBackgroundColorHex($backgroundColorHex);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getOwnerUser()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOwnerUser', []);
+
+        return parent::getOwnerUser();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setOwnerUser($ownerUser)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOwnerUser', [$ownerUser]);
+
+        return parent::setOwnerUser($ownerUser);
     }
 
 }

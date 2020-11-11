@@ -7,6 +7,12 @@ import PostingsCreate from 'posting/PostingsCreate'
 import Experiences from 'experience/Experiences';
 import ExperiencesCreate from 'experience/ExperiencesCreate'
 
+import Skills from 'skill/Skills';
+import SkillsCreate from 'skill/SkillsCreate'
+
+import SkillCategories from 'skillCategory/SkillCategories';
+import SkillCategoriesCreate from 'skillCategory/SkillCategoriesCreate'
+
 import Login from 'auth/Login'
 import ForgotPassword from 'auth/ForgotPassword'
 import Register from 'auth/Register'
@@ -20,6 +26,12 @@ import { BrowserRouter, Redirect, Switch, Route, Link  } from "react-router-dom"
 import { withTranslation } from 'react-i18next';
 import { connect } from 'react-redux'
 import 'app/App.css';
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+
+library.add(fab, fas)
 
 class App extends React.Component {
 
@@ -46,6 +58,8 @@ class App extends React.Component {
                     <Nav className="mr-auto">
                           <Nav.Link as={Link} to="/postings">{t('Job postings')}</Nav.Link>
                           <Nav.Link as={Link} to="/experiences">{t('Job experiences')}</Nav.Link>
+                          <Nav.Link as={Link} to="/skills">{t('Skill_plural')}</Nav.Link>
+                          <Nav.Link as={Link} to="/skill-categories">{t('Skill category_plural')}</Nav.Link>
                     </Nav>}
                     <Nav>
                       <Spinner show={this.props.loading} />{' '}
@@ -61,14 +75,26 @@ class App extends React.Component {
                 <Route path="/forgot-password"><Page title={t('Forgot password')}><ForgotPassword /></Page></Route>
                 <Route path="/register"><Page title={t('Register new user')}><Register /></Page></Route>
                 
-                <Route path="/postings/create" render={(props) => <Page title={t('Create job posting')}><PostingsCreate {...props} /></Page>} />
-                <Route path="/postings/edit/:id" render={(props) => <Page title={t('Edit job posting')}><PostingsCreate {...props} /></Page>} />
+                <Route path="/postings/create" render={(props) => <Page title={t('Create {{object_name}}', { object_name : t('job posting')})}><PostingsCreate {...props} /></Page>} />
+                <Route path="/postings/edit/:id" render={(props) => <Page title={t('Edit {{object_name}}', { object_name : t('job posting')})}><PostingsCreate {...props} /></Page>} />
                 <Route path="/postings">
                   <Page title={t('Job postings')}><Postings /></Page>
                 </Route>
 
-                <Route path="/experiences/create" render={(props) => <Page title={t('Create job experience')}><ExperiencesCreate {...props} /></Page>} />
-                <Route path="/experiences/edit/:id" render={(props) => <Page title={t('Edit job experience')}><ExperiencesCreate {...props} /></Page>} />
+                <Route path="/skills/create" render={(props) => <Page title={t('Create {{object_name}}', { object_name : t('skill')})}><SkillsCreate {...props} /></Page>} />
+                <Route path="/skills/edit/:id" render={(props) => <Page title={t('Edit {{object_name}}', { object_name : t('skill')})}><SkillsCreate {...props} /></Page>} />
+                <Route path="/skills">
+                  <Page title={t('Skill_plural')}><Skills /></Page>
+                </Route>
+
+                <Route path="/skill-categories/create" render={(props) => <Page title={t('Create {{object_name}}', { object_name : t('skill category')})}><SkillCategoriesCreate {...props} /></Page>} />
+                <Route path="/skill-categories/edit/:id" render={(props) => <Page title={t('Edit {{object_name}}', { object_name : t('skill category')})}><SkillCategoriesCreate {...props} /></Page>} />
+                <Route path="/skill-categories">
+                  <Page title={t('Skill category_plural')}><SkillCategories /></Page>
+                </Route>
+
+                <Route path="/experiences/create" render={(props) => <Page title={t('Create {{object_name}}', { object_name : t('job experience')})}><ExperiencesCreate {...props} /></Page>} />
+                <Route path="/experiences/edit/:id" render={(props) => <Page title={t('Edit {{object_name}}', { object_name : t('job experience')})}><ExperiencesCreate {...props} /></Page>} />
                 <Route path="/experiences">
                   <Page title={t('Job experiences')}><Experiences /></Page>
                 </Route>
@@ -92,8 +118,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  loading: ( state.posting.loading || state.auth.loading || state.experience.loading ),
-  error: ( state.posting.error || state.auth.error || state.experience.error ),
+  loading: ( state.posting.loading || state.auth.loading || state.experience.loading || state.skill.loading || state.skillCategory.loading ),
+  error: ( state.posting.error || state.auth.error || state.experience.error || state.skill.error || state.skillCategory.error ),
   loggedIn: state.auth.loggedIn,
 });
 

@@ -66,10 +66,10 @@ class Education extends \App\Entities\Education implements \Doctrine\ORM\Proxy\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'name', 'description', 'startedDate', 'endedDate', 'educatedUser'];
+            return ['__isInitialized__', 'id', 'name', 'description', 'startedDate', 'endedDate', 'createdTime', 'updatedTime', 'educatedUser'];
         }
 
-        return ['__isInitialized__', 'id', 'name', 'description', 'startedDate', 'endedDate', 'educatedUser'];
+        return ['__isInitialized__', 'id', 'name', 'description', 'startedDate', 'endedDate', 'createdTime', 'updatedTime', 'educatedUser'];
     }
 
     /**
@@ -207,6 +207,50 @@ class Education extends \App\Entities\Education implements \Doctrine\ORM\Proxy\P
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEducatedUser', [$educatedUser]);
 
         return parent::setEducatedUser($educatedUser);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCreatedTime()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedTime', []);
+
+        return parent::getCreatedTime();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setCreatedTime($createdTime)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedTime', [$createdTime]);
+
+        return parent::setCreatedTime($createdTime);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUpdatedTime()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedTime', []);
+
+        return parent::getUpdatedTime();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUpdatedTime($updatedTime)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedTime', [$updatedTime]);
+
+        return parent::setUpdatedTime($updatedTime);
     }
 
 }

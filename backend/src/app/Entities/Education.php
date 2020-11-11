@@ -13,6 +13,8 @@ class Education implements Arrayable
     protected $description;
     protected $startedDate;
     protected $endedDate;
+    protected $createdTime;
+    protected $updatedTime;
 
     /** @var User $educatedUser */
     protected $educatedUser;
@@ -45,6 +47,46 @@ class Education implements Arrayable
     public function setEducatedUser($educatedUser)
     {
         $this->educatedUser = $educatedUser;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of createdTime
+     */ 
+    public function getCreatedTime()
+    {
+        return $this->createdTime;
+    }
+
+    /**
+     * Set the value of createdTime
+     *
+     * @return  self
+     */ 
+    public function setCreatedTime($createdTime)
+    {
+        $this->createdTime = $createdTime;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of updatedTime
+     */ 
+    public function getUpdatedTime()
+    {
+        return $this->updatedTime;
+    }
+
+    /**
+     * Set the value of updatedTime
+     *
+     * @return  self
+     */ 
+    public function setUpdatedTime($updatedTime)
+    {
+        $this->updatedTime = $updatedTime;
 
         return $this;
     }

@@ -7,3 +7,11 @@ export const UPDATE_SKILL_SUCCESS = 'UPDATE_SKILL_SUCCESS';
 export const DELETE_SKILL_SUCCESS = 'DELETE_SKILL_SUCCESS';
 
 export const LOGOUT_SKILL = 'LOGOUT_SKILL';
+
+export const TOOL_SKILL_TYPE = 0;
+export const PERSONAL_INTERNAL_SKILL_TYPE = 1;
+export const PERSONAL_EXTERNAL_SKILL_TYPE = 2;
+export const LANGUAGE_SKILL_TYPE = 3;
+export const OTHER_SKILL_TYPE = 4;
+export const VALID_SKILL_TYPES = [ 0,1,2,3,4 ];
+

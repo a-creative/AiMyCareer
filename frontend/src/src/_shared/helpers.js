@@ -1,5 +1,6 @@
 import moment from 'moment-timezone'
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const formatNormalizedDate = ( inputDate, outputFormat ) => {
 
@@ -138,6 +139,35 @@ export const validateFormByLaravelResponse = ({
         component.setState( state );
 
         onSuccess();
+    }
+
+}
+
+export const getAwesomeIconFromString = ( text, iconString, foregroundColorHex, backgroundColorHex ) => {
+    if ( iconString && foregroundColorHex && backgroundColorHex ) {
+        let icon_parts = iconString.split(':');
+        if ( icon_parts.length > 1 ) {
+
+            if ( icon_parts[ 0 ] === 'text') {
+                return <span className="skill" style={{ color: foregroundColorHex, backgroundColor: backgroundColorHex}}>
+                {text} {icon_parts[ 1 ]}
+            </span> 
+            } else {
+                return <span className="skill" style={{ color: foregroundColorHex, backgroundColor: backgroundColorHex}}>
+                {text} <FontAwesomeIcon icon={[icon_parts[ 0 ], icon_parts[ 1 ]]} />
+            </span> 
+            }
+
+        } else {
+            return <span className="skill" style={{ color: foregroundColorHex, backgroundColor: backgroundColorHex}}>
+                {text} <FontAwesomeIcon icon={['fas', icon_parts[ 0 ]]} />
+            </span>
+        }
+        
+    } else {
+        return <span className="skill" style={{ color: 'Black', backgroundColor: 'Yellow'}}>
+            <FontAwesomeIcon icon={['fas', 'exclamation-triangle']} />
+        </span>
     }
 
 }

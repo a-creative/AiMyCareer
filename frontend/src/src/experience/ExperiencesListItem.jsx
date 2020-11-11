@@ -24,7 +24,7 @@ class ExperiencesListItem extends React.Component {
     const { t } = this.props;
 
     e.preventDefault();
-    if (window.confirm( t('Do you really want to delete this job experience?'))) {
+    if (window.confirm( t('Do you really want to delete {{objectTypeName}}?', { objectTypeName : t('this job experience')}))) {
       this.props.deleteExperience( this.props.experience, this.props.loggedIn );
     }
 

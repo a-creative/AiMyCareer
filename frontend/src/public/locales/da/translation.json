@@ -1,9 +1,18 @@
 {
+    "Select {{a_object_name}}" : "Vælg {{a_object_name}}",
+    "Edit {{object_name}}" : "Rediger {{object_name}}",
+    "Create {{object_name}}" : "Opret {{object_name}}",
+        
+
     "Job experiences" : "Joberfaring",
+    "job experience" : "joberfaring",
+    "this job experience" : "denne joberfaring",
     "Create job experience" : "Opret joberfaring",
     "Edit job experience" : "Rediger joberfaring",
 
     "Job postings" : "Jobopslag",
+    "job posting" : "jobopslag",
+    "this job posting" : "dette jobopslag",
     "Create job posting" : "Opret jobopslag",
     "Edit job posting" : "Rediger jobopslag",
 
@@ -14,6 +23,29 @@
     "Postal code" : "Postnummer",
     "City" : "By",
     "Work location" : "Arbejdssted",
+
+    "Skill" : "Kompetence",
+    "Skill_plural" : "Kompetencer",
+    "this skill" : "denne kompetence",
+    "skill" : "kompetence",
+    "Type" : "Type",
+    "Category" : "Kategori",
+    "a category" : "en kategori",
+    "a type" : "en type",
+    "The first letter of the name has a fixed case." : "Første bogstav i navnet har fast størrelse.",
+    "skill_type_0" : "Navngivet software/værktøj m.m.",
+    "skill_type_1" : "Personlig / IKKE relateret til samarbejde",
+    "skill_type_2" : "Social / relateret til samarbejde",
+    "skill_type_3" : "Sprogkundskaber ift. geografisk region/land",
+    "skill_type_4" : "Andet",
+    "Description" : "Beskrivelse",
+
+    "Skill category" : "Kompetencekategori",
+    "Skill category_plural" : "Kompetencekategorier",
+    "this skill category" : "denne kompetencekategori",
+    "Icon" : "Ikon",
+    "Foreground color (hex)" : "Forgrundsfarve (hex)",
+    "Background color (hex)" : "Baggrundsfarve (hex)",
     
     "Posted" : "Opslået",
     "Applied" : "Ansøgt",
@@ -28,8 +60,7 @@
     "Edit" : "Rediger",
     "Archive" : "Arkiver",
     "Delete" : "Slet",
-    "Do you really want to delete this job posting?" : "Ønsker du  virkeligt at slette dette jobopslag",
-    "Do you really want to delete this job experience?" : "Ønsker du  virkeligt at slette denne joberfaring",
+    "Do you really want to delete {{objectTypeName}}?" : "Ønsker du virkeligt at slette {{objectTypeName}}?",
     "Your e-mail address" : "Din e-mailadresse",
     "Your password" : "Din adgangskode",
     "Select password" : "Vælg adgangskode",

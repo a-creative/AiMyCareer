@@ -34,6 +34,9 @@ class SkillCategoryMapping extends EntityMapping
         $builder->string('foregroundColorHex')->length(7)->nullable(false);
         $builder->string('backgroundColorHex')->length(7)->nullable(false);
 
+        $builder->datetime('createdTime')->nullable();
+        $builder->datetime('updatedTime')->nullable();
+
         $builder->hasMany( Skill::class, 'usedInSkills')->mappedBy('category');
         $builder->manyToOne(User::class, 'ownerUser');
 

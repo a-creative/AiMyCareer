@@ -51,6 +51,9 @@ class EducationMapping extends EntityMapping
         $builder->date('startedDate')->nullable(false);
         $builder->date('endedDate')->nullable(false);
 
+        $builder->datetime('createdTime')->nullable();
+        $builder->datetime('updatedTime')->nullable();
+
         $builder->manyToOne(User::class, 'educatedUser');
 
     

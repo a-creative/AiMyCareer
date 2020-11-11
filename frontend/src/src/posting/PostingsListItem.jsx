@@ -12,7 +12,7 @@ class PostingsListItem extends React.Component {
     const { t } = this.props;
 
     e.preventDefault();
-    if (window.confirm( t('Do you really want to delete this job posting?'))) {
+    if (window.confirm( t('Do you really want to delete {{objectTypeName}}?', { objectTypeName : t('this job posting')}))) {
       this.props.deletePosting( this.props.posting, this.props.loggedIn );
     }
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\JobExperienceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobPostingController;
 use App\Http\Controllers\SkillController;
+use App\Http\Controllers\SkillCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,11 @@ Route::group([
     Route::post('/skills', [ SkillController::class, 'insert'] );
     Route::put('/skills/{id}', [ SkillController::class, 'update'] );
     Route::delete('/skills/{id}', [ SkillController::class, 'delete'] );
+
+    Route::get('skill-categories', [ SkillCategoryController::class, 'index'] );
+    Route::post('/skill-categories', [ SkillCategoryController::class, 'insert'] );
+    Route::put('/skill-categories/{id}', [ SkillCategoryController::class, 'update'] );
+    Route::delete('/skill-categories/{id}', [ SkillCategoryController::class, 'delete'] );
 });
 
 

@@ -6,7 +6,11 @@ export default class ApiSkill {
         var formData = new FormData();
     
         formData = Api.appendFormData(formData, 'name', skill.name);
-        
+        formData = Api.appendFormData(formData, 'explainer', skill.explainer);
+        formData = Api.appendFormData(formData, 'fixedCase', skill.fixedCase);
+        formData = Api.appendFormData(formData, 'categoryId', skill.categoryId);
+        formData = Api.appendFormData(formData, 'type', skill.type);
+
         return formData;
 
     }

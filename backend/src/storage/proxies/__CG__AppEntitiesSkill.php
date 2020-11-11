@@ -66,10 +66,10 @@ class Skill extends \App\Entities\Skill implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'name', 'explainer', 'type', 'category', 'ownerUser', 'createdTime', 'updatedTime'];
+            return ['__isInitialized__', 'id', 'name', 'explainer', 'type', 'fixedCase', 'category', 'ownerUser', 'createdTime', 'updatedTime'];
         }
 
-        return ['__isInitialized__', 'id', 'name', 'explainer', 'type', 'category', 'ownerUser', 'createdTime', 'updatedTime'];
+        return ['__isInitialized__', 'id', 'name', 'explainer', 'type', 'fixedCase', 'category', 'ownerUser', 'createdTime', 'updatedTime'];
     }
 
     /**
