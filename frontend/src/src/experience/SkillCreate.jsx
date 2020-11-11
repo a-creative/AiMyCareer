@@ -10,12 +10,16 @@ class SkillCreate extends React.Component {
     constructor( props ) {
         super(props);
 
-        this.state = { ...props };
+        this.state = { 
+            fields: {
+                id : props.id,
+                usageWeightPct : props.usageWeightPct || ''
+            }
+        };
 
     }
 
     componentDidMount() {
-        console.log(this.props.loaded)
         if ( !this.props.loaded ) {
             
             this.props.fetchSkills( {
@@ -25,18 +29,18 @@ class SkillCreate extends React.Component {
 
     }
 
+    componentDidUpdate(prevProps) {
+        Object.keys(this.state.fields).forEach( ( fieldName ) => {
+            if(prevProps[ fieldName ] !== this.props[ fieldName ]) {
+                let updateState = { ...this.state }
+                updateState.fields[ fieldName ] = this.props[ fieldName ];
+                this.setState( updateState )
+            }
+        });
+    }   
+
     handleInputChange = (e) => {
-        this.setState({ 
-            [e.target.name]: e.target.value
-        });
-
         this.props.handleUpdate(e.target.name, e.target.value);
-    }
-
-    handleSelectChange = (e) => {
-        this.setState({ 
-            [e.target.name]: e.target.value
-        });
     }
 
     render() {
@@ -45,11 +49,11 @@ class SkillCreate extends React.Component {
 
         return <Form.Group>
         <Row>
-            <Col md="2">
-                <Form.Control placeholder={t('Weight')} type="number" name="usageWeightPct" value={this.state.usageWeightPct || ''} onChange={this.handleInputChange}></Form.Control>
+            <Col md="3">
+                <Form.Control placeholder={t('Weight')} type="number" name="usageWeightPct" value={this.state.fields.usageWeightPct} onChange={this.handleInputChange}></Form.Control>
             </Col>
             <Col>
-                <Form.Control as="select" name="id" value={this.state.id} onChange={this.handleSelectChange}>
+                <Form.Control as="select" name="id" value={this.state.fields.id} onChange={this.handleInputChange}>
                     <option key={-1}>- {t('Select a skill')}</option>
                     {this.props.skills.map( ( skill ) =>(
                         <option key={skill.id} value={skill.id} style={ { textTransform: ( skill.fixedCase ? 'none' : 'capitalize' ) } }>{ skill.name }</option>
@@ -71,7 +75,6 @@ function mapStateToProps(rootReducer, ownProps) {
     return { 
         skills: rootReducer.skill.skills,  
         loaded : rootReducer.skill.loaded,
-
         loggedIn : rootReducer.auth.loggedIn,
     };
 

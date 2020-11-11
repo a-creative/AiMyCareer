@@ -75,10 +75,86 @@ class ExperiencesCreate extends React.Component {
   handleAddTask = ( e ) => {
     let state = { ...this.state };
     state.experience.tasks.push({
-      key : state.experience.nextTaskKey
+      key : state.experience.nextTaskKey,
+      usedSkills: []
     })
     state.experience.nextTaskKey++;
     this.setState(state);
+  }
+
+  handleAddSkillToTask = ( toTask ) => {
+    
+    let state = { ...this.state };
+    state.experience.tasks = state.experience.tasks.map(( task ) => { 
+      if ( task.key === toTask.key ) {
+          if (typeof(task.usedSkills) === 'undefined') {
+            task.usedSkills = [];
+            task.nextSkillKey = 0;
+          } else {
+            if ( task.usedSkills.length > 0 ) {
+              task.nextSkillKey = task.usedSkills.slice(-1).pop().key + 1;
+            } else {
+              task.nextSkillKey = 0;
+            }
+          }
+        
+          task.usedSkills.push({
+            key : task.nextSkillKey
+          });
+
+          task.nextSkillKey++;
+      }
+      return task;     
+    });
+    this.setState(state);
+  }
+
+  handleRemoveSkillFromTask = ( removeFromTask, removeSkill ) => {
+
+    let updatedTasks = [];
+
+    this.state.experience.tasks.forEach( ( task ) => {
+
+      if ( task.key === removeFromTask.key ) {
+        
+        let updatedUsedSkills = [];
+        task.usedSkills.forEach( ( skill ) => {
+          if ( skill.key !== removeSkill.key ) {
+            updatedUsedSkills.push( skill )
+          } 
+        });
+
+        let updatedTask = { ...task };
+        updatedTask.usedSkills = updatedUsedSkills;
+        updatedTasks.push(updatedTask)
+      } else {
+        updatedTasks.push(task)
+      }
+    })
+
+    let state = { ...this.state };
+    state.experience.tasks = updatedTasks;
+    this.setState(state);
+
+  }
+
+  handleUpdateSkillOnTask = ( onTask, updateSkill, key, value ) => {
+
+    let state = { ...this.state };
+    state.experience.tasks = state.experience.tasks.map(( task ) => { 
+      if ( task.key === onTask.key ) {
+
+        let i = task.usedSkills.findIndex( ( skill ) => { return skill.key === updateSkill.key });
+
+        if ( typeof i !== 'undefined') {
+          task.usedSkills[ i ][ key ] = value;
+        }
+
+      }
+      return task;     
+    });
+    this.setState(state);
+
   }
 
   handleRemoveTask = ( removeTask ) => {
@@ -128,6 +204,14 @@ class ExperiencesCreate extends React.Component {
                   .sort( (taskA,taskB) => { return taskB.weightPct - taskA.weightPct })
                   .map(( task, key ) => {
                     task.key = key
+
+                    task.usedSkills = task.usedSkills.map(( skill, key) => {
+                      skill.key = key;
+                      return skill;
+                    })
+
+                    task.nextSkillKey = task.usedSkills.length;
+                    
                     return task;
                   });
                 state.experience.nextTaskKey = data.tasks.length;              
@@ -204,9 +288,12 @@ class ExperiencesCreate extends React.Component {
                     <TaskCreate 
                       key={task.key} 
                       weightPct={task.weightPct} 
-                      description={task.description} 
+                      description={task.description } 
                       handleRemove={() => this.handleRemoveTask( task ) }
                       handleUpdate={( key, value ) => this.handleUpdateTask( task, key, value ) }
+                      handleAddSkill={() => this.handleAddSkillToTask( task )}
+                      handleRemoveSkill={( skill ) => this.handleRemoveSkillFromTask( task, skill )}
+                      handleUpdateSkill={(skill, value, name ) => this.handleUpdateSkillOnTask( task, skill, value, name )}
                       usedSkills={task.usedSkills}
                     />
                     )))

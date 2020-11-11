@@ -131,7 +131,7 @@ class JobExperienceController extends Controller
             $jobExperience->addTask( $task );
             EntityManager::persist( $task );
             
-            $requestSkills = $requestTask->skills;
+            $requestSkills = $requestTask->usedSkills;
 
             // Loop all current skill entities connected to task and remove those not in the request
             
