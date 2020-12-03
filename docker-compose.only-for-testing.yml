@@ -4,7 +4,7 @@ services:
     stdin_open: true
     build:
         context: ./frontend
-    image: job-finder-frontend
+    image: ai-my-career-frontend
     ports:
       - "5001:3000"
     volumes:
@@ -15,7 +15,7 @@ services:
   backend:
     build:
       context: ./backend
-    image: job-finder-backend
+    image: ai-my-career-backend
     ports:
       - "5002:80"
     volumes:
@@ -25,7 +25,7 @@ services:
       - database
     environment: 
       APP_URL: http://localhost
-      APP_NAME: "Job Finder"
+      APP_NAME: "AiMyCareer"
       APP_ENV: local
       APP_KEY: nIUYRvYsDIGMFJaunZpE0U4nDSgXmruD
       APP_DEBUG: "true"

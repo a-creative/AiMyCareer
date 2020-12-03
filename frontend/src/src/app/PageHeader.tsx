@@ -12,7 +12,7 @@ function PageHeader( props : PageHeaderProps) {
     const { t } = useTranslation();
     
     return <Row><Helmet>
-    <title>{title} - {t('Job Finder')}</title>
+    <title>{title} - {t('AiMyCareer')}</title>
 </Helmet><Col><h1>{title}</h1></Col></Row>;
 }
 

@@ -44,14 +44,14 @@ class App extends React.Component {
         <ErrorMessage />
         <div className="App">
           <Helmet>
-              <title>{t('Job Finder')}</title>
+              <title>{t('AiMyCareer')}</title>
           </Helmet>
           
           <Container>
             <Row className="mb-4">
               <Col>
                 <Navbar bg="dark" variant="dark" expand="lg">
-                  <Navbar.Brand as={Link} to="/">{t('Job Finder')}</Navbar.Brand>
+                  <Navbar.Brand as={Link} to="/">{t('AiMyCareer')}</Navbar.Brand>
                   <Navbar.Toggle aria-controls="basic-navbar-nav" />
                   <Navbar.Collapse id="basic-navbar-nav">
                     {this.props.loggedIn && 
