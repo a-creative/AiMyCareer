@@ -125,7 +125,7 @@ Then also feel free to contact me about that. Especially if you like what you ha
 I would love to meet over a cup of coffee and talk about a possible professional future together. 
 
 I will update my employment status every two weeks.  
-Next scheduled update: December 13th, 2020
+Next scheduled update: February 7th, 2021
 
 ❤️
 
