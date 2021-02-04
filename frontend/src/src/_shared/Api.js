@@ -1,7 +1,14 @@
 export default class Api {
 
     static getTokenFrom( loggedIn ) {
-        return loggedIn.token.key;
+        if ( loggedIn ) {
+            return loggedIn.token.key;
+        } else if ( localStorage.getItem('token') ) {
+            return localStorage.getItem('token');
+        } else {
+            return false;
+        }
+         
     }
     
     static getOptions( baseOptions = {}, formData, token ) {

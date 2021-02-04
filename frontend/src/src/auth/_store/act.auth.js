@@ -45,6 +45,9 @@ export const loginUser = ( user, callback) => dispatch => {
         .then(response => response.json())
         .then(
             data => {
+
+                localStorage.setItem('token', data.token.key );
+
                 dispatch({ type: LOGIN_USER_SUCCESS, data });
                 callback(data)
             },
@@ -60,6 +63,8 @@ export const logout = ( loggedIn, callback ) => dispatch => {
         .then(response => response.json())
         .then(
             data => {
+                localStorage.removeItem('token' );
+
                 dispatch({ type: LOGOUT_USER_SUCCESS });
                 dispatch({ type: LOGOUT_EXPERIENCE } );
                 dispatch({ type: LOGOUT_POSTING } );
