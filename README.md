@@ -118,15 +118,6 @@ Feel free to contact me on [Facebook](https://www.facebook.com/maya.kathrine.and
 [<div style="text-align: right">⇧ Back to overview</div>](#overview)
 &nbsp;  
 
-# You're looking for a nice colleague like me?
-
-Then also feel free to contact me about that. Especially if you like what you have seen on this page. I am available for a full time position in the area of Aarhus, Denmark.
-
-I would love to meet over a cup of coffee and talk about a possible professional future together. 
-
-I will update my employment status every two weeks.  
-Next scheduled update: April 17th, 2022
-
 ❤️
 
 Maya Kathrine Andersen
