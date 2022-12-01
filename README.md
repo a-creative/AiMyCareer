@@ -96,7 +96,7 @@ git clone https://github.com/a-creative/AiMyCareer.git .
 ```
 Next use these two commands to init a test environment and start up the virtual host:
 ```
-docker-compose --f docker-compose.only-for-testing.yml up -d
+docker-compose -f docker-compose.only-for-testing.yml up -d
 ```
 Finally you open up your favorite web browser and go to the address:
 ```
